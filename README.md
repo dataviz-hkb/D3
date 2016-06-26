@@ -2,7 +2,7 @@
 ### Data Driven Documents mit D3.js
 Der CAS Datenvisualisierung ist eine interdisziplinär und medienübergreifend ausgerichtete Weiterbildung. Vermittelt werden Grundlagen, Theorie und Methoden des Informationsdesigns. Im Zentrum steht das Gestalten von Informationsgrafiken, Diagrammen und Schaubildern.
 
-<a href="basics.md"><img src="css/assets/D3_L0.1.png" width="80"></a>&nbsp;
+<a href="_L0/README.md"><img src="css/assets/D3_L0.1.png" width="80"></a>&nbsp;
 <a href="basics.md"><img src="css/assets/D3_L1.1.png" width="80"></a>&nbsp;
 <a href="basics.md"><img src="css/assets/D3_L2.1.png" width="80"></a>&nbsp;
 <a href="basics.md"><img src="css/assets/D3_L3.1.png" width="80"></a>&nbsp;
