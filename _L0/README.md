@@ -4,7 +4,8 @@ D3 bedeutet 100% Webstandards bezogen. Grundkenntnisse **HTML/CSS** sind deshalb
 
 D3 ist eine Javascript Library, d.h. Programmierumgebung vollständig JS (ES5).
 
-Einrichten einer minimalen Arbeitsumgebung zum Beispiel mit *Brackets* besteht aus folgenden Schritten:
+####Einrichten einer minimalen Arbeitsumgebung####
+zum Beispiel mit *Brackets* besteht aus folgenden Schritten:
 
 * Erstellen eines Verzeichnisses *D3* oder ähnlich
 * Verzeichnis mit Brackets öffnen: `Datei` `>` `Ordner öffnen…`
