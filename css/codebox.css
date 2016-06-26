@@ -1,0 +1,165 @@
+@charset "UTF-8";
+
+
+@import 'https://fonts.googleapis.com/css?family=Inconsolata|Roboto:300,400,500,700,900';
+
+
+body {
+line-height: 146%;
+color: #222222;
+font-size: 112%;
+font-family: 'Roboto', sans-serif;
+font-weight: 300;
+background: white;
+padding: 40px;
+}
+
+a img {
+border: none;
+border-bottom: 0px solid transparent;
+}
+
+img {
+width: 100%;
+height: auto
+}
+
+img[width="1"] {
+width: 1px;
+height: 1px;
+margin: 0;
+padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6, strong, b, th {
+font-weight: 400;
+    color: black;
+}
+
+h1 a, h2 a {
+text-decoration: none;
+}
+
+h2 {
+line-height: 146%
+}
+
+ul li , ol li {
+line-height: 146%
+}
+
+blockquote {
+font-size: 1.05em;
+line-height: 160%;
+}
+
+blockquote p:before {
+content:  url(assets/star7.svg) ' ';
+margin-left: -36px
+}
+
+blockquote:after {
+content: " " attr(cite) " ";
+font-size: 14px;
+}
+
+dt {
+font-weight: 400;
+margin-top: 1em;
+}
+
+
+figcaption {
+font-style: italic;
+font-size: 0.94em
+}
+
+
+
+
+/** Inhalt Spaltenstruktur **/
+
+main {
+margin: 2em 0;
+    padding-bottom: 6em;
+
+}
+
+.entry-content h2, .entry-content h3 {
+font-weight: 400;
+margin-top: 3em;
+padding-bottom: 4px;
+border-bottom: 4px solid hsl(215, 30%, 50%);
+color: hsl(215, 30%, 50%)
+}
+
+.frame {
+font-family: serif;
+font-size: 1em;
+line-height: 120%;
+background: rgb(243, 243, 243);
+border-radius: 4px;
+padding: 1ex;
+margin: 1.6em 0;
+width: 100%
+}
+
+.frame p {
+width: 100%
+}
+
+pre, .grayframe {
+width: 99%;
+box-sizing: border-box;
+padding: 11px 1ex 1em 1ex;
+overflow: auto;
+border-top: 6px solid rgb(55, 64, 78);
+border-bottom: 3px solid hsla(215, 8%, 55%, 0.38);
+background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 44' height='44' width='100'><path d='m 0,5.5 100,0' style='stroke:#f6f6f6;stroke-width:11px' /><path d='m 0,38.5 100,0' style='stroke:#f6f6f6;stroke-width:11px' /></svg>");
+font-size: 0.9rem;
+line-height: 22px;
+font-family: 'Inconsolata', 'Lucida Console', 'Monaco', 'Andale Mono', monospace;
+}
+
+.codebox {
+width: 99%;
+    margin-bottom: 2em;
+}
+
+.codebox h6 {
+background: rgb(46, 55, 69);
+box-sizing: border-box;
+color: white;
+margin-bottom: 0;
+padding: 0 10px;
+font-size: 0.9em;
+font-weight: 300;
+border-top-left-radius: 4px;
+border-top-right-radius: 4px
+}
+
+.codebox pre {
+width: 100%;
+margin-top: 0;
+border-top-right-radius: 0;
+border-top-left-radius: 0;
+border-top: 0
+}
+
+
+article {
+margin-bottom: 3em
+}
+
+article nav ul {
+margin-left: 0.6em;
+padding-left: 0.6em;
+}
+
+article nav li {
+margin-bottom: 1ex;
+}
+
+
+
+
