@@ -8,7 +8,7 @@ Welcome to the *You Don't Know JS* (*YDKJS*) series.
 <html lang="de">
 <head>
     <meta charset="utf-8">
-    <title>D3 - L0.00 | CAS Dataviz, Daniel Schoeneck</title>
+    <title>HKB - Dataviz, Daniel Schoeneck</title>
     <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 </head>
 
