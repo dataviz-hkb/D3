@@ -1,4 +1,4 @@
-# L0 | D3.js Arbeitsumgebung
+# D3.js Arbeitsumgebung
 
 D3 bedeutet 100% Webstandards bezogen. Grundkenntnisse **HTML/CSS** sind deshalb von Vorteil, ebenso Vertrautheit mit der Logik von **XML** und 'Scalable Vector Graphics' **SVG**.
 
