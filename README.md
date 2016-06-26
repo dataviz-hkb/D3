@@ -36,8 +36,8 @@ Sinnvolle Erweiterungen für Brackets:
   - Emmet (http://emmet.io)
 
 ## Next: <a href="L0/ReadMe.md">Basics</a>
-see aucuun andere ation:
-    * <a href="L0/L0.00.html">_L0/_L0.00.html</a>
-    * <a href="_L0/myLib">_L0/_L0.01.html</a>
-    * <a href="_L0/myLib">_L0/_L0.02.html</a>
-    * <a href="_L0/myLib">_L0/_L0.03.html</a>
+Direkt:
+    * <a href="_L0/L0.00.html">_L0/_L0.00.html</a>
+    * <a href="_L0/_L0.01.html">_L0/_L0.01.html</a>
+    * <a href="_L0/_L0.02.html">_L0/_L0.02.html</a>
+    * <a href="_L0/_L0.03.html">_L0/_L0.03.html</a>
