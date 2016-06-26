@@ -1,6 +1,13 @@
 # L0 | D3.js Arbeitsumgebung
 
 Welcome to the *You Don't Know JS* (*YDKJS*) series.
+```txt
+Using your own backend — Make sure your local server is already running, serving files from the same folder Brackets is editing. Choose File > Project Settings and enter whatever URL corresponds to the root folder that's open in Brackets (typically a localhost URL). Then open a file for one of your webpages (e.g. an HTML, PHP, or ASP file) and launch Live Preview. Brackets will launch Chrome with the correct URL to load that page from your local server.
+
+```
+
+
+
 
 ```html
  <!DOCTYPE html>
