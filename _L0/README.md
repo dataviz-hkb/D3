@@ -1,5 +1,4 @@
-# Up And Running
-# L0: Arbeitsgrundlagen
+# L0 | D3.js Arbeitsumgebung
 
 Welcome to the *You Don't Know JS* (*YDKJS*) series.
 
