@@ -2,4 +2,6 @@
 HKB CAS Datenvisualisierung
 
 
+<<<<<<< HEAD
 ###Jetzt aber
+
