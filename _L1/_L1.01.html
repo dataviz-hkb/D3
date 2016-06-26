@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS - 1 | CAS Dataviz, Daniel Schoeneck</title>
+    <link rel="stylesheet" href="../css/defaults.css" type="text/css">
+
+</head>
+
+<body>
+
+    <script type="text/javascript">
+
+		// als Funktionsdeklaration (unabhängig)
+        function diktat(input_dekl) {
+
+            // verarbeite Input
+            alert(input_dekl);
+
+        }
+
+		diktat("Sprache ist Praxis.");
+
+
+
+
+
+        // oder als Funktionsausdruck (abhängig)
+        var foo = function (input_expr) {
+
+            alert(input_expr);
+		};
+
+		foo('Sprache an sich existiert nicht.');
+
+
+
+
+
+
+		// oder als Variante des selbstaufrufenden Funktionsausdruck, als anonyme Funktion, die sofort ausgeführt wird.
+		(function imZusammenhang() {
+
+		    document.body.innerHTML = "<p>Im Begriff des Sprachspiels will Wittgenstein die seiner Meinung nach falsche Trennung von Sprache und Handeln überwinden. Sprache ist für ihn ein situativer Funktionszusammenhang, er existiert genau darin und dadurch, dass Menschen handeln. <strong>Sprache ist Praxis. Sprache an sich existiert nicht.</strong> Verständlich werden Wörter nach Wittgenstein nicht allein aus der gesprochenen oder geschriebenen Sprachstruktur, sondern erst aus dem Ensemble von Situation, Handlungs- und Sprechabsicht, den aussersprachlichen Äusserungen wie Gestik und Mimik sowie dem situativen Handeln. Sich in einer bestimmten Situation angemessen und verständlich äußern zu können heißt, die Regeln eines Sprachspiels anwenden zu können. In der Teilnahme versteht und lernt man die Anwendungsregeln für die Bildung sinnvoller Sätze in gelingender Kommunikation. Die kommunikationstheoretisch verwendete Metapher Sprachspiel zielt auf die Komplexität realer Verwendungsformen von Sprache im Gefüge von Situationen mit wahrhaftigen, d.h. in ihrer ganzen Persönlichkeit anwesenden Sprechern. Wittgenstein vergleicht die Sprache in diesem Zusammenhang auch mit einem Schachspiel und einzelne Wörter mit Schachfiguren. Das Schachspiel ist in seinen Regeln zwar klar definiert, das Zusammenspiel der Figuren bietet aber unendliche Möglichkeiten der Anwendung dieser Regeln.</p>";
+
+		})();
+
+
+
+
+    </script>
+</body>
+</html>
