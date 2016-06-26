@@ -18,7 +18,7 @@ D3 ist eine Javascript Library, d.h. Programmierumgebung vollständig JS (ES5).
 
 ###HTML5 Standard minimal Konfiguration mit Einbindung d3.js:###
 ```html
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="utf-8">
