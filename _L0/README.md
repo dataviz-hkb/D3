@@ -4,6 +4,7 @@ D3 bedeutet 100% Webstandards bezogen. Grundkenntnisse **HTML/CSS** sind deshalb
 
 D3 ist eine Javascript Library, d.h. Programmierumgebung vollständig JS (ES5).
 
+
 ####Einrichten einer minimalen Arbeitsumgebung####
 zum Beispiel mit *Brackets* besteht aus folgenden Schritten:
 
@@ -14,10 +15,6 @@ zum Beispiel mit *Brackets* besteht aus folgenden Schritten:
 * *Brackets* bietet eine Server-Logik über die *Live Vorschau* um Dateien mittels eines **http-Request** zu öffnen. 
 * Alternativ kann unter : `Datei` `>` `Projekt-Einstellungen…` auch die eigene Server-Logik (typischerweise unter *localhost* ) verwendet werden.
 * Für den Aufruf von Seiten im Browser gilt : **keine** `Datei` `>` `Datei öffnen…` Geschichten. Dateiaufruf mit gleichzeitigen Datenimport generell mittels eines http-requests um Cross origin requests zu verhindern. 
-
-
->Using your own backend — Make sure your local server is already running, serving files from the same folder Brackets is editing. >Choose File > Project Settings and enter whatever URL corresponds to the root folder that's open in Brackets (typically a localhost >URL). Then open a file for one of your webpages (e.g. an HTML, PHP, or ASP file) and launch Live Preview. Brackets will launch Chrome >with the correct URL to load that page from your local server.
-
 
 
 
