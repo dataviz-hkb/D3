@@ -1,7 +1,7 @@
 # D3.js Arbeitsumgebung
 
 D3 bedeutet 100% Webstandards bezogen. Grundkenntnisse **HTML/CSS** sind deshalb von Vorteil, ebenso Vertrautheit mit der Logik von **XML** und 'Scalable Vector Graphics' **SVG**.<br>
-D3 ist eine Javascript Library, d.h. Programmierumgebung vollständig JS (ES5).
+D3 ist eine Javascript Library, d.h. Programmierumgebung vollständig JS (ES5 - Stand Juni 2015).
 
 
 #####Einrichten einer minimalen Arbeitsumgebung zum Beispiel mit *Brackets* besteht aus folgenden Schritten:#####
