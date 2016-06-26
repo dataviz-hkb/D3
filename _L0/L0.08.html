@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D3 - L0.07 | CAS Dataviz, Daniel Schoeneck</title>
+    <link rel="stylesheet" href="../css/defaults.css" type="text/css">
+
+    <style>
+        #datawrapper {
+            overflow: visible;
+            width:960px;
+            margin: 200px auto;
+            text-align: center;
+        }
+        .bar {
+            width: 20px;
+            height: 100px;
+            background-color: black;
+            margin-right: 2px;
+            display: inline-block;
+        }
+
+    </style>
+
+
+    <!-- 	<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script> -->
+	<script src="lib/d3.js" charset="utf-8"></script>
+</head>
+
+<body>
+
+    <div id="datawrapper" class="clearfix"><h1>Datenvisualisierung, simpel</h1></div>
+
+    <script type="text/javascript">
+
+        var datenset = [ 1, 0.4, 124, 0, 122, 6, 63, 24, 2, 3, 24, 0.24, 1, 122, 63, 24, 5 ];
+
+        var datenset_sortiert = [];
+        datenset.forEach(function(value) {
+            calc = Math.abs(100*(Math.sin(value) + Math.cos(value)));
+            datenset_sortiert.push(calc);
+        });
+
+        datenset_sortiert = datenset_sortiert.sort(function (a,b) {return d3.descending(a, b); });
+
+
+        //SVG Element erstellen
+        d3.select("#datawrapper").selectAll("div")
+                                .data(datenset_sortiert)
+                                .enter()
+                                .append("div")
+                                .attr("class", "bar")
+                                .style("height", function(d) {
+                                        return d + "px";
+                                })
+                                .style("background-color", "deeppink");
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D3 - L0.03 | CAS Dataviz, Daniel Schoeneck</title>
+    <link rel="stylesheet" href="../css/defaults.css" type="text/css">
+
+    <style>
+        body {
+            background: #690dc4;
+        }
+        #kreise {
+            width: 500px;
+            height:500px;
+        }
+    </style>
+
+
+    <!-- 	<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script> -->
+	<script src="lib/d3.js" charset="utf-8"></script>
+</head>
+
+<body>
+    <svg></svg>
+
+    <script type="text/javascript">
+
+        var originX = 250;
+        var originY = 250;
+        var KreisRadius = 200;
+
+        //SVG Element erstellen
+        var beispielSVG = d3.select('svg')
+            .attr("viewBox", "0 0 500 500")
+            .attr("id","kreise")
+            .attr("xmlns", "http://www.w3.org/2000/svg");
+
+
+        var kreis = beispielSVG.append("circle")
+            .attr({
+                cx: originX,
+                cy: originY,
+                r: KreisRadius,
+                stroke : "white",
+                fill : "rgba(0, 0, 0, 0.66)",
+                "stroke-width" : 15
+            })
+            .style ({ });
+
+    </script>
+</body>
+</html>

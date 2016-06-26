@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D3 - 10 | CAS Dataviz, Daniel Schoeneck</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="../css/defaults.css" type="text/css">
+    <style>
+
+        body {
+            margin:0;
+            padding:40px;
+            font-family: 'Roboto', 'Helvetica Neue', Helvetica, sans-serif;
+            background: #222;
+            color: #fff;
+        }
+
+        #datawrapper {
+            overflow: visible;
+            width:960px;
+            margin: 100px auto;
+        }
+
+
+    </style>
+    <!-- 	<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script> -->
+	<script src="lib/d3.js" charset="utf-8"></script>
+</head>
+
+<body>
+
+
+    <div id="datawrapper" class="clearfix"><h1>Datenpunkte nach dem Zufallsprinzip erstellt</h1></div>
+
+    <script type="text/javascript">
+
+        var data = [];
+        var i;
+        for (i = 0; i < 6000; i++) {
+          data.push({x: Math.random() * 960, y: Math.random() * 400});
+        }
+
+        // Mit D3 Bildpunkt als SG rendern
+        var d3svg = d3.select("#datawrapper").append("svg")
+                    .attr("width", "960")
+                    .attr("height", "600")
+                    .attr("id","dots")
+                    .attr("xmlns", "http://www.w3.org/2000/svg");
+
+            d3svg.selectAll("circle").data(data).enter().append("circle")
+                .attr({cx: function(d) {return d.x;}, cy: function(d) {return d.y}, r: 1})
+                .style({fill: "white", opacity: 0})
+                    .transition()
+                    .duration(1600)
+                    .style({fill: "white", opacity: 1});
+
+
+
+    </script>
+</body>
+</html>
