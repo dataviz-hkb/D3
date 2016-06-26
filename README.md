@@ -35,7 +35,7 @@ Sinnvolle Erweiterungen für Brackets:
   - Brackets Git (https://github.com/zaggino/brackets-git)
   - Emmet (http://emmet.io)
 
-<hr>
+<hr style="border: 0; height: 1px; background: #333;>
 ##Files
 Files:
     * <a href="_L0/L0.00.html">_L0/_L0.00.html</a>
