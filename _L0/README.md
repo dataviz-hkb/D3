@@ -2,11 +2,11 @@
 
 Einrichten einer minimalen Arbeitsumgebung zum Beispiel mit *Brackets* besteht aus folgenden Schritten:
 
-* Erstellen eines Verzeichnisses D3 oder ähnlich
+* Erstellen eines Verzeichnisses *D3* oder ähnlich
 * Verzeichnis mit Brackets öffnen: `Datei` `>` `Ordner öffnen…`
 * Erstellen einer Datei index.html, HTML5 validert, in selbiges Verzeichnis
-* 
 * Einbinden der Library das Repository `https://d3js.org/d3.v3.min.js`
+* *Brackets* bietet eine Server Logik über die *Live Vorschau* um Dateien mittels **HTTP-Request** zu öffnen. Alternativ kann der *localhost*
 
 
 >Using your own backend — Make sure your local server is already running, serving files from the same folder Brackets is editing. >Choose File > Project Settings and enter whatever URL corresponds to the root folder that's open in Brackets (typically a localhost >URL). Then open a file for one of your webpages (e.g. an HTML, PHP, or ASP file) and launch Live Preview. Brackets will launch Chrome >with the correct URL to load that page from your local server.
