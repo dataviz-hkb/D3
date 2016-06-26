@@ -1,5 +1,5 @@
-# You Don't Know JS: Up & Going
-# Chapter 1: Into Programming
+# Up And Running
+# L0: Arbeitsgrundlagen
 
 Welcome to the *You Don't Know JS* (*YDKJS*) series.
 
