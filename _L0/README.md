@@ -3,7 +3,9 @@
 Einrichten einer minimalen Arbeitsumgebung zum Beispiel mit *Brackets* besteht aus folgenden Schritten:
 
 * Erstellen eines Verzeichnisses D3 oder ähnlich
+* Verzeichnis mit Brackets öffnen: `Datei` `Ordner öffnen…`
 * Erstellen einer Datei index.html, HTML5 validert, in selbiges Verzeichnis
+* 
 * Einbinden der Library das Repository `https://d3js.org/d3.v3.min.js`
 
 
