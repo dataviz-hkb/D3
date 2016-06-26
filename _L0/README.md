@@ -14,7 +14,8 @@ zum Beispiel mit *Brackets* besteht aus folgenden Schritten:
 * Einbinden der Library das Repository `https://d3js.org/d3.v3.min.js`
 * *Brackets* bietet eine Server-Logik über die *Live Vorschau* um Dateien mittels eines **http-Request** zu öffnen. 
 * Alternativ kann unter : `Datei` `>` `Projekt-Einstellungen…` auch die eigene Server-Logik (typischerweise *localhost* ) verwendet werden.
-* Für den Aufruf von Seiten im Browser gilt : **keine** `Datei` `>` `Datei öffnen…`. Dateiaufruf mit gleichzeitigen Datenimport **generell mittels eines http-requests** um Cross origin requests zu verhindern. 
+* Für den Aufruf von Seiten im Browser gilt : **keine** `~~Datei~~` `>` `~~Datei öffnen…~~`
+* Dateiaufruf mit gleichzeitigen Datenimport **generell mittels eines http-requests** um Cross origin requests zu verhindern. 
 
 
 
