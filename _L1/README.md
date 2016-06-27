@@ -37,11 +37,10 @@ D3 ist eine Javascript Library, d.h. Programmierumgebung vollständig JS (ES5 - 
 
 Kommentar zum Material
 
----
 ###File: [L1-01.html](L1-01.html)###
 Unstrukturierter Content, Dokument mit minimalem Markup, Text
 
-
+<p>&nbsp;</p>
 ###File: [L1-02.html](L1-02.html)###
 ####Strukturierung mit HTML####
 Semantische Struktur dort, wo möglich und sinnvoll.<br>
@@ -49,7 +48,7 @@ D.h. Überschrift wird zu Überschrift (`<h1>` bzw. `<h2>`, `<h3>`, `<h4>`, `<h5
 Absatz wird zu Absatz (`<p>`) etc. <br> Übersicht in der HTML-Referenz: https://developer.mozilla.org/de/docs/Web/HTML/Element<br>
 `<div>` als generisches Element wird generell dort eingesetzt, wo nicht-semantische Verpackung/Gliederung/Struktur gewünscht ist.
 
-
+<p>&nbsp;</p>
 ###File: [L1-03.html](L1-03.html)###
 ####Strukturierung mit HTML####
 Semantische Struktur dort, wo möglich und sinnvoll.<br>
@@ -59,7 +58,7 @@ Absatz wird zu Absatz (`<p>`) etc. <br> Übersicht in der HTML-Referenz: https:/
 
 
 
-
+<p>&nbsp;</p>
 ###File: [L1-04.html](L1-04.html)###
 ####Strukturierung mit HTML####
 Semantische Struktur dort, wo möglich und sinnvoll.<br>
@@ -69,7 +68,7 @@ Absatz wird zu Absatz (`<p>`) etc. <br> Übersicht in der HTML-Referenz: https:/
 
 
 
-
+<p>&nbsp;</p>
 ###File: [L1-05.html](L1-05.html)###
 ####Strukturierung mit HTML####
 Semantische Struktur dort, wo möglich und sinnvoll.<br>
@@ -79,7 +78,7 @@ Absatz wird zu Absatz (`<p>`) etc. <br> Übersicht in der HTML-Referenz: https:/
 
 
 
-
+<p>&nbsp;</p>
 ###File: [L1-06.html](L1-06.html)###
 ####Strukturierung mit HTML####
 Semantische Struktur dort, wo möglich und sinnvoll.<br>
@@ -91,7 +90,7 @@ Absatz wird zu Absatz (`<p>`) etc. <br> Übersicht in der HTML-Referenz: https:/
 
 
 
-
+<p>&nbsp;</p>
 ###File: [L1-07.html](L1-07.html)###
 ####Strukturierung mit HTML####
 Semantische Struktur dort, wo möglich und sinnvoll.<br>
