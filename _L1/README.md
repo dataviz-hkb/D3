@@ -37,7 +37,7 @@ D3 ist eine Javascript Library, d.h. Programmierumgebung vollständig JS (ES5 - 
 
 Kommentar zum Material
 
-
+---
 ###File: [L1-01.html](L1-01.html)###
 Unstrukturierter Content, Dokument mit minimalem Markup, Text
 
