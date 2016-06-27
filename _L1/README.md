@@ -63,18 +63,13 @@ Ein standardkonformer Browser veranlasst das, Unterschiede in Textgrösse für h
 ###File: [L1-04.html](L1-04.html)###
 ####Strukturierung mit HTML, gestalterischer Eingriff mit CSS####
 Jetzt kann CSS kommen. Drei Möglichkeiten CSS einzubinden und zu verwenden: 
-1.  direkt im Dokument, über `<style type="text/css"> … </style>` im `<head>`
-2.  verlinkt auf ein Dokument, über `<link rel="stylesheet" href=" … " type="text/css">` im `<head>`
-3.  Inline, als Attribut, über `<p style="color: deeppink;"> </p>` direkt dem Element zugewiesen
 
-Um präzise zu Gestalten zu können ist nun eventuell die Struktur zu verfeinern, siehe [L1-05.html](L1-05.html).
+1. direkt im Dokument, über `<style type="text/css"> … </style>` im `<head>`
+2. verlinkt auf ein Dokument, über `<link rel="stylesheet" href=" … " type="text/css">` im `<head>`
+3. Inline, als Attribut, über `<p style="color: deeppink;"> </p>` direkt dem Element zugewiesen
 
-1. First ordered list item
-2. Another item
-⋅⋅* Unordered sub-list. 
-1. Actual numbers don't matter, just that it's a number
-⋅⋅1. Ordered sub-list
-4. And another item.
+
+
 
 <p>&nbsp;</p>
 ###File: [L1-05.html](L1-05.html)###
