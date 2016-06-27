@@ -77,9 +77,9 @@ Jetzt kann CSS kommen. Drei Möglichkeiten CSS einzubinden und zu verwenden:
 <a href="dom_tree.png"><img src="dom_tree.png" width="180"></a>&nbsp;&nbsp;&nbsp;Präzise und effizient zu selektieren zu können ist eine Grundvoraussetzung für den gestalterischen Eingriff. Das Bild veranschaulicht, was zu tun ist. Gegeben: ein __HTML-strukturiertes Dokument__ mit Inhalt. <br>Damit __CSS__ einem Element bzw. dem Inhalt eines Elements Gestaltungsattribute zuschreiben kann, muss der DOM über alle Verwandtschaftsgrade traversiert werden. Um das zu vereinfachen bieten sich die Attribute `class` und `id` an. <br>Klassen- und ID-Bezeichner in HTML erlauben CSS die direkte Selektion über folgendes Muster:
 
 #####mit:
-* Zeichen: __. (Punkt)__ | Der Punkt wird als Klassen-Selektor interpretiert <br>Beispiel: `<p class="testKlasse">` wird in CSS über `.testKlasse { … }`selektiert
+* dem vorangestellten Punkt: __. (Punkt)__ | Der Punkt wird als Klassen-Selektor interpretiert <br>Beispiel: `<p class="testKlasse">` wird in CSS über `.testKlasse { … }`selektiert
 
-* Zeichen: __# (Hash)__ | Der Hash wird als ID-Selektor interpretiert <br>Beispiel: `<p id="testID">` wird in CSS über `#testID { … }`selektiert
+* dem vorangestellten Hash: __# (Hash)__ | Der Hash wird als ID-Selektor interpretiert <br>Beispiel: `<p id="testID">` wird in CSS über `#testID { … }`selektiert
 
 * __ohne__ | Selektiert generische Elemente (auch SVG) <br>Beispiel: `<span>` wird in CSS über `span { … }`selektiert
 
