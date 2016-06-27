@@ -13,6 +13,22 @@ Der CAS Datenvisualisierung ist eine interdisziplinär und medienübergreifend a
 <a href="basics.md"><img src="css/assets/D3_L8.1.png" width="80"></a>&nbsp;
 <a href="basics.md"><img src="css/assets/D3_L9.1.png" width="80"></a>
 
+
+
+<a href="_L0/README.md"><img src="css/assets/D3_L0.1.png" width="80"></a>&nbsp;
+<a href="basics.md"><img src="css/assets/D3_L1.1.png" width="80"></a>&nbsp;
+<a href="basics.md"><img src="css/assets/D3_L2.1.png" width="80"></a>&nbsp;
+<a href="basics.md"><img src="css/assets/D3_L3.1.png" width="80"></a>&nbsp;
+<a href="basics.md"><img src="css/assets/D3_L4.1.png" width="80"></a>&nbsp;
+<a href="basics.md"><img src="css/assets/D3_L5.1.png" width="80"></a>&nbsp;
+<a href="basics.md"><img src="css/assets/D3_L6.1.png" width="80"></a>&nbsp;
+<a href="basics.md"><img src="css/assets/D3_L7.1.png" width="80"></a>&nbsp;
+<a href="basics.md"><img src="css/assets/D3_L8.1.png" width="80"></a>&nbsp;
+<a href="basics.md"><img src="css/assets/D3_L9.1.png" width="80"></a>
+
+
+
+
 Diese Serie liefert eine grundlegende Einführung in die Datenvisualisierung mit d3.js.
 Die Beispiele sind im Quelltext kommentiert, weiterführendes Material dazu ist vorhanden.
 
@@ -45,7 +61,4 @@ Sinnvolle Erweiterungen für Brackets:
 
 ### Next: <a href="_L0/README.md">Up & Running</a>
 
-# Table of Contents
-  * [Chapter 1](#chapter-1)
-  * [Chapter 2](#chapter-2)
-  * [Chapter 3](#chapter-3)
+# [Übersicht](#chapters)
