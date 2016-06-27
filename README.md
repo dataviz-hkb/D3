@@ -1,5 +1,4 @@
-<p><a id="chapter"></a></p>
-# HKB CAS Datenvisualisierung
+# HKB CAS Datenvisualisierung<a id="chapter"></a>
 ### Data Driven Documents mit D3.js
 Der CAS Datenvisualisierung ist eine interdisziplinär und medienübergreifend ausgerichtete Weiterbildung. Vermittelt werden Grundlagen, Theorie und Methoden des Informationsdesigns. Im Zentrum steht das Gestalten von Informationsgrafiken, Diagrammen und Schaubildern.
 
