@@ -17,7 +17,7 @@ Der CAS Datenvisualisierung ist eine interdisziplinär und medienübergreifend a
 
 
 #### Inhalt:
-1. <a href="_L0/README.md">D3 Up&Going</a>&nbsp;
+1. <a href="_L0/README.md">D3 Up&thnsp;&amps;&thnsp;Going</a>&nbsp;
 2. <a href="basics.md">SVG & HTML/CSS</a>&nbsp;
 3. <a href="basics.md">Javascript Basics</a>&nbsp;
 4. <a href="basics.md">Data</a>&nbsp;
