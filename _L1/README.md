@@ -69,7 +69,12 @@ Jetzt kann CSS kommen. Drei Möglichkeiten CSS einzubinden und zu verwenden:
 
 Um präzise zu Gestalten zu können ist nun eventuell die Struktur zu verfeinern, siehe [L1-05.html](L1-05.html).
 
-
+1. First ordered list item
+2. Another item
+⋅⋅* Unordered sub-list. 
+1. Actual numbers don't matter, just that it's a number
+⋅⋅1. Ordered sub-list
+4. And another item.
 
 <p>&nbsp;</p>
 ###File: [L1-05.html](L1-05.html)###
