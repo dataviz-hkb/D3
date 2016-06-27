@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>D3 | L3 CSV Daten</title>
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+</head>
+<body>
+    <div style="width:650px; margin:200px auto;">
+    <!--        Verzicht auf Attribut viewBox -->
+    <!--        Verzicht auf Attribut namespace (xmlns="http://www.w3.org/2000/svg"), D3 wird das für uns regeln -->
+
+
+        <svg width="650" height="420" style="stroke-width: 0; background-color: white;"></svg>
+    </div>
+
+
+    <script>
+
+        var datensatz = [];
+
+        d3.csv("data/datensatz.csv", function(error, rows) {
+
+                rows.forEach(function(d) {
+                    datensatz.push(+d.Rate)
+                });
+
+                datensatz.forEach(function(d){
+                    d3.select("svg").append("rect");
+                    d3.selectAll( "rect" )
+                        .data(datensatz)
+                        .attr("height", function(d) {
+                            return parseInt(d);
+                        })
+
+                        .attr( "y", function(d,i){
+                            return 420 - parseInt(d);
+                        })
+
+                        .attr( "x", function(d,i){
+                            return i * 25;
+                        })
+                        .attr( "width", 24)
+                        .attr("fill", function(d, i) {
+                            var rgbColor = "rgb(" + Math.round(d/410*118) + ", 0, "  + Math.round(d/410*255) + ")";
+                            return rgbColor;
+                        });
+                });
+            });
+
+
+    </script>
+
+</body>
+</html>

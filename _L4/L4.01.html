@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Daten CSV/TSV - 4 | CAS Dataviz, Daniel Schoeneck</title>
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+</head>
+<body>
+    <div style="width:650px; margin:200px auto;">
+        <svg width="650" height="420" style="stroke-width: 0; background-color: white;">
+        </svg>
+    </div>
+
+
+    <script>
+        // Leeres Datenarray
+        var datensatz = [];
+
+        // SVG Objekt holen
+        var svg = d3.select("svg");
+
+        // Daten einlesen und als Vereinfachung und Anlehnung an Beispiel aus L3 an Array übergeben
+        d3.csv("data/datensatz.csv", function(error, data) {
+
+                data.forEach(function(d) {
+                    datensatz.push(parseInt(+d.Rate)+1);
+                    // +1 verhindert Nullwerte in der Grafik
+                });
+
+                datensatz.forEach(function(d){
+
+                    svg.selectAll(".bar")       // Aber es gibt gar keine Elemente der Klasse "bar" !?
+                        .data(datensatz)        // Hole das Data-Array
+                        .enter().append("rect") /* Wenn wir enter() auf einer bestehenden Selektion aufrufen, dann wechseln wir zu einer Sub-Selektion, welche den Datensatz repräsentiert, die es abzubilden gilt. enter() vergleicht die Länge des Datensatzes mit der Länge der bestehenden Selektion. Damit liefert enter() die noch zu erstellenden Elemente zurück. */
+
+
+                        .attr("class", "bar")
+                        .attr( "height", function(d,i){
+                            return d;
+                        })
+
+                        .attr( "y", function(d,i){
+                            return 420 - d;
+                        })
+
+                        .attr( "x", function(d,i){
+                            return i * 25;
+                        })
+                        .attr( "width", 24);
+                });
+            });
+
+    </script>
+</body>
+</html>

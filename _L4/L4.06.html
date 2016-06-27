@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>D3 | L3 CSV Daten</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
+
+    <style type="text/css">
+        body{
+            margin:0;
+            padding:40px;
+            font-family: 'Roboto', 'Helvetica Neue', Helvetica, sans-serif;
+        }
+
+        #datawrapper {
+            width: 960px;
+            margin: 0 auto;
+        }
+
+        .chart rect {
+            fill: #606c88;
+        }
+
+        .chart text {
+          fill: black;
+          font: 10px sans-serif;
+          text-anchor: start;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="datawrapper">
+
+    <h1>Waldranking Schweiz</h1><p>Waldfläche in [ha] pro Einwohner. Faktorierung 400</p>
+
+
+    </div>
+
+    <script src="lib/d3.min.js"></script>
+
+    <script>
+
+    var width = 800,
+        randabstand = 120,
+        barHeight = 40;
+
+
+    var x = d3.scale.linear()
+        .range([0,width- 2*randabstand ]);
+
+
+    var chart = d3.select("#datawrapper").append("svg")
+            .attr("width",width)
+            .attr("class","chart");
+
+
+    d3.csv("data/waldranking.csv", type, function(error, data) {
+        if (error) throw error;
+
+
+        x.domain([0, d3.max(data, function(d) { return d3.round(d.Waldranking, 0); })]);
+
+
+
+        chart.attr("height", barHeight * data.length);
+
+
+
+
+
+        var bar = chart.selectAll("g")
+            .data(data)
+            .enter().append("g")
+
+
+              .attr("transform", function(d, i) { return "translate(0," + i * barHeight + ")"; });
+
+
+
+
+        bar.append("rect")
+          .attr("width", function(d) { return x(d.Waldranking); })
+          .attr("height", barHeight - 1);
+
+        bar.append("text")
+          .attr("x", function(d) { return x(d.Waldranking) + 3; })
+          .attr("y", barHeight / 2)
+          .attr("dy", ".35em")
+          .text(function(d) { return d3.round(d.Waldranking, 1); });
+
+        bar.append("text")
+          .attr("x", function(d) { return x(d.Waldranking) +30; })
+          .attr("y", barHeight / 2)
+          .attr("dy", ".35em")
+          .text(function(d) { return d.Kanton; });
+    });
+
+    function type(d) {
+      d.value = +d.Waldranking; // in Zahl umwandeln
+      return d;
+    }
+
+</script>
+</body>
+</html>
