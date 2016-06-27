@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Dokument Crash Kurs</title>
+
+    <style type="text/css" media="screen">
+        @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,700);
+
+        html {
+            font-size: 16px;
+        }
+        body {
+            padding-top: 40px;
+            line-height: 140%;
+            font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            color: #222222;
+        }
+
+        body > div:first-child { /* das erste <div>
+            als unmittelbares (direktes) Kind von <body> (nicht als Grosskind oder Urgrosskind etc.)
+            Die Strenge dieser Regel ist dadurch begründet, dass evtl. weitere <div> im Dokument vorkommen */
+            margin: 0 auto;
+            padding: 20px 30px;
+            width: 674px;
+            background: #f4f4f4;
+            border-top: 10px solid #FF00B5;
+            border-bottom: 1px solid #FF00B5;
+        }
+
+        h1 {
+            line-height: 140%;
+            font-weight: 400;
+            font-size: 1rem;
+        }
+
+        strong { font-weight: 700; }
+
+        a {
+            text-decoration: none;
+            color: #FF00B5;
+            font-weight: 400;
+        }
+
+
+        body > div:first-child > h1 {
+            /*
+                Auswahl von <h1> als direkter Nachfahre von <div> , welches
+                wiederum direkter Nachfahre von <body> ist
+            */
+
+            font-size: 1.4rem;
+
+
+            /* Korrektur Abstände -webkit etc. */
+            margin-top: 0.83em;
+            margin-bottom: 0.83em;
+        }
+
+        body > div:first-child > h1 em {
+
+            font-size: 1rem;
+        }
+
+        body > div:first-child p {
+
+            font-size: 20px;
+            line-height: 28px;
+
+        }
+
+        body > div:first-child P:last-child {
+            color: #868686;
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1><strong>A dozen direct censures are easier to bear than one morganatic compliment.</strong><br><em>Ein dutzend direkter Tadel ist einfacher zu ertragen als ein unaufrichtiges Kompliment.</em></h1>
+
+        <p>Mark Twain, from Pudd'nhead Wilson's New Calendar in Following the Equator (1897)</p>
+
+        <p><strong>morganatic:</strong> unaufrichtig, linkisch, zweifelhaft, fragwürdig</p>
+
+        <p>Der Begriff <a href="http://wikipedia.de/morganatisch">morganatisch</a> geht auf die morganatische Ehe zurück. Als morganatische Ehe (lat. matrimonium morganaticum, mittellateinische Neubildung zu althochdeutsch morgangeba, «Morgengabe») oder Ehe zur linken Hand bezeichnet man eine im europäischen Adel nicht selten vorkommende Form der Ehe, bei der einer der beiden Ehepartner (meistens die Frau) von niedrigerem Stand war als der andere (Nichtebenbürtigkeit).</p>
+    </div>
+
+    <script src=""></script>
+</body>
+
+</html>
+<!--    Dieses Beispiel, um zu illustrieren, welcher Aufwand nötig wäre,
+           um visuell das gleiche Ergebnis zu erhalten
+
+           ohne Vergabe von Klassen und ID's
+           mit der Dokumenten Struktur aus L1-02.html
+
+
+-->
