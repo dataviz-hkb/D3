@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>D3 | L2 Daten</title>
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+</head>
+<body>
+    <div style="width:200px; margin:200px auto;">
+    <!--        Verzicht auf Attribut viewBox -->
+    <!--        Verzicht auf Attribut namespace (xmlns="http://www.w3.org/2000/svg"), D3 wird das für uns regeln -->
+
+
+        <svg width="200" height="200" style="stroke-width: 0; background-color: silver;">
+
+
+            <rect x="0" width="24" height="24" fill="#7600ff"></rect>
+            <rect x="25" width="24" height="24" fill="#6516c1"></rect>
+            <rect x="50" width="24" height="24" fill="#51119b"></rect>
+            <rect x="75" width="24" height="24" fill="#3d1869"></rect>
+            <rect x="100" width="24" height="24" fill="#7600ff"></rect>
+            <rect x="125" width="24" height="24" fill="#6516c1"></rect>
+            <rect x="150" width="24" height="24" fill="#51119b"></rect>
+            <rect x="175" width="24" height="24" fill="#3d1869"></rect>
+
+
+
+        </svg>
+    </div>
+
+
+    <script>
+
+        var datensatz = [ 400, 920, 331, 600, 223, 584, 119, 438 ];
+
+        d3.selectAll( "rect" )
+            .data( datensatz )
+
+            .attr( "height", function(d,i){
+                return d/10 * 2;
+            })
+
+        ;
+
+    </script>
+
+</body>
+</html>
