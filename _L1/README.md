@@ -88,7 +88,7 @@ Jetzt kann CSS kommen. Drei Möglichkeiten CSS einzubinden und zu verwenden:
 
 * Mehrfach-Selektion ist möglich über die Verwendung von Kommata. <br>Beispiel: Die Elemente `<body> … </body>` , `<p id="testID"> … </p>` und `<h1> … </h1>` werden in CSS über `body, #testID, h1 { … }` gemeinsam selektiert
 
-* Die Kombination von generischen Selektoren mit Klassen-Selektoren verschärfen die Selektionsbedingungen. <br>Beispiel, gegeben folgende Struktur:  `<h1 class="kursiv"> … </h1>  <p class="kursiv"> … </p>`  hier selektiert CSS mit `h1.kursiv { … }` ausschliesslich die Überschrift. Der Absatz bleibt unverändert, obwohl er zur gleichen Klasse gehört.
+* Die Kombination von generischen Selektoren mit Klassen-Selektoren verschärfen die Selektionsbedingungen. <br>Beispiel, gegeben folgende Struktur:  `<h1 class="kursiv"> … </h1>  <p class="kursiv"> … </p>`  hier selektiert `h1.kursiv { … }` ausschliesslich die Überschrift. Der Absatz bleibt unverändert, obwohl er zur gleichen Klasse gehört.
 
 <p>&nbsp;</p>
 ###File: [L1-06.html](L1-06.html)###
