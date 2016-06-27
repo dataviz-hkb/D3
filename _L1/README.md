@@ -37,16 +37,18 @@ D3 ist eine Javascript Library, d.h. Programmierumgebung vollständig JS (ES5 - 
 
 | #        | Are           | Cool  | File  |
 | ------------- |-------------| -----| -----|
-| 1      | Unstrukturierter Content, Dokument mit minimalem Markup, Text  | Strukturierung mit HTML | [File: L1-01.html](L1-01.html) |
-| 2      | Strukturierung mit HTML | Strukturierung mit HTML | [File: L1-02.html](L1-02.html) |
-| 3      | Unstrukturiertes Dokument | Strukturierung mit HTML | [File: L1-01.html](L1-01.html) |
-| 4      | Unstrukturiertes Dokument | Strukturierung mit HTML | [File: L1-01.html](L1-01.html) |
-| 5      | Unstrukturiertes Dokument | Strukturierung mit HTML | [File: L1-01.html](L1-01.html) |
+| 1      | Unstrukturierter Content, Dokument mit minimalem Markup, Text  | Strukturierung mit HTML | [L1-01.html](L1-01.html) |
+| 2      | Strukturierung mit HTML | Semantische Struktur wo möglich und sinnvoll, d.h. Überschrift wird zu Überschrift (`<h1>` bzw. `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>`)<br> Absatz wird zu Absatz (`<p>`) etc. <br> Übersicht in der HTML-Referenz: https://developer.mozilla.org/de/docs/Web/HTML/Element <br>`<div>` als generisches Element wird generell dort eingesetzt, wo nicht-semantische Verpackung/Gliederung/Struktur gewünscht ist | [ L1-02.html](L1-02.html) |
+| 3      | Unstrukturiertes Dokument | Strukturierung mit HTML | [L1-03.html](L1-03.html) |
+| 4      | Unstrukturiertes Dokument | Strukturierung mit HTML | [ L1-04.html](L1-04.html) |
+| 5      | Unstrukturiertes Dokument | Strukturierung mit HTML | [L1-05.html](L1-05.html) |
+| 6      | Unstrukturiertes Dokument | Strukturierung mit HTML | [L1-06.html](L1-06.html) |
+| 7      | Unstrukturiertes Dokument | Strukturierung mit HTML | [L1-07.html](L1-07.html) |
 
 
 
 Unstrukturiertes Dokument |  | [File:](L1-01.html)
-UnStrukturierung mit HTML | Semantische Struktur wo möglich und sinnvoll, d.h. Überschrift wird zu Überschrift (`<h1>` bzw. `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>`)<br> Absatz wird zu Absatz (`<p>`) etc. <br> Übersicht in der HTML-Referenz: https://developer.mozilla.org/de/docs/Web/HTML/Element<p>`<div>` als generisches Element wird generell dort eingesetzt, wo nicht-semantische Verpackung/Gliederung/Struktur gewünscht ist</p> | [File:](L1-01.html)
+UnStrukturierung mit HTML |  | [File:](L1-01.html)
 
 
 
