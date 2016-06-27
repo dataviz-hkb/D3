@@ -79,9 +79,9 @@ Ein Element kann zu zwei (drei, vier, …) Klassen gehören, jedoch nur eine ID 
 CSS kann so gezielt Elemente ansprechen ( *und um nichts anderes geht es hier!* )
 dabei gilt folgende CSS Syntax:
 #####mit:
-* Zeichen: __. (Punkt)__ | Der Punkt wird als Klassen-Selektor interpretiert <br> Beispiel: `<p class="testKlasse">`
+* Zeichen: __. (Punkt)__ | Der Punkt wird als Klassen-Selektor interpretiert <br>Beispiel: `<p class="testKlasse">` wird in CSS über `.testKlasse { … }`selektiert
 
-* Zeichen: __# (Hash)__ | Der (Hash)*<br>ID-Selektor (`<p id="testID">` etc.)
+* Zeichen: __# (Hash)__ | Der Hash wird als ID-Selektor interpretiert <br>Beispiel: `<p id="testID">` wird in CSS über `#testID { … }`selektiert
 
 * __ohne__ | Selektiert generische Elemente (auch SVG) <br>Beispiel: `<body>`, `<p>`, `<h1>`, `<span>`
 
