@@ -1,18 +1,17 @@
 # DATA
 
 Methoden in D3
-
-
 | name |	of object	| returns |	Beschreibung |
-| :---------- | :-------- | :---- | :--------------- |
+| :---------- | :---------- | :---- | :--------------- |
 | attr(name,value) | Selection | Selection | Set attribute to a value. |
 | attr(name) | Selection | Selection | Get attribute value. |
 | data(dataValues,[keyCalculator]) | Selection | Selection | Set the data array for the selection, computing the update, enter, and exit selections. |
 | data() | Selection | Array | Get the data array for the first group in the selection. |
-
 | selectAll(selectCalculator) | Selection | Selection | Use a function to select multiple elements for each entry in the selection. |
 | selectAll(selector) | Selection | Selection | Select multiple elements for each entry in the selection. |
-| sort(comparator) | Selection | SelectionvSort the order of elements in the selection (and DOM) |
+| sort(comparator) | Selection | Selection | vSort the order of elements in the selection (and DOM) |
+
+
 
 
 ####…bildet diese Dokumentenstruktur ab:####
