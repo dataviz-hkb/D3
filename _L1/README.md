@@ -33,15 +33,13 @@ D3 ist eine Javascript Library, d.h. Programmierumgebung vollständig JS (ES5 - 
 
 ###Material zum Crash Kurs HTML/CSS###
 
-| Tables        | Are           | Cool  |
-| ------------- |:-------------:| -----:|
-| 1      | Unstrukturiertes Dokument | [File: L1-01.html](L1-01.html) |
-| 2      | Strukturierung mit HTML | [File: L1-02.html](L1-02.html) |
-| 3      | Unstrukturiertes Dokument | [File: L1-01.html](L1-01.html) |
-| 4      | Unstrukturiertes Dokument | [File: L1-01.html](L1-01.html) |
-| 5      | Unstrukturiertes Dokument | [File: L1-01.html](L1-01.html) |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
+
+| 1      | Unstrukturierter Content, Dokument mit minimalem Markup, Text  | Strukturierung mit HTML | [File: L1-01.html](L1-01.html) |
+| 2      | Strukturierung mit HTML | Strukturierung mit HTML | [File: L1-02.html](L1-02.html) |
+| 3      | Unstrukturiertes Dokument | Strukturierung mit HTML | [File: L1-01.html](L1-01.html) |
+| 4      | Unstrukturiertes Dokument | Strukturierung mit HTML | [File: L1-01.html](L1-01.html) |
+| 5      | Unstrukturiertes Dokument | Strukturierung mit HTML | [File: L1-01.html](L1-01.html) |
+
 
 
 Unstrukturiertes Dokument |  | [File:](L1-01.html)
