@@ -43,10 +43,4 @@ Sinnvolle Erweiterungen für Brackets:
 ---
 
 
-
-***
-
-
-___
-
 ## Next: <a href="_L0/README.md">Basics</a>
