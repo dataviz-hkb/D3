@@ -90,11 +90,17 @@ Jetzt kann CSS kommen. Drei Möglichkeiten CSS einzubinden und zu verwenden:
 
 <p>&nbsp;</p>
 ###File: [L1-06.html](L1-06.html)###
-####Strukturierung mit HTML####
-Semantische Struktur dort, wo möglich und sinnvoll.<br>
-D.h. Überschrift wird zu Überschrift (`<h1>` bzw. `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>`)<br> 
-Absatz wird zu Absatz (`<p>`) etc. <br> Übersicht in der HTML-Referenz: https://developer.mozilla.org/de/docs/Web/HTML/Element<br>
-`<div>` als generisches Element wird generell dort eingesetzt, wo nicht-semantische Verpackung/Gliederung/Struktur gewünscht ist.
+####Kaskadierung, Vererbung####
+Das Beispiel zeigt die Vererbung von Eigenschaft und Wert an Kinds-Elemente.
+Einbindung von Schriften über das Repository von Google Fonts (https://fonts.google.com)
+
+Änderung in Zeile 9:
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,700);
+
+und Zeile 17
+font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+Vererbung der Schrift an alle Kinds-Elemente entspricht der Erwartung an den Dokumentenbaum (Kinder > Eltern > Grosseltern, etc.)
 
 
 
