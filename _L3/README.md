@@ -1,7 +1,8 @@
 # DATA
 
 Methoden in D3
-| name |	of object	| returns |	Beschreibung |
+
+| name | of object | returns | Beschreibung |
 | :---------- | :---------- | :---- | :--------------- |
 | attr(name,value) | Selection | Selection | Set attribute to a value. |
 | attr(name) | Selection | Selection | Get attribute value. |
