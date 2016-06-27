@@ -33,17 +33,8 @@ D3 ist eine Javascript Library, d.h. Programmierumgebung vollständig JS (ES5 - 
 
 ###Material zum Crash Kurs HTML/CSS###
 
-1. Unstrukturiertes Dokument
-2. Unterschied zu L1-01.html: Strukturierung mit HTML
-        * Semantische Struktur wo möglich und sinnvoll, dh.
-            Überschrift wird zu Überschrift (<h1> bzw. <h2>, <h3>, <h4>, <h5>, <h6>)
-            Absatz wird zu Absatz (<p>) etc.
-            Übersicht in der HTML-Referenz: https://developer.mozilla.org/de/docs/Web/HTML/Element
-
-        <div> als generisches Element wird generell dort eingesetzt, wo
-            nicht-semantische Verpackung/Gliederung/Struktur gewünscht ist
-            
-3. Zers
+Unstrukturiertes Dokument| |[File:](L1-01.html)
+UnStrukturierung mit HTML| Semantische Struktur wo möglich und sinnvoll, d.h. Überschrift wird zu Überschrift (`<h1>` bzw. `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>`)<br> Absatz wird zu Absatz (`<p>`) etc. <br> Übersicht in der HTML-Referenz: https://developer.mozilla.org/de/docs/Web/HTML/Element<p>`<div>` als generisches Element wird generell dort eingesetzt, wo nicht-semantische Verpackung/Gliederung/Struktur gewünscht ist</p>|[File:](L1-01.html)
 
 
 
