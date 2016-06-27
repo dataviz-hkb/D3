@@ -17,20 +17,24 @@ D3 ist eine Javascript Library, d.h. Programmierumgebung vollständig JS (ES5 - 
 
 
 
-###HTML5 Standard minimal Konfiguration mit Einbindung d3.js:###
+###Bildet diese Dokumentenstruktur ab:###
 ```html
 <!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="utf-8">
-    <title>HKB - Dataviz mit D3.js</title>
-    <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Dokument Crash Kurs</title>
 </head>
 
 <body>
-
-
-    <script type="text/javascript"> </script>
+    <h1>A dozen direct censures are easier to bear than one morganatic compliment.</h1>
+    <p>Der Begriff <a href='http://de.wikipedia.org/wiki/Morganatische_Ehe'>morganatisch</a> geht auf die morganatische Ehe zurück. Als morganatische Ehe (lat. matrimonium morganaticum, mittellateinische Neubildung zu althochdeutsch morgangeba, «Morgengabe») oder Ehe zur linken Hand bezeichnet man eine im europäischen Adel nicht selten vorkommende Form der Ehe, bei der einer der beiden Ehepartner (meistens die Frau) von niedrigerem Stand war als der andere (Nichtebenbürtigkeit).</p>
+    <ul>
+        <li>Mark Twain, from Pudd'nhead Wilson's New Calendar in Following the Equator (1897)</li>
+        <li>morganatic, from latin "matrimonium morganaticum"</li>
+        <li>Zu deutsch, morganatisch: unaufrichtig, linkisch, zweifelhaft, fragwürdig</li>
+    </ul>
 </body>
 </html>
 ```
