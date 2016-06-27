@@ -54,7 +54,7 @@
 ```
 
 
-[Vollständiges Beispiel](index.html)
+[Vollständiges Beispiel | Quelltext](index.html)
 
 
 
