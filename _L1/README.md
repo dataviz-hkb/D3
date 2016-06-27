@@ -94,10 +94,10 @@ Jetzt kann CSS kommen. Drei Möglichkeiten CSS einzubinden und zu verwenden:
 Das Beispiel zeigt die Vererbung von Eigenschaft und Wert an Kinds-Elemente.
 Einbindung von Schriften über das Repository von Google Fonts (https://fonts.google.com)
 ```css
-Änderung in Zeile 9:
+/* Änderung in Zeile 9: */
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,700);
 
-und Zeile 17
+/* und Zeile 17 */
 font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 ```
 Vererbung der Schrift an alle Kinds-Elemente entspricht der Erwartung an den Dokumentenbaum (Kinder > Eltern > Grosseltern, etc.)
