@@ -61,4 +61,4 @@ Sinnvolle Erweiterungen für Brackets:
 
 ### Next: <a href="_L0/README.md">Up & Running</a>
 
-# [Übersicht](#chapters)
+[Übersicht](#chapters)
