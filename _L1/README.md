@@ -50,9 +50,10 @@ Absatz wird zu Absatz (`<p>`) etc. <br> Übersicht in der HTML-Referenz: https:/
 
 <p>&nbsp;</p>
 ###File: [L1-03.html](L1-03.html)###
-####Strukturierung mit HTML####
-Die Bildung von Struktur unterliegt einzig und allein der Regel, dass valider (= allgemein gültiger) HTML Code entsteht. Das bedeutet, dass zur Auszeichnung des Dokuments (zur Erinnerung: HTML = Hypertext Markup Language = Hypertext Auszeichnungssprache ) alles erlaubt ist, was gültig ist, man also relativ frei ist, diese selber zu bestimmen.
-Hier eine Variante, die minimal anders aufgebaut ist, sich jedoch semantisch unterscheidet, was den Browser veranlasst Unterschiede in Textgrösse für h1 zu rendern (Beachte Unterschied Textgrösse im h1 zu [L1-02.html](L1-02.html))
+####Variante: Strukturierung mit HTML####
+Die Bildung von Struktur unterliegt einzig und allein der Regel, dass valider (= allgemein gültiger) HTML Code entsteht. Das bedeutet, dass zur Auszeichnung des Dokuments (HTML = Hypertext Markup Language = Hypertext Auszeichnungssprache ) alles erlaubt ist, was gültig ist, man also relativ frei ist, diese selber zu bestimmen.
+Hier eine Variante, die minimal anders aufgebaut ist, sich jedoch semantisch unterscheidet.
+Ein standardkonformer Browser veranlasst das, Unterschiede in Textgrösse für h1 zu rendern (siehe Textgrösse im `<h1>` zu [L1-02.html](L1-02.html) im direkten Vergleich)
 
         
 
@@ -60,11 +61,13 @@ Hier eine Variante, die minimal anders aufgebaut ist, sich jedoch semantisch unt
 
 <p>&nbsp;</p>
 ###File: [L1-04.html](L1-04.html)###
-####Strukturierung mit HTML####
-Semantische Struktur dort, wo möglich und sinnvoll.<br>
-D.h. Überschrift wird zu Überschrift (`<h1>` bzw. `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>`)<br> 
-Absatz wird zu Absatz (`<p>`) etc. <br> Übersicht in der HTML-Referenz: https://developer.mozilla.org/de/docs/Web/HTML/Element<br>
-`<div>` als generisches Element wird generell dort eingesetzt, wo nicht-semantische Verpackung/Gliederung/Struktur gewünscht ist.
+####Strukturierung mit HTML, gestalterischer Eingriff mit CSS####
+Jetzt kann CSS kommen. Drei Möglichkeiten CSS einzubinden und zu verwenden: 
+1.  direkt im Dokument, über `<style type="text/css"> … </style>` im `<head>`
+2.  verlinkt auf ein Dokument, über `<link rel="stylesheet" href=" … " type="text/css">` im `<head>`
+3.  Inline, als Attribut, über `<p style="color: deeppink;"> </p>` direkt dem Element zugewiesen
+
+Um präzise zu Gestalten zu können ist nun eventuell die Struktur zu verfeinern, siehe [L1-05.html](L1-05.html).
 
 
 
