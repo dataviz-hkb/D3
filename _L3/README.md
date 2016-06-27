@@ -4,7 +4,7 @@ Methoden in D3
 
 
 | name |	of object	| returns |	Beschreibung |
-| ---------- | -------- | ---- | --------------- |
+| :---------- | :-------- | :---- | :--------------- |
 | attr(name,value) | Selection | Selection | Set attribute to a value. |
 | attr(name) | Selection | Selection | Get attribute value. |
 | data(dataValues,[keyCalculator]) | Selection | Selection | Set the data array for the selection, computing the update, enter, and exit selections. |
