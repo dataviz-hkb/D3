@@ -79,7 +79,7 @@ Ein Element kann zu zwei (drei, vier, …) Klassen gehören, jedoch nur eine ID 
 CSS kann so gezielt Elemente ansprechen ( *und um nichts anderes geht es hier!* )
 dabei gilt folgende CSS Syntax:
 #####mit:
-*  *. (Punkt)*<br>Klassen-Selektor  (`<p class="testKlasse">` etc.)
+*  __. (Punkt)__ | Der Punkt wird als Klassen-Selektor interpretiert <br> Beispiel: `<p class="testKlasse">`
 
 * *# (Hash)*<br>ID-Selektor (`<p id="testID">` etc.)
 
