@@ -74,7 +74,7 @@ Jetzt kann CSS kommen. Drei Möglichkeiten CSS einzubinden und zu verwenden:
 <p>&nbsp;</p>
 ###File: [L1-05.html](L1-05.html)###
 ####DOM-Traversierung und Selektion####
-Präzise, d.h. gezielt selektieren heisst:  Attribute "class" und "id" vergeben
+<a href="dom_tree.png"><img src="dom_tree.png" width="180"></a>&nbsp;Präzise, d.h. gezielt selektieren heisst:  Attribute "class" und "id" vergeben
 Ein Element kann zu zwei (drei, vier, …) Klassen gehören, jedoch nur eine ID haben.
 CSS kann so gezielt Elemente ansprechen ( *und um nichts anderes geht es hier!* )
 dabei gilt folgende CSS Syntax:
