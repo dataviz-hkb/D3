@@ -61,6 +61,6 @@ Sinnvolle Erweiterungen für Brackets:
 ---
 
 
-### Next: <a href="_L0/">Up & Running</a>
+### Next: <a href="_L0/">Up & Going</a>
 
 [Übersicht](#chapter)
