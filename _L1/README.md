@@ -74,19 +74,19 @@ Jetzt kann CSS kommen. Drei Möglichkeiten CSS einzubinden und zu verwenden:
 <p>&nbsp;</p>
 ###File: [L1-05.html](L1-05.html)###
 ####DOM-Traversierung und Selektion####
-Präzise, d.h. gezielt zu Selektieren heisst:  Attribute "class" und "id" vergeben
-Ein Element kann zu zwei (drei, vier, …) Klassen gehören, jedoch nur eine ID haben
-CSS kann so gezielt Elemente ansprechen ( und um nichts anders wie das geht es! )
+Präzise, d.h. gezielt selektieren heisst:  Attribute "class" und "id" vergeben
+Ein Element kann zu zwei (drei, vier, …) Klassen gehören, jedoch nur eine ID haben.
+CSS kann so gezielt Elemente ansprechen ( *und um nichts anderes geht es hier!* )
 dabei gilt folgende CSS Syntax
 
-mit . (Punkt)
-Klassen-Selektor  (<p class="testKlasse"> etc.)
+*  mit . (Punkt)
+..*  Klassen-Selektor  (<p class="testKlasse"> etc.)
 
-mit # (Hash)
-ID-Selektor (<p id="testID"> etc.)
+* mit # (Hash)
+..*  ID-Selektor (<p id="testID"> etc.)
 
-ohne
-Selektiert generische Elemente (<body>, <p>, <h1>, <span>, etc.).
+* ohne
+..*  Selektiert generische Elemente (<body>, <p>, <h1>, <span>, etc.).
 
 
 
