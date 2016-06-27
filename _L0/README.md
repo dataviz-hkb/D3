@@ -40,8 +40,6 @@ D3 ist eine Javascript Library, d.h. Programmierumgebung vollständig JS (ES5 - 
 ---
 
 
-### Next: <a href="_L0/">Up & Running</a>
-
-### [Next:]("../_L1")
+### [Next:](../_L1/)
 
 [Übersicht](../README.md#chapter)
