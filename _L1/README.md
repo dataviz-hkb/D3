@@ -109,10 +109,7 @@ Vererbung der Schrift an alle Kinds-Elemente entspricht der Erwartung an den Dok
 <p>&nbsp;</p>
 ###File: [L1-07.html](L1-07.html)###
 ####Strukturierung mit HTML####
-Semantische Struktur dort, wo möglich und sinnvoll.<br>
-D.h. Überschrift wird zu Überschrift (`<h1>` bzw. `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>`)<br> 
-Absatz wird zu Absatz (`<p>`) etc. <br> Übersicht in der HTML-Referenz: https://developer.mozilla.org/de/docs/Web/HTML/Element<br>
-`<div>` als generisches Element wird generell dort eingesetzt, wo nicht-semantische Verpackung/Gliederung/Struktur gewünscht ist.
+Dieses Beispiel, um zu illustrieren, welcher Aufwand nötig wäre, um visuell das gleiche Ergebnis zu erhalten, ohne Vergabe von Klassen und ID's mit der HTML-Struktur aus Dokument [L1-02.html](L1-02.html)
 
 
 
