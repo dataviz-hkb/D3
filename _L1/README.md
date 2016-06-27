@@ -74,7 +74,7 @@ Jetzt kann CSS kommen. Drei Möglichkeiten CSS einzubinden und zu verwenden:
 <p>&nbsp;</p>
 ###File: [L1-05.html](L1-05.html)###
 ####DOM-Traversierung und Selektion####
-<a href="dom_tree.png"><img src="dom_tree.png" width="180"></a>&nbsp;&nbsp;&nbsp;Präzise und effizient zu selektieren zu können ist eine Grundvoraussetzung für den gestalterischen Eingriff. Das Bild veranschaulicht, was zu tun ist. <br>Gegeben: ein __HTML-strukturiertes Dokument__ mit Inhalt. <br>Damit __CSS__ einem Element bzw. dem Inhalt eines Elements Gestaltungsattribute zuschreiben kann, muss der DOM über alle Verwandtschaftsgrade traversiert werden. Um das zu vereinfachen bieten die Attribute `class` und `id` effiziente Lösungen. Klassen- und ID-Bezeichner erlauben CSS die direkte Selektion über folgendes Muster:
+<a href="dom_tree.png"><img src="dom_tree.png" width="180"></a>&nbsp;&nbsp;&nbsp;Präzise und effizient zu selektieren zu können ist eine Grundvoraussetzung für den gestalterischen Eingriff. Das Bild veranschaulicht, was zu tun ist. Gegeben: ein __HTML-strukturiertes Dokument__ mit Inhalt. <br>Damit __CSS__ einem Element bzw. dem Inhalt eines Elements Gestaltungsattribute zuschreiben kann, muss der DOM über alle Verwandtschaftsgrade traversiert werden. Um das zu vereinfachen bieten die Attribute `class` und `id` effiziente Lösungen. Klassen- und ID-Bezeichner erlauben CSS die direkte Selektion über folgendes Muster:
 Ein Element kann zu zwei (drei, vier, …) Klassen gehören, jedoch nur eine ID haben.
 CSS kann so gezielt Elemente ansprechen ( *und um nichts anderes geht es hier!* )
 dabei gilt folgende CSS Syntax:
