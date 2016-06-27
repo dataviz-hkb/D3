@@ -81,7 +81,7 @@ Jetzt kann CSS kommen. Drei Möglichkeiten CSS einzubinden und zu verwenden:
 
 * dem vorangestellten Hash: &nbsp;__#__&nbsp; wird der Bezeichner als ID-Selektor interpretiert. <br>Beispiel: ```  #testID { … }  selektiert <p id="testKlasse"> … </p>  ``` 
 
-* __ohne__ | Selektiert generische Elemente (auch SVG) <br>Beispiel: `<span>` wird in CSS über `span { … }`selektiert
+* __ohne__ | Selektiert generische Elemente (auch SVG) <br>Beispiel: `span { … }`selektiert `<span> … </span>` 
 
 #####Nota bene:
 * Ein Element kann zu __zwei (drei, vier, …) Klassen__ gehören, jedoch nur eine ID haben. __Eine ID__ kann auch nur __einmal__ pro Dokument vorkommen. 
