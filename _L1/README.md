@@ -120,6 +120,6 @@ Dieses Beispiel, um zu illustrieren, welcher Aufwand nötig wäre, um visuell da
 ---
 
 
-###Next: [Javascript Basics:](../_L2/)
+###Next: [Javascript Basics](../_L2/)
 
 [Übersicht](../README.md#chapter)
