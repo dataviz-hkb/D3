@@ -2,54 +2,53 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>D3 | L3 CSV Daten</title>
+    <title>Daten CSV/TSV - 4 | CAS Dataviz, Daniel Schoeneck</title>
     <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 </head>
 <body>
     <div style="width:650px; margin:200px auto;">
-    <!--        Verzicht auf Attribut viewBox -->
-    <!--        Verzicht auf Attribut namespace (xmlns="http://www.w3.org/2000/svg"), D3 wird das für uns regeln -->
-
-
-        <svg width="650" height="420" style="stroke-width: 0; background-color: white;"></svg>
+        <svg width="650" height="420" style="stroke-width: 0; background-color: white;">
+        </svg>
     </div>
 
 
     <script>
-
         var datensatz = [];
+        var svg = d3.select("svg");
 
-        d3.csv("data/datensatz.csv", function(error, rows) {
+        d3.csv("data/datensatz.csv", function(error, data) {
 
-                rows.forEach(function(d) {
-                    datensatz.push(+d.Rate)
+                data.forEach(function(d) {
+                    datensatz.push(parseInt(+d.Rate)+1);
                 });
 
                 datensatz.forEach(function(d){
-                    d3.select("svg").append("rect");
-                    d3.selectAll( "rect" )
+
+                    svg.selectAll(".bar")
                         .data(datensatz)
-                        .attr("height", function(d) {
-                            return parseInt(d);
+                        .enter().append("rect")
+                        .attr("class", "bar")
+                        .attr( "height", function(d,i){
+                            return d;
                         })
 
                         .attr( "y", function(d,i){
-                            return 420 - parseInt(d);
+                            return 420 - d;
                         })
 
                         .attr( "x", function(d,i){
                             return i * 25;
                         })
                         .attr( "width", 24)
+
+                        // Farbwerte der Balken als Funktion von d
                         .attr("fill", function(d, i) {
-                            var rgbColor = "rgb(" + Math.round(d/410*118) + ", 0, "  + Math.round(d/410*255) + ")";
-                            return rgbColor;
+                                var rgbColor = "rgb(" + Math.round(d/411*118) + ", 0, "  + Math.round(d/411*255) + ")";
+                                return rgbColor;
                         });
                 });
             });
 
-
     </script>
-
 </body>
 </html>

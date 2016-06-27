@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>D3 | L3 CSV Daten</title>
+    <title>Daten CSV/TSV - 4 | CAS Dataviz, Daniel Schoeneck</title>
     <script src="lib/d3.js" charset="utf-8"></script>
     <script src="lib/d3tip.js" charset="utf-8"></script>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
@@ -37,6 +37,21 @@
         .x.axis path {
             display: none;
         }
+
+
+        line.grid-line {
+            opacity:0.3;
+            stroke-dasharray: 3, 3;
+        }
+
+
+        .y.axis .tick:first-child line.grid-line {
+            opacity: 1;
+            stroke-dasharray: 0, 0;
+        }
+
+
+
 
         .d3-tip {
           line-height: 1;
@@ -146,6 +161,11 @@
             .orient("left")
             .ticks(10);
 
+        var yAxis2 = d3.svg.axis()
+            .scale(y)
+            .orient("right")
+            .ticks(10);
+
         var xAxis = d3.svg.axis()
             .scale(x)
             .orient("bottom");
@@ -172,6 +192,12 @@
 
             // Y-Achse
             svg.append("g")
+              .attr("class", "axis")
+              .attr("transform", "translate(" + (width) + ",0)")
+              .call(yAxis2)
+
+            // Y-Achse
+            svg.append("g")
               .attr("class", "y axis")
               .call(yAxis)
 
@@ -187,6 +213,15 @@
               .attr("class", "x axis")
               .attr("transform", "translate(0," + height + ")")
               .call(xAxis);
+
+
+            svg.selectAll("g.y.axis g.tick")
+            .append("line")
+                .classed("grid-line", true)
+                .attr("x1", 0)
+                .attr("y1", 0)
+                .attr("x2", width)
+                .attr("y2", 0);
 
             svg.selectAll(".bar")
                 .data(datensatz)

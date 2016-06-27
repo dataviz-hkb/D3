@@ -7,7 +7,20 @@
     <style type="text/css">
         .barText {
 
+        }
 
+        #GE, #BS {
+            fill : #000!important;
+        }
+
+        .axis { font-size: 10px; }
+        .y.axis { font: 11px monospace; }
+
+        .axis path,
+        .axis line {
+          fill: none;
+          stroke: #000;
+          shape-rendering: crispEdges;
         }
 
     </style>
@@ -24,18 +37,34 @@
 
         var datensatz = [];
 
+        // var y = d3.scale.linear().range([420, 0]);
+        var y = d3.scale.linear().domain([1, 410]).range([420, 0]);
+
+        var yAxis = d3.svg.axis()
+            .scale(y)
+            .orient("right")
+            .ticks(10);
+
+
+
         d3.csv("data/datensatz.csv", function(error, rows) {
 
                 rows.forEach(function(d) {
-
                     datensatz.push({
                         name: d.ID,
                         value: +d.Rate
                     })
-
                 });
 
-                //datensatz = datensatz.sort(function (a,b) {return d3.descending(a.name, b.name); });
+
+                // Y-Achse, Alternative
+                // y.domain([1, d3.max(rows, function(d) { return +d.Rate; })]);
+
+                d3.select("svg").append("g")
+                        .attr("class", "y axis")
+                        .attr("transform", "translate(0,0)")
+                        .call(yAxis);
+
 
                 datensatz.forEach(function(d,i){
                     d3.select("svg").append("rect");
@@ -62,11 +91,13 @@
 
                     d3.select("svg").append("text")
                         .text(d.name)
+                        .attr("id", d.name)
                         .attr({"x": i*25+5, "y": 420-5})
                         .style({"fill" : "#fff","text-anchor": "start","font-size": "10px","font-family": "monospace"})
                         .attr("class", "barText");
 
                 });
+
             });
 
     </script>

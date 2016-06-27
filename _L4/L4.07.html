@@ -7,9 +7,11 @@
     <style type="text/css">
         .barText {
 
-
         }
 
+        #GE, #BS {
+            fill : #000!important;
+        }
     </style>
 </head>
 <body>
@@ -62,6 +64,7 @@
 
                     d3.select("svg").append("text")
                         .text(d.name)
+                        .attr("id", d.name)
                         .attr({"x": i*25+5, "y": 420-5})
                         .style({"fill" : "#fff","text-anchor": "start","font-size": "10px","font-family": "monospace"})
                         .attr("class", "barText");
