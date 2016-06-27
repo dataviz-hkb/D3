@@ -1,7 +1,7 @@
 # HKB CAS Datenvisualisierung
 ### Data Driven Documents mit D3.js
 Der CAS Datenvisualisierung ist eine interdisziplinär und medienübergreifend ausgerichtete Weiterbildung. Vermittelt werden Grundlagen, Theorie und Methoden des Informationsdesigns. Im Zentrum steht das Gestalten von Informationsgrafiken, Diagrammen und Schaubildern.
-
+<a id="chapter"></a>
 <a href="_L0/README.md"><img src="css/assets/D3_L0.1.png" width="80"></a>&nbsp;
 <a href="basics.md"><img src="css/assets/D3_L1.1.png" width="80"></a>&nbsp;
 <a href="basics.md"><img src="css/assets/D3_L2.1.png" width="80"></a>&nbsp;
@@ -14,7 +14,7 @@ Der CAS Datenvisualisierung ist eine interdisziplinär und medienübergreifend a
 <a href="basics.md"><img src="css/assets/D3_L9.1.png" width="80"></a>
 
 
-#### Inhalt:<a id="chapter"></a>
+#### Inhalt:
 1. <a href="_L0/README.md">D3 Up&Going</a>&nbsp;
 2. <a href="basics.md">SVG & HTML/CSS</a>&nbsp;
 3. <a href="basics.md">Javascript Basics</a>&nbsp;
