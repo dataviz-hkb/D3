@@ -1,6 +1,5 @@
 # Up & Going: Arbeitsumgebung | D3
 
-<p><img src="css/assets/upgoing.jpg" width="888"></p>
 
 D3.js ist 100% Webstandards bezogen. Grundkenntnisse **HTML/CSS** sind deshalb von Vorteil, ebenso Vertrautheit mit der Logik von **XML** und 'Scalable Vector Graphics' **SVG**.<br>
 D3 ist eine Javascript Library, d.h. Programmierumgebung vollständig JS (ES5 - Stand Juni 2016).
