@@ -2,15 +2,12 @@
 
 Methoden in D3
 
-| name | of object | returns | Beschreibung |
+| Name | von Objekt | Rückgabe | Beschreibung |
 | :---------- | :---------- | :---- | :--------------- |
-| attr(name,value) | Selection | Selection | Set attribute to a value. |
-| attr(name) | Selection | Selection | Get attribute value. |
-| data(dataValues,[keyCalculator]) | Selection | Selection | Set the data array for the selection, computing the update, enter, and exit selections. |
-| data() | Selection | Array | Get the data array for the first group in the selection. |
-| selectAll(selectCalculator) | Selection | Selection | Use a function to select multiple elements for each entry in the selection. |
-| selectAll(selector) | Selection | Selection | Select multiple elements for each entry in the selection. |
-| sort(comparator) | Selection | Selection | vSort the order of elements in the selection (and DOM) |
+| attr(name,value) | Auswahl | Auswahl | Attribute: Eigenschaft und Wert zuweisen. |
+| data() | Auswahl | Array | Hole das Data-Array für die erste Gruppe der Auswahl. |
+| selectAll(selector) | Selektor | Selektor | Mehrfach-Element-Selektion für jeden Eintrag in der Selektion |
+| sort(comparator) | Auswahl | Auswahl | Sortiert die Elemente in der Selektion |
 
 
 
