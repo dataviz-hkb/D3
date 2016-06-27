@@ -4,12 +4,12 @@ D3.js ist 100% Webstandards bezogen. Grundkenntnisse **HTML/CSS** sind deshalb v
 D3 ist eine Javascript Library, d.h. Programmierumgebung vollständig JS (ES5 - Stand Juni 2016).
 
 
-###Das hier:###
-![Minion](dom_tree.png)
+####Das hier:####
+![Domtree](dom_tree.png)
 
 
 
-###Bildet diese Dokumentenstruktur ab:###
+####Bildet diese Dokumentenstruktur ab:####
 ```html
 <!DOCTYPE html>
 <html lang="de">
