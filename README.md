@@ -18,15 +18,15 @@ Der CAS Datenvisualisierung ist eine interdisziplinär und medienübergreifend a
 
 #### Inhalt:
 1. <a href="_L0/">D3 Up & Going</a>&nbsp;
-2. <a href="_L1/README.md">SVG & HTML/CSS</a>&nbsp;
-3. <a href="_L2/README.md">Javascript Basics</a>&nbsp;
-4. <a href="_L3/README.md">Data</a>&nbsp;
-5. <a href="_L4/README.md">Data CSV/TSV</a>&nbsp;
-6. <a href="_L5/README.md">Skalen & Achsen</a>&nbsp;
-7. <a href="_L6/README.md">GeoJSON</a>&nbsp;
-8. <a href="_L7/README.md">Reihen & Serien</a>&nbsp;
-9. <a href="_L8/README.md">Transition</a>&nbsp;
-10. <a href="_L9/README.md">Updating Data</a>
+2. <a href="_L1/">SVG & HTML/CSS</a>&nbsp;
+3. <a href="_L2/">Javascript Basics</a>&nbsp;
+4. <a href="_L3/">Data</a>&nbsp;
+5. <a href="_L4/">Data CSV/TSV</a>&nbsp;
+6. <a href="_L5/">Skalen & Achsen</a>&nbsp;
+7. <a href="_L6/">GeoJSON</a>&nbsp;
+8. <a href="_L7/">Reihen & Serien</a>&nbsp;
+9. <a href="_L8/">Transition</a>&nbsp;
+10. <a href="_L9/">Updating Data</a>
 
 
 
