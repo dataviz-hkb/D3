@@ -73,11 +73,20 @@ Jetzt kann CSS kommen. Drei Möglichkeiten CSS einzubinden und zu verwenden:
 
 <p>&nbsp;</p>
 ###File: [L1-05.html](L1-05.html)###
-####Strukturierung mit HTML####
-Semantische Struktur dort, wo möglich und sinnvoll.<br>
-D.h. Überschrift wird zu Überschrift (`<h1>` bzw. `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>`)<br> 
-Absatz wird zu Absatz (`<p>`) etc. <br> Übersicht in der HTML-Referenz: https://developer.mozilla.org/de/docs/Web/HTML/Element<br>
-`<div>` als generisches Element wird generell dort eingesetzt, wo nicht-semantische Verpackung/Gliederung/Struktur gewünscht ist.
+####DOM-Traversierung und Selektion####
+Präzise, d.h. gezielt zu Selektieren heisst:  Attribute "class" und "id" vergeben
+Ein Element kann zu zwei (drei, vier, …) Klassen gehören, jedoch nur eine ID haben
+CSS kann so gezielt Elemente ansprechen ( und um nichts anders wie das geht es! )
+dabei gilt folgende CSS Syntax
+
+mit . (Punkt)
+Klassen-Selektor  (<p class="testKlasse"> etc.)
+
+mit # (Hash)
+ID-Selektor (<p id="testID"> etc.)
+
+ohne
+Selektiert generische Elemente (<body>, <p>, <h1>, <span>, etc.).
 
 
 
