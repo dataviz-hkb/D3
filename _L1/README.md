@@ -85,7 +85,7 @@ Jetzt kann CSS kommen. Drei Möglichkeiten CSS einzubinden und zu verwenden:
 
 #####Nota bene:
 * Ein Element kann zu zwei (drei, vier, …) Klassen gehören, jedoch nur eine ID haben. Eine __ID__ kann auch nur einmal pro Dokument vorkommen. 
-* Mehrfach-Selektion ist möglich über die Verwenung von Kommata. Beispiel: `<body>`, `<p id="testID">`, `<h1>` werden gemeinsam in CSS über `body, #testID, h1 { … }`selektiert
+* Mehrfach-Selektion ist möglich über die Verwendung von Kommata. Beispiel: `<body>, <p id="testID">, <h1>` werden gemeinsam in CSS über `body, #testID, h1 { … }`selektiert
 * Die Kombination von generischen Selektoren mit Klassen-Selektoren verschärfen die Selektionsbedingungen. Beispiel: `<h1 class="kursiv"> … </h1><p class="kursiv"> … </p>` hier selektiert CSS mit `h1.kursiv { … }` ausschliesslich die Heading. Der Absatz bleibt unverändert, obwohl er zur gleichen Klasse gehört.
 
 <p>&nbsp;</p>
