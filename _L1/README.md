@@ -77,16 +77,13 @@ Jetzt kann CSS kommen. Drei Möglichkeiten CSS einzubinden und zu verwenden:
 Präzise, d.h. gezielt selektieren heisst:  Attribute "class" und "id" vergeben
 Ein Element kann zu zwei (drei, vier, …) Klassen gehören, jedoch nur eine ID haben.
 CSS kann so gezielt Elemente ansprechen ( *und um nichts anderes geht es hier!* )
-dabei gilt folgende CSS Syntax
+dabei gilt folgende CSS Syntax:
+#####mit:
+*  *. (Punkt)*<br>Klassen-Selektor  (<p class="testKlasse"> etc.)
 
-*  mit . (Punkt)
-..*  Klassen-Selektor  (<p class="testKlasse"> etc.)
+* *# (Hash)*<br>ID-Selektor (<p id="testID"> etc.)
 
-* mit # (Hash)
-..*  ID-Selektor (<p id="testID"> etc.)
-
-* ohne
-..*  Selektiert generische Elemente (<body>, <p>, <h1>, <span>, etc.).
+* *ohne*<br>Selektiert generische Elemente (<body>, <p>, <h1>, <span>, etc.).
 
 
 
