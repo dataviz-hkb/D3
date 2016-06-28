@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <title>Daten - 3 | CAS Dataviz, Daniel Schoeneck</title>
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="../css/defaults.css" type="text/css">
+</head>
+<body>
+    <div style="width:400px; margin:200px auto;">
+        <h1 style="text-align:center">Datenvisualisierung, simpel</h1>
+        <svg width="400" height="200" style="stroke-width: 0; background-color: white;">
+                <rect x="0" y="176" width="24" height="24" fill="#7600ff"></rect>
+                <rect x="25" y="176" width="24" height="24" fill="#6516c1"></rect>
+                <rect x="50" y="176" width="24" height="24" fill="#51119b"></rect>
+                <rect x="75" y="176" width="24" height="24" fill="#3d1869"></rect>
+                <rect x="100" y="176" width="24" height="24" fill="#7600ff"></rect>
+                <rect x="125" y="176" width="24" height="24" fill="#6516c1"></rect>
+                <rect x="150" y="176" width="24" height="24" fill="#51119b"></rect>
+                <rect x="175" y="176" width="24" height="24" fill="#3d1869"></rect>
+        </svg>
+    </div>
+
+    <script type="text/javascript">
+
+        var datensatz = [ 20.4, 124, 43.4, 122, 6, 63, 24, 220, 122, 6, 63, 24, 2, 5, 143, 24 ];
+        var svg = d3.select("svg");
+
+        svg.selectAll("rect")
+                .data(datensatz)
+        // enter() append()
+                .enter().append("rect")
+                    .attr("class", "bar")
+                    .attr("width", 24)
+                    .style("fill", "deeppink")
+                    .attr("height", function(d,i) { return d })
+                    .attr("y", function(d,i) {  return 200 - d })
+                    .attr("x", function(d,i) { return i*25 });
+
+    </script>
+</body>
+</html>

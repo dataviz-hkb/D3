@@ -1,12 +1,12 @@
-<!DOCTYPE HTML>
-<html>
-
+<!DOCTYPE html>
+<html lang="de">
 <head>
     <meta charset="utf-8">
     <title>Daten CSV/TSV - 4 | CAS Dataviz, Daniel Schoeneck</title>
     <script src="lib/d3.js" charset="utf-8"></script>
     <script src="lib/d3tip.js" charset="utf-8"></script>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
+    <link href="../css/defaults.css" rel="stylesheet">
     <style type="text/css">
         body {
             margin: 0;
@@ -40,7 +40,7 @@
 
         .d3-tip {
           line-height: 1;
-/*          font-weight: bold;*/
+          font-weight: bold;
           padding: 0.6em 0.8em;
           background: rgba(0, 0, 0, 0.8);
           color: #fff;
@@ -178,7 +178,7 @@
             // und Beschriftung der Y-Achse
             .append("text")
               .attr("transform", "rotate(-90)")
-              .attr("y", 20)
+              .attr("y", 10)
               .attr("dy", ".71em")
               .style("text-anchor", "end")
               .text("Waldranking Index Schweiz");

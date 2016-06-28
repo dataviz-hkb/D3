@@ -26,12 +26,15 @@
 
         var datensatz = [ 400, 920, 331, 600, 223, 584, 119, 438 ];
 
-        d3.select( "rect" )
-        // auch folgende Selektoren gehen:
-        //d3.select( "rect:nth-child(3)" )
-        //d3.select( "rect:last-child" )
-            .attr( "height", 126)
-            .attr( "y", 200-126);
+        d3.select("svg").selectAll( "rect" )
+            .data( datensatz )
+            .attr( "height", function(d,i){
+                return d/10 * 2;
+            })
+            .attr( "y", function(d,i){
+                return 200 - d/10 *2;
+            })
+
 
     </script>
 

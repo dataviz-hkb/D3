@@ -1,17 +1,42 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="de">
 <head>
     <meta charset="utf-8">
-    <title>Daten - 3 | CAS Dataviz, Daniel Schoeneck</title>
-    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D3 - L0.06 | CAS Dataviz, Daniel Schoeneck</title>
+    <link rel="stylesheet" href="../css/defaults.css" type="text/css">
+
+    <style>
+
+
+    </style>
+
+
+    <!-- 	<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script> -->
+	<script src="lib/d3.js" charset="utf-8"></script>
 </head>
+
 <body>
-    <div style="width:200px; margin:200px auto;">
-        <svg width="200" height="200" style="stroke-width: 0; background-color: silver;"></svg>
-    </div>
+    <h1>Daten verwenden</h1>
 
+    <script type="text/javascript">
 
-  <script></script>
+        var datenset = [ 5, 10, 15, 20, 25 ];
 
+        //SVG Element erstellen
+        d3.select("body").selectAll("p")
+                        .data(datenset)
+                        .enter()
+                        .append("p")
+                        .text(function(d) { return Math.sin(d); })
+                        .style("color", function(d) {
+                            if (Math.sin(d) < 0) {
+                                return "red";
+                            } else {
+                                return "black";
+                            }
+                        });
+
+    </script>
 </body>
 </html>

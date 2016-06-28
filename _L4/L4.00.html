@@ -14,8 +14,8 @@
     </div>
 
     <script type="text/javascript">
-        /*  Die Rezepte aus _L3 sind aus mehreren Gründen ungeeignet
-            um mit CSV Dateien umgehen zu können
+        /*  Die Rezepte aus _L3 sind zu verbessern
+            CSV Datenimport und Verwendung von SVG
             Versuch 1, Verbesserung SVG Objekt optimieren
             Erstellung der Elemente <g> und <rect> mit den Methoden data(), enter(), append()
         */
@@ -27,7 +27,7 @@
                 .data(datenset)
                 .enter().append("rect")
                 .attr("class", "bar")
-                .attr("height", function(d,i) { return +d })
+                .attr("height", function(d,i) { return d })
                 .attr("y", function(d,i) {  return 220 - d; })
                 .attr("x", function(d,i) { return i*25; })
                 .attr("width", 24)

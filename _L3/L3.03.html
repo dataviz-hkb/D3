@@ -1,28 +1,55 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="de">
 <head>
     <meta charset="utf-8">
-    <title>Daten - 3 | CAS Dataviz, Daniel Schoeneck</title>
-    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D3 - L0.07 | CAS Dataviz, Daniel Schoeneck</title>
+    <link rel="stylesheet" href="../css/defaults.css" type="text/css">
+
+    <style>
+        #datawrapper {
+            overflow: visible;
+            width:960px;
+            margin: 200px auto;
+            text-align: center;
+        }
+        .bar {
+            width: 20px;
+            height: 100px;
+            background-color: black;
+            margin-right: 2px;
+            display: inline-block;
+        }
+
+    </style>
+
+
+    <!-- 	<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script> -->
+	<script src="lib/d3.js" charset="utf-8"></script>
 </head>
+
 <body>
-    <div style="width:200px; margin:200px auto;">
-        <svg width="200" height="200" style="stroke-width: 0; background-color: silver;">
 
-            <rect x="0" y="176" width="24" height="24" fill="#7600ff"></rect>
-            <rect x="25" y="176" width="24" height="24" fill="#6516c1"></rect>
-            <rect x="50" y="176" width="24" height="24" fill="#51119b"></rect>
-            <rect x="75" y="176" width="24" height="24" fill="#3d1869"></rect>
-            <rect x="100" y="176" width="24" height="24" fill="#7600ff"></rect>
-            <rect x="125" y="176" width="24" height="24" fill="#6516c1"></rect>
-            <rect x="150" y="176" width="24" height="24" fill="#51119b"></rect>
-            <rect x="175" y="176" width="24" height="24" fill="#3d1869"></rect>
+    <div id="datawrapper" class="clearfix"><h1>Datenvisualisierung, simpel</h1></div>
 
-        </svg>
-    </div>
+    <script type="text/javascript">
 
+        var datenset = [ 1, 0.4, 124, 0, 122, 6, 63, 24, 2, 3, 24, 0.24, 1, 122, 63, 24, 5 ];
 
-  <script></script>
+        // Array umbauen, sodass das hier auch geht
+        // datenset = datenset.sort(function (a,b) {return d3.descending(a, b); });
 
+        //SVG Element erstellen
+        d3.select("#datawrapper").selectAll("div")
+                                .data(datenset)
+                                .enter()
+                                .append("div")
+                                .attr("class", "bar")
+                                .style("height", function(d) {
+                                        return Math.abs(100*(Math.sin(d) + Math.cos(d))) + "px";
+                                })
+                                .style("background-color", "deeppink");
+
+    </script>
 </body>
 </html>

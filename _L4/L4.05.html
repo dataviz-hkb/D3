@@ -1,22 +1,26 @@
-<!DOCTYPE HTML>
-<html>
-
+<!DOCTYPE html>
+<html lang="de">
 <head>
     <meta charset="utf-8">
     <title>Daten CSV/TSV - 4 | CAS Dataviz, Daniel Schoeneck</title>
     <script src="lib/d3.js" charset="utf-8"></script>
     <script src="lib/d3tip.js" charset="utf-8"></script>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
+    <link href="../css/defaults.css" rel="stylesheet">
     <style type="text/css">
         body {
             margin: 0;
             padding: 40px;
-            font: 12px/1.4 'Roboto', 'Helvetica Neue', Helvetica, sans-serif;
+            font: 14px/1.6 'Roboto', 'Helvetica Neue', Helvetica, sans-serif;
         }
 
         #datawrapper {
             width: 960px;
             margin: 0 auto;
+        }
+
+        header {
+            padding: 0 40px;
         }
 
         .bar:hover {
@@ -55,7 +59,7 @@
 
         .d3-tip {
           line-height: 1;
-/*          font-weight: bold;*/
+          font-weight: bold;
           padding: 0.6em 0.8em;
           background: rgba(0, 0, 0, 0.8);
           color: #fff;
@@ -115,20 +119,26 @@
 </head>
 
 <body>
-    <div id="datawrapper"><svg></svg></div>
+    <div id="datawrapper">
+        <header>
+            <h1>Waldranking Schweiz</h1>
+            <p>Darstellung der Waldfläche in [ha] pro Einwohner über die Kantone.</p>
+        </header>
+        <svg></svg>
+    </div>
 
     <script>
         var datensatz = [];
 
         var blende = {
-                top: 60,
+                top: 20,
                 right: 40,
                 bottom: 60,
                 left: 40
             },
 
             width = 960 - blende.left - blende.right,
-            height = 600 - blende.top - blende.bottom;
+            height = 520 - blende.top - blende.bottom;
 
         var tip = d3.tip()
             .attr('class', 'd3-tip')
@@ -204,10 +214,10 @@
             // und Beschriftung der Y-Achse
             .append("text")
               .attr("transform", "rotate(-90)")
-              .attr("y", -50)
+              .attr("y", 10)
               .attr("dy", ".71em")
               .style("text-anchor", "end")
-              .text("Waldranking");
+              .text("Waldranking Index Schweiz");
 
             svg.append("g")
               .attr("class", "x axis")

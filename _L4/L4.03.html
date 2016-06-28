@@ -13,7 +13,6 @@
         <svg width="650" height="420" style="stroke-width: 0;"></svg>
     </div>
     <script>
-
         var datensatz = [];
         var svg = d3.select("svg").append("g");
 
@@ -51,7 +50,6 @@
                     .attr("id", function(d,i) { return d.name; })
                     .text(function(d,i) { return d.name; })
                     .style({"fill" : "#fff","text-anchor": "start","font-size": "10px","font-family": "sans-serif"});
-
             });
 
     </script>
