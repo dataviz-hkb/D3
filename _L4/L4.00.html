@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <title>Daten CSV/TSV - 4 | CAS Dataviz, Daniel Schoeneck</title>
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="../css/defaults.css" type="text/css">
+</head>
+<body>
+    <div style="width:400px; margin:200px auto;">
+        <h1 style="text-align:center">Datenvisualisierung, simpel</h1>
+        <svg width="400" height="220" style="stroke-width: 0; background-color: white;">
+        </svg>
+    </div>
+
+    <script type="text/javascript">
+        /*  Die Rezepte aus _L3 sind aus mehreren Gründen ungeeignet
+            um mit CSV Dateien umgehen zu können
+            Versuch 1, Verbesserung SVG Objekt optimieren
+            Erstellung der Elemente <g> und <rect> mit den Methoden data(), enter(), append()
+        */
+        var datenset = [ 20.4, 124, 43.4, 122, 6, 63, 24, 220, 122, 6, 63, 24, 2, 5, 143, 24 ];
+        var svg = d3.select("svg")
+                    .append("g");
+
+        svg.selectAll("rect")
+                .data(datenset)
+                .enter().append("rect")
+                .attr("class", "bar")
+                .attr("height", function(d,i) { return +d })
+                .attr("y", function(d,i) {  return 220 - d; })
+                .attr("x", function(d,i) { return i*25; })
+                .attr("width", 24)
+                .style("fill", "deeppink");
+    </script>
+</body>
+</html>

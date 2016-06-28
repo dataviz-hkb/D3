@@ -1,5 +1,5 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="de">
 <head>
     <meta charset="utf-8">
     <title>Daten CSV/TSV - 4 | CAS Dataviz, Daniel Schoeneck</title>
@@ -14,7 +14,7 @@
 
     <script>
         var datensatz = [];
-        var svg = d3.select("svg");
+        var svg = d3.select("svg").append("g");
 
         d3.csv("data/datensatz.csv", function(error, data) {
 

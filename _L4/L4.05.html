@@ -1,75 +1,247 @@
 <!DOCTYPE HTML>
 <html>
+
 <head>
     <meta charset="utf-8">
     <title>Daten CSV/TSV - 4 | CAS Dataviz, Daniel Schoeneck</title>
-    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="lib/d3.js" charset="utf-8"></script>
+    <script src="lib/d3tip.js" charset="utf-8"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
     <style type="text/css">
-        .barText {
-
-
+        body {
+            margin: 0;
+            padding: 40px;
+            font: 12px/1.4 'Roboto', 'Helvetica Neue', Helvetica, sans-serif;
         }
 
+        #datawrapper {
+            width: 960px;
+            margin: 0 auto;
+        }
+
+        .bar:hover {
+            fill: #1c21ac;
+        }
+
+        .axis {
+            font-size: 12px;
+        }
+
+        .axis path,
+        .axis line {
+            fill: none;
+            stroke: #000;
+            shape-rendering: crispEdges;
+        }
+
+        .x.axis path {
+            display: none;
+        }
+
+
+        line.grid-line {
+            opacity:0.3;
+            stroke-dasharray: 3, 3;
+        }
+
+
+        .y.axis .tick:first-child line.grid-line {
+            opacity: 1;
+            stroke-dasharray: 0, 0;
+        }
+
+
+
+
+        .d3-tip {
+          line-height: 1;
+/*          font-weight: bold;*/
+          padding: 0.6em 0.8em;
+          background: rgba(0, 0, 0, 0.8);
+          color: #fff;
+          border-radius: 2px;
+          pointer-events: none;
+        }
+
+        /* Creates a small triangle extender for the tooltip */
+        .d3-tip:after {
+          box-sizing: border-box;
+          display: inline;
+          font-size: 10px;
+          width: 100%;
+          line-height: 1;
+          color: rgba(0, 0, 0, 0.8);
+          position: absolute;
+          pointer-events: none;
+        }
+
+        /* Northward tooltips */
+        .d3-tip.n:after {
+          content: "\25BC";
+          margin: -1px 0 0 0;
+          top: 100%;
+          left: 0;
+          text-align: center;
+        }
+
+        /* Eastward tooltips */
+        .d3-tip.e:after {
+          content: "\25C0";
+          margin: -4px 0 0 0;
+          top: 50%;
+          left: -8px;
+        }
+
+        /* Southward tooltips */
+        .d3-tip.s:after {
+          content: "\25B2";
+          margin: 0 0 1px 0;
+          top: -8px;
+          left: 0;
+          text-align: center;
+        }
+
+        /* Westward tooltips */
+        .d3-tip.w:after {
+          content: "\25B6";
+          margin: -4px 0 0 -1px;
+          top: 50%;
+          left: 100%;
+        }
+
+
     </style>
+
 </head>
+
 <body>
-
-
-    <div style="width:650px; margin:200px auto;padding:40px">
-        <svg width="650" height="420" style="stroke-width: 0;"></svg>
-    </div>
-
+    <div id="datawrapper"><svg></svg></div>
 
     <script>
-
         var datensatz = [];
 
-        d3.csv("data/datensatz.csv", function(error, rows) {
+        var blende = {
+                top: 60,
+                right: 40,
+                bottom: 60,
+                left: 40
+            },
 
-                rows.forEach(function(d) {
+            width = 960 - blende.left - blende.right,
+            height = 600 - blende.top - blende.bottom;
 
-                    datensatz.push({
+        var tip = d3.tip()
+            .attr('class', 'd3-tip')
+            .direction("n")
+            .offset([-12 , 0])
+            .html(function(d) {
+            return "<span>" + d.name + " :   </span> <span style='color:white'>" + d.value + "</span>";
+        });
+
+
+
+
+
+
+        // SVG Objekt
+        var svg = d3.select("svg")
+            .attr("width", width + blende.left + blende.right)
+            .attr("height", height + blende.top + blende.bottom)
+            .append("g")
+            //.attr("transform", "translate(50,40)")
+            .attr("transform", "translate(" + blende.left + "," + blende.top + ")");
+
+        svg.call(tip);
+
+        var y = d3.scale.linear().range([height, 0]);
+        var x = d3.scale.ordinal().rangeRoundBands([0, width], .05);
+
+        var yAxis = d3.svg.axis()
+            .scale(y)
+            .orient("left")
+            .ticks(10);
+
+        var yAxis2 = d3.svg.axis()
+            .scale(y)
+            .orient("right")
+            .ticks(10);
+
+        var xAxis = d3.svg.axis()
+            .scale(x)
+            .orient("bottom");
+
+
+        d3.csv("data/datensatz.csv", function (data) {
+
+            data.forEach(function (d) {
+                datensatz.push({
                         name: d.ID,
-                        value: +d.Rate
+                        value: parseInt(+d.Rate+1)
                     })
-
-                });
-
-                //datensatz = datensatz.sort(function (a,b) {return d3.descending(a.name, b.name); });
-
-                datensatz.forEach(function(d,i){
-                    d3.select("svg").append("rect");
-                    d3.selectAll( "rect" )
-                        .data(datensatz)
-                        .attr("height", function(d) {
-                            return parseInt(d.value);
-                        })
-
-                        .attr( "y", function(d,i){
-                            return 420 - parseInt(d.value);
-                        })
-
-                        .attr( "x", function(d,i){
-                            return i * 25;
-                        })
-                        .attr( "width", 24)
-                        .attr("fill", function(d, i) {
-                            var rgbColor = "rgb(" + Math.round(d.value/410*118) + ", 0, "  + Math.round(d.value/410*255) + ")";
-                            return rgbColor;
-                        })
-
-                        .attr("class", "bar");
-
-                    d3.select("svg").append("text")
-                        .text(d.name)
-                        .attr({"x": i*25+5, "y": 420-5})
-                        .style({"fill" : "#fff","text-anchor": "start","font-size": "10px","font-family": "monospace"})
-                        .attr("class", "barText");
-
-                });
             });
 
-    </script>
+            //datensatz.sort(function (a,b) {return d3.descending(a.value, b.value); });
+            datensatz.sort(function (a,b) {return d3.ascending(a.value, b.value); });
 
+
+            maxData = d3.max(datensatz, function(d) { return d.value; });
+            y.domain([0, maxData]);
+            x.domain(datensatz.map(function(d) { return d.name; }));
+
+
+
+            // Y-Achse
+            svg.append("g")
+              .attr("class", "axis")
+              .attr("transform", "translate(" + (width) + ",0)")
+              .call(yAxis2)
+
+            // Y-Achse
+            svg.append("g")
+              .attr("class", "y axis")
+              .call(yAxis)
+
+            // und Beschriftung der Y-Achse
+            .append("text")
+              .attr("transform", "rotate(-90)")
+              .attr("y", -50)
+              .attr("dy", ".71em")
+              .style("text-anchor", "end")
+              .text("Waldranking");
+
+            svg.append("g")
+              .attr("class", "x axis")
+              .attr("transform", "translate(0," + height + ")")
+              .call(xAxis);
+
+
+            svg.selectAll("g.y.axis g.tick")
+            .append("line")
+                .classed("grid-line", true)
+                .attr("x1", 0)
+                .attr("y1", 0)
+                .attr("x2", width)
+                .attr("y2", 0);
+
+            svg.selectAll(".bar")
+                .data(datensatz)
+                .enter().append("rect")
+                .attr("class", "bar")
+                .attr("height", function(d) { return height - y(d.value); })
+                .attr("y", function(d) {  return y(d.value); })
+                .attr("x", function(d) { return x(d.name); })
+                .attr("width", x.rangeBand())
+
+                .attr("fill", function (d, i) {
+                    var rgbColor = "rgb(" + Math.round(d.value / maxData * 118) + ", 0, " + Math.round(d.value / maxData * 255) + ")";
+                    return rgbColor;
+                })
+                .on('mouseover', tip.show)
+                .on('mouseout', tip.hide)
+
+
+        });
+    </script>
 </body>
+
 </html>
