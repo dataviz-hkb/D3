@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<title>Variante B1, D3 Visualisierung | Erwerb des Schweizer Bürgerrechts vs. Gesamtbevölkerung</title>
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700' rel='stylesheet' type='text/css'>
+    <link href='css/reset.css' rel='stylesheet' type='text/css'>
+    <link href='lib/font-awesome-4.4.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
+
+
+</head>
+<style>
+
+	body{font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:11px;}
+
+	#wrapper {
+		margin:0 auto;
+	}
+
+	button:focus, input:focus {outline:0;}
+
+
+	input[type='range'] {
+		-webkit-appearance: none !important;
+		-webkit-border-radius: 5px;
+		/*-webkit-box-shadow: inset 0 0 5px #333;*/
+		background-color: rgba(205, 205, 205, 1);
+		height: 10px;
+		width: 230px;
+		margin: 20px 0;
+		/*position: relative;
+		 left: 10%;*/
+
+	}
+
+	input[type='range']::-webkit-slider-thumb {
+		-webkit-appearance: none !important;
+		-webkit-border-radius: 15px;
+		background-color: black;
+		background-image: -webkit-gradient(linear, left top, left bottom, from(#bbb), to(#888));
+		border: 0;
+		height: 25px;
+		width: 25px;
+	}
+
+
+	.axis path, .axis line {
+		fill: none;
+		stroke: #b6b6b6;
+		shape-rendering: crispEdges;
+	}
+
+
+	.dot:hover {
+		stroke-width: 2;
+	}
+
+	#range {
+		padding: 0 20px;
+		font-size: 15px;
+		font-weight: 700;
+	}
+
+
+	div.tooltip {
+		position: absolute;
+		text-align: left;
+		font: 14px sans-serif;
+		color: white;
+		background: rgba(0, 0, 0, 0.6);
+		border: 0px;
+		border-radius: 2px;
+		pointer-events: none;
+		padding: 4px 10px;
+
+	}
+
+	.chart {
+		width: 100%;
+		min-height: 600px;
+	}
+
+
+	button#play {
+		text-transform: uppercase;
+		background: rgba(255, 255, 255, 1);
+		border: 1px solid #b6b6b6;
+		height: 42px;
+		width: 42px;
+		color: white;
+		font-size:2em;
+		-webkit-appearance: none !important;
+		-webkit-border-radius: 21px;
+
+	}
+
+	.fa {
+		color: #222;
+	}
+
+	.fa-play {
+		padding-left: 4px;
+	}
+
+	.controls {
+		margin: 0 30px;
+	}
+
+	.label {font-size: 12px;}
+	.mono {/* font-family: 'Ubuntu Mono';*/ font-size: 11px;}
+
+
+	#districtinfo {
+		position: absolute;
+	}
+
+	li {display: inline-block; margin-right: 30px;}
+
+</style>
+<body>
+	<div id="wrapper">
+		<div style="margin:20px">
+
+	<h1>Eingebürgerungen vs. Ausländische Wohnbevölkerung (prozentual), 2000-2013</h1>
+	<p>Relative Skalierung Kreisgrösse nach Bevölkerungsgrösse Kanton (Stand 2013)<br>Quelldaten, processed <a href="data/naturalizations-ch-percentage.csv">(.csv)</a> | Quelldaten, merged <a href="data/je-d-01.02.01.02.05.ods">(.ods)</a> | Quelldaten , OGD Portal: Struktur der ständigen Wohnbevölkerung nach Kantonen <a href="http://www.bfs.admin.ch/xmlns/opendata/je-d-01.02.01.02.05.ods">(.ods)</a> | Quelldaten , OGD Portal: Erwerb des Schweizer Bürgerrechts, nach Kantonen <a href="http://www.bfs.admin.ch/xmlns/opendata/je-d-01.03.03.01.05.ods">(.ods)</a></p>
+
+
+</div>
+		<div id="chart"></div>
+		<div class="controls">
+			<input id="slider" type="range" min="2000" max="2013" value="2000" step="1" />
+			<span id="range">2000</span><span id="playcontrols"><button name="play" id="play"><i class="fa fa-play"></i></button></span>
+		</div>
+	</div>
+
+	<script src="lib/d3.min.js"></script>
+	<script src="lib/html5slider.js"></script>
+	<script src="lib/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript">
+
+	$(document).ready(function()	{
+
+		var margin = {
+			top : 20,
+			right : 20,
+			bottom : 30,
+			left : 40
+		}, width = 900, height = 600 - margin.top - margin.bottom;
+
+		var x = d3.scale.linear().range([0, width]);
+		var y = d3.scale.linear().range([height, 0]);
+
+		var div = d3.select("body")
+			.append("div")
+			.attr("id", "districtinfo")
+			.style("opacity", 0);
+
+		var color = d3.scale.category10();
+		//var color = d3.scale.ordinal().domain([1, 2, 3]).range(["rgb(53,135,212)", "rgb(77, 175, 74)", "rgb(228, 26, 28)"]);
+
+		var xAxis = d3.svg.axis().scale(x).orient("bottom");
+		var yAxis = d3.svg.axis().scale(y).orient("left");
+
+		var svg = d3.select("#chart")
+			.append("svg")
+			.attr("class", "chart")
+			.attr("viewBox", "0 0 900 600")
+			.attr("width", width + margin.left + margin.right)
+			.attr("height", height + margin.top + margin.bottom)
+			.append("g")
+			.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+		d3.csv("data/naturalizations-ch-percentage.csv", function(error, data) {
+
+			x.domain([0, 50]).nice();
+			y.domain([0, 8]).nice();
+
+			//x axis labels
+			svg.append("g")
+				.attr("class", "x axis")
+				.attr("transform", "translate(0," + height + ")")
+				.call(xAxis)
+				.append("text")
+				.attr("class", "label")
+				.attr("x", width)
+				.attr("y", -6)
+				.style("text-anchor", "end")
+				.text("Ausländeranteil (in % der Gesamtbevölkerung)");
+
+			//y axis labels
+			svg.append("g")
+				.attr("class", "y axis")
+				.call(yAxis)
+				.append("text")
+				.attr("class", "label")
+				.attr("transform", "rotate(-90)")
+				.attr("y", 6)
+				.attr("dy", ".71em")
+				.style("text-anchor", "end")
+				.text("Einbürgerungen (in % der ausländischen Wohnbevölkerung)")
+
+
+			svg.append("svg:line")
+                .attr("x1", 0)
+                .attr("x2", width)
+                .attr("y1", y(2.3527470484))
+                .attr("y2", y(2.3527470484))
+                .style("stroke", "rgba(153, 153, 153, 0.1)")
+                .style("stroke-dasharray", "5, 5")
+                .style("stroke-width", 5);
+
+             svg.append("svg:text")
+				.attr("x", "680px")
+				.attr("y", "405px")
+                .style("fill", "rgba(153, 153, 153, 0.5)")
+				.style("font-size", "11px")
+				.text("Durchschnitt Einbürgerungen CH (2013–2003)");
+
+
+			svg.append("svg:text")
+				.attr("x", "633px")
+				.attr("y", "200px")
+				.attr("id", "biglabel")
+                .style("fill", "rgba(153, 153, 153, 0.1)")
+				.style("font-size", "120px")
+				.style("font-weight", "700")
+				.text($("#slider").val());
+
+
+
+			//legend y position
+			var LYP = 130,
+				LXP = -220;
+
+			svg.append("text").attr("class", "label").attr("x", LXP - 5).attr("y", LYP).text("Region").style("font-weight", "bold");
+
+			//color legend
+			svg.append("circle").attr("cx", LXP).attr("cy", LYP + 25).attr("r", 12).style("fill", "rgba(53, 135, 212, 0.6)").attr("stroke", "rgba(53, 135, 212, 1)");
+			svg.append("text").attr("class", "label").attr("x", LXP + 25).attr("y", LYP + 30).style("text-anchor", "start").text(function(d) {
+				return "Genferseeregion";
+			});
+			svg.append("circle").attr("cx", LXP).attr("cy", LYP + 55).attr("r", 12).style("fill", "rgba(77, 175, 74, 0.6)").attr("stroke", "rgba(77, 175, 74, 1)");
+			svg.append("text").attr("class", "label").attr("x", LXP + 25).attr("y", LYP + 60).style("text-anchor", "start").text(function(d) {
+				return "Espace Mittelland";
+			});
+			svg.append("circle").attr("cx", LXP).attr("cy", LYP + 85).attr("r", 12).style("fill", "rgba(228, 26, 28, 0.6)").attr("stroke", "rgba(228, 26, 28, 1)");
+			svg.append("text").attr("class", "label").attr("x", LXP + 25).attr("y", LYP + 90).style("text-anchor", "start").text(function(d) {
+				return "Nordwestschweiz";
+			});
+			svg.append("circle").attr("cx", LXP).attr("cy", LYP + 115).attr("r", 12).style("fill", "rgba(255, 126, 0, 0.6)").attr("stroke", "rgba(255, 126, 0, 1)");
+			svg.append("text").attr("class", "label").attr("x", LXP + 25).attr("y", LYP + 120).style("text-anchor", "start").text(function(d) {
+				return "Zürich";
+			});
+			svg.append("circle").attr("cx", LXP).attr("cy", LYP + 145).attr("r", 12).style("fill", "rgba(255, 242, 0, 0.6)").attr("stroke", "rgba(255, 242, 0, 1)");
+			svg.append("text").attr("class", "label").attr("x", LXP + 25).attr("y", LYP + 150).style("text-anchor", "start").text(function(d) {
+				return "Ostschweiz";
+			});
+			svg.append("circle").attr("cx", LXP).attr("cy", LYP + 175).attr("r", 12).style("fill", "rgba(208, 226, 48, 0.6)").attr("stroke", "rgba(208, 226, 48, 1)");
+			svg.append("text").attr("class", "label").attr("x", LXP + 25).attr("y", LYP + 180).style("text-anchor", "start").text(function(d) {
+				return "Zentralschweiz";
+			});
+			svg.append("circle").attr("cx", LXP).attr("cy", LYP + 205).attr("r", 12).style("fill", "rgba(24, 46, 48, 0.6)").attr("stroke", "rgba(24, 46, 48, 1)");
+			svg.append("text").attr("class", "label").attr("x", LXP + 25).attr("y", LYP + 210).style("text-anchor", "start").text(function(d) {
+				return "Tessin";
+			});
+
+
+			svg.append("text").attr("class", "label").attr("x", LXP - 5).attr("y", LYP + 280).text("Bevölkerungsgrösse").style("font-weight", "bold");
+
+			//size legend
+			svg.append("circle").attr("cx", LXP).attr("cy", LYP + 30 + 300).attr("r", 35).style("fill", "rgba(0, 0, 0, 0.2)").attr("stroke", "#000");
+			svg.append("text").attr("class", "label mono").attr("x", LXP + 40).attr("y", LYP + 330).style("text-anchor", "start").text("1 Mio+");
+			svg.append("circle").attr("cx", LXP).attr("cy", LYP + 60 + 300).attr("r", 20).style("fill", "rgba(0, 0, 0, 0.2)").attr("stroke", "#000");
+			svg.append("text").attr("class", "label mono").attr("x", LXP + 40).attr("y", LYP + 360).style("text-anchor", "start").text("500'000+");
+			svg.append("circle").attr("cx", LXP).attr("cy", LYP + 80 + 300).attr("r", 9).style("fill", "rgba(0, 0, 0, 0.2)").attr("stroke", "#000");
+			svg.append("text").attr("class", "label mono").attr("x", LXP + 40).attr("y", LYP + 380).style("text-anchor", "start").text("200'000+");
+			svg.append("circle").attr("cx", LXP).attr("cy", LYP + 90 + 300).attr("r", 4).style("fill", "rgba(0, 0, 0, 0.2)").attr("stroke", "#000");
+			svg.append("text").attr("class", "label mono").attr("x", LXP + 40).attr("y", LYP + 395).style("text-anchor", "start").text("50'000+");
+
+
+
+			//circles
+			svg.selectAll(".dot")
+				.data(data.sort(
+					function(a, b) {
+						return b.Total2013 - a.Total2013;
+					}))
+				.enter()
+				.append("circle")
+				.attr("class", "dot")
+				.attr("r",
+					function(d) {
+						//return (4 + (d.Total2013 * .0006));
+						return (2 + d.Total2013 * .000033);
+					})
+				.attr("cx",
+					function(d) {
+						return x(d.Foreign_percentage_2000);
+					})
+				.attr("cy",
+					function(d) {
+						return y(d.Naturalizations_percentage_2000);
+					})
+				.style("fill",
+					function(d) {
+						if (d.type == 7) {
+							return "rgba(24, 46, 48, 0.6)";
+						} else if (d.type == 6) {
+							return "rgba(208, 226, 48, 0.6)";
+						} else if (d.type == 5) {
+							return "rgba(255, 242, 0, 0.6)";
+						} else if (d.type == 4) {
+							return "rgba(255, 126, 0, 0.6)";
+						} else if (d.type == 3) {
+							return "rgba(228, 26, 28, 0.6)";
+						} else if (d.type == 2) {
+							return "rgba(77, 175, 74, 0.6)";
+						} else {
+							return "rgba(53, 135, 212, 0.6)";
+						}
+					})
+				.style("stroke",
+					function(d) {
+						if (d.type == 7) {
+							return "rgba(24, 46, 48, 1)";
+						} else if (d.type == 6) {
+							return "rgba(208, 226, 48, 1)";
+						} else if (d.type == 5) {
+							return "rgba(255, 242, 0, 1)";
+						} else if (d.type == 4) {
+							return "rgba(255, 126, 0, 1)";
+						} else if (d.type == 3) {
+							return "rgba(228, 26, 28, 1)";
+						} else if (d.type == 2) {
+							return "rgba(77, 175, 74, 1)";
+						} else {
+							return "rgba(53, 135, 212, 1)";
+						}
+					})
+
+
+			    .on("mouseover", function(d, i) {
+			      d3.select('.tooltip')
+			      tooltip.transition()
+			        .duration(200)
+			        .style("opacity", .9);
+			      tooltip.html(d.Kanton)
+			        .style("left", (d3.event.pageX + 10) + "px")
+			        .style("top", (d3.event.pageY - 20) + "px");
+			    })
+
+			    .on("mouseout", function(d, i) {
+			      tooltip.transition()
+			        .duration(500)
+			        .style("opacity", 0);
+			    });
+
+
+
+
+			var tooltip = d3.select('body').append('div').attr('class', 'tooltip').style("opacity", 0);
+
+
+
+			var running = false;
+			var timer;
+
+			$("button").on("click", function() {
+
+				var duration = 2300,
+					maxstep = 2013,
+					minstep = 2000;
+
+				if (running == true) {
+
+					$("button").html("<i class='fa fa-play'></i>");
+					running = false;
+					clearInterval(timer);
+
+				}
+				/*
+	else if (running == true && $("#slider").val() == maxstep) {
+					 running = true;
+					 $("button").html("Play1");
+
+
+				}
+	*/
+				else if (running == false) {
+
+					$("button").html("<i class='fa fa-pause'></i>");
+
+					sliderValue = $("#slider").val();
+
+					/*timer = setInterval( function(){
+							if (sliderValue < maxstep){
+								sliderValue++;
+								$("#slider").val(sliderValue);
+								$('#range').html(sliderValue);
+							}
+							$("#slider").val(sliderValue);
+							update();
+
+					}, duration);*/
+
+
+					timer = setInterval( function(){
+								sliderValue++;
+								if(sliderValue > 2013) {
+										sliderValue = 2000;
+								    }
+								$("#slider").val(sliderValue);
+								$("#range").html(sliderValue);
+								$("#biglabel").html(sliderValue);
+							update();
+
+					}, duration);
+
+					running = true;
+
+				}
+
+			});
+
+
+
+
+			$("#slider").on("change", function(){
+				update();
+				$("#range").html($("#slider").val());
+				$("#biglabel").html($("#slider").val());
+
+				clearInterval(timer);
+				$("button").html("<i class='fa fa-play'></i>");
+			});
+
+			update = function() {
+				d3.selectAll(".dot")
+					.transition()
+					.duration(500)
+
+
+					.attr("cx", function(d) {
+
+						switch ($("#slider").val()) {
+							case "2000":
+								return x(d.Foreign_percentage_2000);
+								break;
+							case "2001":
+								return x(d.Foreign_percentage_2001);
+								break;
+							case "2002":
+								return x(d.Foreign_percentage_2002);
+								break;
+							case "2003":
+								return x(d.Foreign_percentage_2003);
+								break;
+							case "2004":
+								return x(d.Foreign_percentage_2004);
+								break;
+							case "2005":
+								return x(d.Foreign_percentage_2005);
+								break;
+							case "2006":
+								return x(d.Foreign_percentage_2006);
+								break;
+							case "2007":
+								return x(d.Foreign_percentage_2007);
+								break;
+							case "2008":
+								return x(d.Foreign_percentage_2008);
+								break;
+							case "2009":
+								return x(d.Foreign_percentage_2009);
+								break;
+							case "2010":
+								return x(d.Foreign_percentage_2010);
+								break;
+							case "2011":
+								return x(d.Foreign_percentage_2011);
+								break;
+							case "2012":
+								return x(d.Foreign_percentage_2012);
+								break;
+							case "2013":
+								return x(d.Foreign_percentage_2013);
+								break;
+						}
+					})
+
+					.attr("cy", function(d) {
+						switch ($("#slider").val()) {
+							case "2000":
+								return y(d.Naturalizations_percentage_2000);
+								break;
+							case "2001":
+								return y(d.Naturalizations_percentage_2001);
+								break;
+							case "2002":
+								return y(d.Naturalizations_percentage_2002);
+								break;
+							case "2003":
+								return y(d.Naturalizations_percentage_2003);
+								break;
+							case "2004":
+								return y(d.Naturalizations_percentage_2004);
+								break;
+							case "2005":
+								return y(d.Naturalizations_percentage_2005);
+								break;
+							case "2006":
+								return y(d.Naturalizations_percentage_2006);
+								break;
+							case "2007":
+								return y(d.Naturalizations_percentage_2007);
+								break;
+							case "2008":
+								return y(d.Naturalizations_percentage_2008);
+								break;
+							case "2009":
+								return y(d.Naturalizations_percentage_2009);
+								break;
+							case "2010":
+								return y(d.Naturalizations_percentage_2010);
+								break;
+							case "2011":
+								return y(d.Naturalizations_percentage_2011);
+								break;
+							case "2012":
+								return y(d.Naturalizations_percentage_2012);
+								break;
+							case "2013":
+								return y(d.Naturalizations_percentage_2013);
+								break;
+						}
+					});
+			};
+
+
+	});
+
+});
+
+
+
+	</script>
+</body>
+</html>

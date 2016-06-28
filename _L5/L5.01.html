@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>D3 | L4 Quantitative Scales</title>
+<!--    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>-->
+    <script src="lib/d3.js" charset="utf-8"></script>
+
+    <style type="text/css">
+        body {
+            margin:0;
+            padding:0;
+        }
+        #linear {
+            width:900px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        .cell {
+            width: 60px;
+            height: 60px;
+            margin: 5px;
+            text-align: center;
+            padding: 10px;
+            line-height: 60px;
+            font-size: 140%;
+            font-family: monospace;
+            position: relative;
+            display: inline-block;
+
+        }
+
+        .cell:after {
+            content:"|";
+            position: absolute;
+            top:-40px;
+            left:35px;
+            font-weight: lighter;
+        }
+    </style>
+</head>
+
+<body>
+
+<div id="linear"><hr></div>
+
+
+<script type="text/javascript">
+    var max = 11, data = [];
+    for (var i = 1; i < max; ++i) data.push(i);
+
+    var linear = d3.scale.linear()
+    // default .domain([0, 1])
+    // default .range([0, 1]);
+    // 1 <= a*n + b <= 40 | n{1,10} a= 4.333 b= -3.333
+    .domain([0, 10])
+    .range([0, 10]);
+
+
+    d3.select("#linear").selectAll("div.cell")
+        .data(data)
+        .enter()
+        .append("div")
+        .classed("cell", true)
+        .text(function (d) {
+            return d3.round(linear(d), 2);
+        });
+
+
+</script>
+
+</body>
+
+</html>

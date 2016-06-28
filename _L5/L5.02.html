@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>D3 | L4 Ordinal Scales</title>
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    	<script src="lib/d3.js" charset="utf-8"></script>
+
+    <style type="text/css">
+        body {
+            margin:0;
+            padding:0;
+        }
+
+       #datawrapper {
+            width: 960px;
+            margin: 200px auto;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div id="datawrapper"></div>
+
+	<script type="text/javascript">
+		var width = 960,
+			height = 320;
+
+		var svg = d3.select("#datawrapper").append("svg").attr("width", width).attr("height", height);
+
+
+
+		var data = d3.range(20);
+
+
+
+
+		var x = d3.scale.ordinal()
+            .domain(data)
+            .rangeRoundBands([0, width]);
+
+
+
+
+
+		// var fillcolors = d3.scale.category20();
+		// var fillcolors = d3.scale.category20b();
+		var fillcolors = d3.scale.category20c();
+
+
+		svg.selectAll("rect")
+			.data(data)
+			.enter().append("rect")
+                     .style("fill", fillcolors)
+                     .attr("x", function(d) { return x(d) })
+                     .attr("y", 0)
+                     .attr("width", x.rangeBand())
+                     .attr("height", 320);
+
+
+	</script>
+
+</body>
+</html>

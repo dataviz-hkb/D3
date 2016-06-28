@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Basic Bar Chart</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
+
+    <style type="text/css">
+        body{
+            margin:0;
+            padding:40px;
+            font-family: 'Roboto', 'Helvetica Neue', Helvetica, sans-serif;
+            background: rgb(0, 0, 0);
+        }
+
+        .canton {
+          fill: #5d4e24;
+        }
+
+        .canton-boundary {
+          fill: none;
+          stroke: rgb(128, 124, 38);
+          stroke-linejoin: round;
+        }
+
+        text {
+          font-size: 10px;
+          text-anchor: middle;
+            fill:rgba(255, 216, 0, 0.72);
+        }
+
+    </style>
+</head>
+
+<body>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+
+
+<!-- Erweiterung topojson (https://github.com/mbostock/topojson) -->
+<script src="http://d3js.org/topojson.v1.min.js"></script>
+<script>
+
+    var width = 960,
+        height = 600;
+
+    //var projection = d3.geo.conicEqualArea()
+    //var projection = d3.geo.mercator()
+    var projection = d3.geo.albers()
+        .rotate([0, 0])
+        .center([8.3, 46.8])
+        .scale(16000)
+        .translate([width / 2, height / 2])
+        .precision(.1);
+
+    var path = d3.geo.path()
+        .projection(projection);
+
+    var svg = d3.select("body").append("svg")
+        .attr("width", width)
+        .attr("height", height);
+
+    d3.json("data/ch-swiss.json", function(error, swiss) {
+      if (error) throw error;
+
+        var cantons = topojson.feature(swiss, swiss.objects.cantons);
+
+        // Landesgrenzen (Kantone)
+        svg.append("path")
+          .datum(cantons)
+          .attr("class", "canton")
+          .attr("d", path);
+
+        // Kantonsgrenzen
+        svg.append("path")
+          .datum(topojson.mesh(swiss, swiss.objects.cantons, function(a, b) { return a !== b; }))
+          .attr("class", "canton-boundary")
+          .attr("d", path);
+
+        // Beschriftung
+        svg.selectAll("text")
+          .data(cantons.features)
+        .enter().append("text")
+          .attr("transform", function(d) { return "translate(" + path.centroid(d) + ")"; })
+          .attr("dy", ".35em")
+          .text(function(d) { return d.properties.name; });
+    });
+
+</script>
+</body>
+</html>
