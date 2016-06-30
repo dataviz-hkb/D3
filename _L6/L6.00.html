@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>D3 | L5 Karten</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
+
+    <style type="text/css">
+        body{
+            margin:0;
+            padding:40px;
+            font-family: 'Roboto', 'Helvetica Neue', Helvetica, sans-serif;
+        }
+
+        .chart rect {
+          fill: deeppink;
+        }
+
+        .chart text {
+          fill: black;
+          font: 10px sans-serif;
+          text-anchor: start;
+        }
+
+        #datawrapper {
+            width: 960px;
+            margin: 0 auto;
+        }
+        .country {
+  fill: #222;
+}
+
+.country {
+  fill: black;
+  stroke: white;
+  stroke-width: 1;
+}
+
+.municipality-boundaries {
+  fill: none;
+  stroke: black;
+  stroke-width: .3;
+}
+
+
+.canton-boundaries {
+  fill: none;
+  stroke: #fff;
+  stroke-width: .3;
+}
+
+    </style>
+</head>
+
+<body>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://d3js.org/topojson.v1.min.js"></script>
+<script>
+
+var width = 960,
+    height = 500;
+
+var path = d3.geo.path()
+  .projection(null);
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+d3.json("data/ch2.json", function(error, bs) {
+  svg.append("path")
+    .datum(topojson.feature(bs, bs.objects.municipalities))
+    .attr("class", "country")
+    .attr("d", path);
+
+  svg.append("path")
+    .datum(topojson.mesh(bs, bs.objects.municipalities, function(a, b) { return a !== b; }))
+    .attr("class", "municipality-boundaries")
+    .attr("d", path);
+
+});
+
+</script>
+</body>
+</html>
