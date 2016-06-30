@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html class="no-js" lang="de">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Datenvisualisierung mit D3</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 20px;
+            font: 16px/1.6 'Roboto', 'Helvetica Neue', Helvetica, sans-serif;
+            font-weight: 500;
+        }
+
+        #wrapper {
+            width: 1260px;
+            margin: 0 auto;
+        }
+
+        header, footer {
+            padding: 0 74px;
+        }
+
+        footer p {
+            font-size: 13px;
+            font-weight: 400;
+        }
+
+        header h1 {
+            margin-bottom:0;
+            font-weight: 300;
+        }
+        header p {
+            margin-top:00;
+        }
+
+        a, a:visited {
+            color:rgb(34, 34, 34);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        .bar:hover {
+            fill: #1c21ac;
+        }
+
+        .axis {
+            font-size: 13px;
+            font-weight: 400;
+        }
+
+
+        .axis path,
+        .axis line {
+            fill: none;
+            stroke: #000;
+            shape-rendering: crispEdges;
+        }
+
+        .x.axis path {
+            display: none;
+        }
+
+        line.grid-line {
+            opacity: 0.4;
+            stroke-dasharray: 3, 3;
+                        stroke: #fff;
+
+        }
+
+        .y.axis .tick:first-child line.grid-line {
+            opacity: 1;
+            stroke-dasharray: 0, 0;
+        }
+
+        .y .label, .y.axis {
+            font: 16px/1.6 'Roboto', 'Helvetica Neue', Helvetica, sans-serif;
+            font-weight: 500;
+        }
+
+        .d3-tip {
+            line-height: 1;
+            font-weight: bold;
+            padding: 0.6em 0.8em;
+            background: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            border-radius: 2px;
+            pointer-events: none;
+        }
+        /* Creates a small triangle extender for the tooltip */
+
+        .d3-tip:after {
+            box-sizing: border-box;
+            display: inline;
+            font-size: 10px;
+            width: 100%;
+            line-height: 1;
+            color: rgba(0, 0, 0, 0.8);
+            position: absolute;
+            pointer-events: none;
+        }
+        /* Northward tooltips */
+
+        .d3-tip.n:after {
+            content: "\25BC";
+            margin: -1px 0 0 0;
+            top: 100%;
+            left: 0;
+            text-align: center;
+        }
+        /* Eastward tooltips */
+
+        .d3-tip.e:after {
+            content: "\25C0";
+            margin: -4px 0 0 0;
+            top: 50%;
+            left: -8px;
+        }
+        /* Southward tooltips */
+
+        .d3-tip.s:after {
+            content: "\25B2";
+            margin: 0 0 1px 0;
+            top: -8px;
+            left: 0;
+            text-align: center;
+        }
+        /* Westward tooltips */
+
+        .d3-tip.w:after {
+            content: "\25B6";
+            margin: -4px 0 0 -1px;
+            top: 50%;
+            left: 100%;
+        }
+
+        .Liberal { fill: #004eff; }
+        .CVP { fill: #ff6a1b; }
+        .SP { fill: #c90000; }
+        .Bauern { fill: #00ce28; }
+        .Mitte { fill: #ebff00; }
+        .Progressive { fill: #a7ff00; }
+        .Links { fill: rgb(255, 0, 0); }
+        .Rechts { fill: #011950; }
+        .Rest { fill: #004672; }
+
+    </style>
+
+
+    <script src="js/lib/modernizr-2.8.3.min.js"></script>
+</head>
+
+<body>
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script>window.d3 || document.write('<script src="js/lib/d3.min.js"><\/script>')</script>
+    <script src="js/lib/d3tip.js" charset="utf-8"></script>
+    <div id="wrapper">
+            <header>
+                <h1>Parteienstärke Nationalratswahlen 1919–2015</h1>
+                <p>Wähleranteile der wichtigsten Parteien aus den Ergebnissen der Nationalratswahlen, Parteistärken in %</p>
+            </header>
+            <div id="datawrapper"></div>
+            <footer>
+                <p>Quelle(n): BFS – Statistik der Wahlen und Abstimmungen: <a href="http://www.bfs.admin.ch/bfs/portal/de/index/themen/17/02/blank/key/national_rat/parteienstaerke.Document.21769.xls" target="_blank">Nationalratswahlen: Stärke der Parteien (je-d-17.02.02.03.01)</a></p>
+            </footer>
+    </div>
+
+    <script>
+
+
+        var margin = {
+                top: 20
+                , right: 160
+                , bottom: 30
+                , left: 60
+            }
+            , width = 1260 - margin.left - margin.right
+            , height = 600 - margin.top - margin.bottom;
+
+        var x = d3.scale.ordinal().rangeRoundBands([0, width], 0.02);
+        var y = d3.scale.linear().rangeRound([height, 0]);
+
+
+        var svg = d3.select("#datawrapper").append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+        var tip = d3.tip()
+            .attr('class', 'd3-tip')
+            .direction("n")
+            .offset([-8 , 0])
+            .html(function(d,i) {
+            return "<span style='color:white'>" + d3.round(d.y, 2) + " %</span>";
+        });
+
+
+
+
+        svg.call(tip);
+
+
+
+        var parteien = ["Liberal", "CVP", "SP", "Bauern", "Mitte", "Progressive", "Links", "Rechts", "Rest"];
+        var farben = ["#1200e8", "#ffa700", "#a20000", "rgb(0, 139, 21)", "rgb(255, 255, 0)", "rgb(69, 255, 0)", "rgb(255, 0, 0)", "#222222", "#888888"];
+
+        // Daten holen, verarbeiten
+        d3.csv("data/je-d-17.02.02.03.01.csv", function(d) {
+
+                d.Jahr = d3.time.format("%Y").parse(d.Jahr); // String zu Datum
+                parteien.forEach(function (c) {
+                    d[c] = +d[c]; // String zu Zahl
+                });
+                return d;
+
+            }, function(error, rows) {
+                if (error) throw error;
+
+
+            // Parteien-Datenstapel bilden mit der Methode stack()
+            var stackData = d3.layout.stack()(parteien.map(function (c) {
+                return rows.map(function (d) {
+                    return {
+                        x: d.Jahr , y: d[c]
+                    };
+                });
+            }));
+
+            // Draw legend
+            var legend = svg.selectAll(".legend")
+                .data(farben)
+                .enter().append("g")
+                .attr("class", "legend")
+                .attr("transform", function(d, i) { return "translate(" + 0 + "," + (height-25 - i * 40) + ")"; });
+
+            legend.append("rect")
+                .attr("x", width+20)
+                .attr("width", 25)
+                .attr("height", 25)
+                .attr("class",  function(d, i) { return "gruppe " + parteien[i]; } );
+                //.style("fill", function(d, i) {return farben[i];});
+
+            legend.append("text")
+                .attr("x", width+58)
+                .attr("y", 9)
+                .attr("dy", ".55em")
+                .style("text-anchor", "start")
+                .text(function(d, i) {
+                     return parteien[i];
+                });
+
+
+
+
+
+            // X-Achse, Jahreszahlen
+            x.domain(stackData[0].map(function (d) {
+                return d.x;
+            }));
+
+            // Y-Achse, 0-100% (das könnte ganz einfach auch: 'y.domain([0,100]')
+            y.domain([0, d3.max(stackData[stackData.length - 1], function (d) {
+                return (d.y0 + d.y);
+            })]);
+
+
+            // X-Achse erstellen
+            var xAxis = d3.svg.axis()
+                .scale(x)
+                .orient("bottom")
+                .tickFormat(function(d){
+                    return d3.time.format('%Y')(new Date(d));
+                }).outerTickSize(0);
+
+            // Y-Achse erstellen
+            var yAxis = d3.svg.axis()
+                .scale(y)
+                .orient("left")
+                .ticks(10);
+
+
+
+            // Create groups for each series, rect elements for each segment
+            var layer = svg.selectAll("g.gruppe")
+                .data(stackData)
+                .enter().append("g")
+                .attr("class", "gruppe")
+                .attr("class",  function(d, i) { return "gruppe " + parteien[i]; } );
+            // .style("fill", function(d, i) { return farben[i]; });
+
+
+            var rect = layer.selectAll("rect")
+                .data(function(d) { return d; })
+                .enter()
+                .append("rect")
+                .attr("x", function (d) {
+                    return x(d.x);
+                })
+                .attr("y", function (d) {
+                    return y(d.y + d.y0);
+                })
+                .attr("height", function (d) {
+                    return y(d.y0) - y(d.y + d.y0);
+                })
+                .attr("width", x.rangeBand() - 1)
+                .on('mouseover', tip.show)
+                .on('mouseout', tip.hide);
+
+
+
+               // X-Achse platzieren
+            svg.append("g")
+                .attr("class", "x axis")
+                .attr("transform", "translate(0," + height + ")")
+                .call(xAxis);
+
+
+
+
+
+
+            // Y-Achse und Label platzieren
+            svg.append("g")
+                .attr("class", "y axis")
+                .call(yAxis)
+                .append("text")
+                    .attr("transform", "rotate(-90)")
+                    .attr("x", -height)
+                    .attr("y", -55)
+                    .attr("dy", ".71em")
+                    .style("text-anchor", "start")
+                    .attr("class", "label")
+                    .text("Gesamtschweizerische Parteistärken in %");
+
+            // horizontales Grid
+            svg.selectAll("g.y.axis g.tick")
+            .append("line")
+                .classed("grid-line", true)
+                .attr("x1", 0)
+                .attr("y1", 0)
+                .attr("x2", width)
+                .attr("y2", 0);
+
+
+
+
+
+
+
+
+        });
+
+
+    </script>
+
+
+
+
+</body>
+
+</html>

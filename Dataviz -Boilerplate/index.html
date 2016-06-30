@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html class="no-js" lang="de">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Datenvisualisierung mit D3</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/lib/modernizr-2.8.3.min.js"></script>
+</head>
+
+<body>
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script>window.d3 || document.write('<script src="js/lib/d3.min.js"><\/script>')</script>
+
+
+    <script>
+        // visuelle Begrenzung, Abstände, Rahmen
+        // nach Bedarf anpassen
+        var margin = {
+                top: 20
+                , right: 40
+                , bottom: 60
+                , left: 40
+            },
+
+            width = 960 - margin.left - margin.right
+            , height = 520 - margin.top - margin.bottom;
+
+
+        // SVG Objekt
+        var svg = d3.select("body").append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+        
+        
+    </script>
+</body>
+
+</html>
