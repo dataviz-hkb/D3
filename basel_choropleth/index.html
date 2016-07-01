@@ -1,162 +1,379 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8" />
-  <title>Basel Choropleth</title>
-  <link rel="stylesheet" type="text/css" href="css/color.css" />
-  <link rel="stylesheet" type="text/css" href="css/tip.css" />
-  <link rel="stylesheet" type="text/css" href="css/legend.css" />
-  <link rel="stylesheet" type="text/css" href="css/c3.min.css" />
-  <script src="http://d3js.org/d3.v3.min.js"></script>
-  <script src="http://d3js.org/topojson.v1.min.js"></script>
-  <script src="http://d3js.org/queue.v1.min.js"></script>
-  <script src="http://d3js.org/d3.geo.projection.v0.min.js"></script>
-  <script src="http://underscorejs.org/underscore-min.js"></script>
-  <script src="js/d3.geo.zoom.js"></script>
-  <script src="js/map.tip.js"></script>
-  <script src="js/map.legend.js"></script>
-  <script src="js/c3.min.js"></script>
-  <style type="text/css">
-      body {
-          font-family: sans-serif;
-          -webkit-text-size-adjust: 100%;
-          -ms-text-size-adjust: 100%;
-          text-size-adjust: 100%;
-      }
-
-      /*Basic map styles*/
-h1{
-  font-size: larger;
-}
-#mapSvg {
-
-  overflow: hidden;
-}
-.polygon {
-  fill: #e5e5e5;
-  stroke: #000;
-  stroke-width: 0.2;
-  stroke-opacity: 0.8;
-}
-.polygon:hover{
-/*  cursor: pointer; cursor: hand;*/
+    <meta charset="utf-8" />
+    <title>Basel Choropleth</title>
+    <link rel="stylesheet" type="text/css" href="css/color.css" />
+    <link rel="stylesheet" type="text/css" href="css/tip.css" />
+    <link rel="stylesheet" type="text/css" href="css/legend.css" />
+    <link rel="stylesheet" type="text/css" href="css/c3.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="http://d3js.org/topojson.v1.min.js"></script>
+    <script src="http://d3js.org/queue.v1.min.js"></script>
+    <script src="http://d3js.org/d3.geo.projection.v0.min.js"></script>
+    <script src="http://underscorejs.org/underscore-min.js"></script>
+    <script src="js/d3.geo.zoom.js"></script>
+    <script src="js/map.tip.js"></script>
+    <script src="js/map.legend.js"></script>
+    <script src="js/c3.min.js"></script>
 
 
-}
 
 
-      .wohnviertel:hover{
- cursor: pointer; cursor: hand;
-  fill: red;
+    <style type="text/css">
+        body {
+            font-family: sans-serif;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+            margin: 0;
+            padding: 40px;
+            font-family: 'Roboto', 'Helvetica Neue', Helvetica, sans-serif;
+        }
+        /*Basic map styles*/
 
-}
-.point{
-  fill: #000;
-  stroke-opacity: 0.8;
-}
-.overlay {
-  fill: none;
-  pointer-events: all;
-  stroke-width: 0.0;
-  stroke-opacity: 0.0;
-}
-#extLgnd {
-  overflow: visible;
-}
-  </style>
+        h1 {
+            font-size: larger;
+        }
+
+        fieldset {
+            display: block;
+            margin: 0;
+            padding: 0;
+            border: 0 none;
+            text-align: left;
+        }
+
+        label {
+            display: inline-block;
+            cursor: pointer;
+            position: relative;
+            padding-left: 25px;
+            margin-right: 15px;
+            font-size: 15px;
+        }
+
+        input[type=radio],
+        input[type=checkbox] {
+            display: none;
+        }
+
+        label:before {
+            content: "";
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            margin-right: 10px;
+            position: absolute;
+            left: 0;
+            bottom: 1px;
+            background-color: #aaa;
+            box-shadow: inset 0px 2px 3px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px rgba(255, 255, 255, .8);
+        }
+
+        .radio label:before {
+            border-radius: 8px;
+        }
+
+        .checkbox label {
+            margin-bottom: 10px;
+        }
+
+        .checkbox label:before {
+            border-radius: 3px;
+        }
+
+        input[type=radio]:checked + label:before {
+            content: "\2022";
+            color: #f3f3f3;
+            font-size: 30px;
+            text-align: center;
+            line-height: 18px;
+        }
+
+        input[type=checkbox]:checked + label:before {
+            content: "\2713";
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
+            font-size: 15px;
+            color: #f3f3f3;
+            text-align: center;
+            line-height: 15px;
+        }
+
+        #mapSvg {
+            overflow: hidden;
+        }
+
+        g#map {}
+
+        .polygon {
+            fill: #0f4d96;
+            stroke: #000;
+            stroke-width: 0.2;
+            stroke-opacity: 1;
+        }
+
+        .polygon:hover {
+            /*  cursor: pointer; cursor: hand;*/
+        }
+
+        .polygon g:not(.wohnviertel) {
+            fill: rgb(211, 204, 30);
+            /*falllback*/
+        }
+
+        .wohnviertel:hover {
+            /*
+            cursor: pointer;
+            cursor: hand;
+            fill: red;
+            */
+        }
+
+        .wohnviertel {
+            -webkit-transition: all 0.5s ease-in-out;
+            -moz-transition: all 0.5s ease-in-out;
+            transition: all 0.5s ease-in-out;
+        }
+
+        .point {
+            fill: #000;
+            stroke-opacity: 0.8;
+        }
+
+        .overlay {
+            fill: none;
+            pointer-events: all;
+            stroke-width: 0.0;
+            stroke-opacity: 0.0;
+        }
+
+        #extLgnd {
+            overflow: visible;
+        }
+
+        .q0-9 {
+            fill: #450000;
+        }
+
+        .q1-9 {
+            fill: rgb(105, 0, 0);
+        }
+
+        .q2-9 {
+            fill: rgb(173, 0, 0);
+        }
+
+        .q3-9 {
+            fill: rgba(214, 103, 33, 0.66);
+        }
+
+        .q4-9 {
+            fill: rgb(250, 250, 250);
+        }
+
+        .q5-9 {
+            fill: rgba(0, 37, 160, 0.31);
+        }
+
+        .q6-9 {
+            fill: rgba(0, 25, 108, 0.67);
+        }
+
+        .q7-9 {
+            fill: rgb(25, 51, 136);
+        }
+
+        .q8-9 {
+            fill: rgba(0, 26, 116, 0.79);
+        }
+
+        .w0-7 {
+            fill: rgb(0, 61, 255);
+        }
+
+        .w1-7 {
+            fill: rgb(0, 52, 217);
+        }
+
+        .w2-7 {
+            fill: rgb(0, 38, 165);
+        }
+
+        .w3-7 {
+            fill: #f5f5f5;
+        }
+
+        .w4-7 {
+            fill: #bc0000;
+        }
+
+        .w5-7 {
+            fill: rgb(141, 0, 0);
+        }
+
+        .w6-7 {
+            fill: rgb(124, 0, 0);
+        }
+    </style>
 </head>
 
-<body style="text-align:center">
+<body>
 
-  <div id="map"></div>
-  <div id="template" style="display: none">
-    <!--Tooltip template-->
+    <div id="map">
+        <h1>Basler Mietpreisindex: Mietpreisunterschiede nach Wohnviertel</h1>
+        <p>Durchschnittliche Abweichung vom Referenzwohnviertel «Iselin»
+            <br>Quantisierte, mehrstufige Skala (9-stufig)</p>
+        <form action="javascript:void(0);">
+            <fieldset class="radio">
+                <input type="radio" id="r" name="Zustand" value="Renoviert" onclick="updateData('renoviert')" checked>
+                <label for="r">Renoviert</label>
+                <input type="radio" id="ur" name="Zustand" value="Nicht Renoviert" onclick="updateData('nicht renoviert')">
+                <label for="ur">Nicht Renoviert</label>
+                <br>
+            </fieldset>
+        </form>
 
-  </div>
+    </div>
+    <div id="template" style="display: none">
+        <!--Tooltip template-->
+    </div>
+    <div id="option"></div>
 
+    <script>
+        //Basic settings
+        var width = 800;
+        var height = 600;
+        var _data = void 0;
 
-  <script>
-    //Basic settings
-    var width = 800;
-    var height = 600;
-    var _data = void 0;
+        var rateById = d3.map();
 
-    //Projection
-    var projection = d3.geo.mollweide()
-    .scale(1)
-    .translate([0, 0]);
-    // Create a path generator.
-    var path = d3.geo.path()
-    .projection(projection);
+        var quantize = d3.scale.quantize()
+            .domain([-0.26, 0.26])
+            .range(d3.range(9).map(function (i) {
+                return "wohnviertel q" + i + "-9";
+            }));
 
-
-    //Map container
-    var svg = d3.select("#map")
-      .append("svg")
-      .attr("id", "mapSvg")
-      .attr("width", width)
-      .attr("height", height)
-      .append("g");
-
-
-
-    //Vector group
-    var vectors = svg.append("g")
-      .attr("class", "polygon");
-
-    //Overlay
-    vectors.append("rect")
-      .attr("class", "overlay")
-      .attr("width", width)
-      .attr("height", height);
+        var filterSelection = 'renoviert';
 
 
-
-    //Vector polygons
-    var vectors0 = vectors.append("g");
-    var vector0 = void 0;
-
-
-    //Download
-    queue(2)
-      .defer(d3.json, "json/wohnviertel.json")
-
-      .await(ready);
-
-    //Load map when downloaded
-    function ready(error, json0) {
-      if (error) return console.error(error);
-
-      //Polygon features
-      var object0 = json0;
+        //Projektion
+        var projection = d3.geo.mollweide()
+            .scale(1)
+            .translate([0, 0]);
+        // Pfad
+        var path = d3.geo.path()
+            .projection(projection);
 
 
-      // Refine projection
-      var b, s, t;
-      projection.scale(1).translate([0, 0]);
-      var b = path.bounds(object0);
-      var s = .95 / Math.max((b[1][0] - b[0][0]) / width, (b[1][1] - b[0][1]) / height);
-      var t = [(width - s * (b[1][0] + b[0][0])) / 2, (height - s * (b[1][1] + b[0][1])) / 2];
-      projection.scale(s).translate(t);
-
-      //Add all vector features
-      path.pointRadius(1.0);
-      vector0 = vectors0.selectAll("path").data(object0.features);
-      vector0.enter()
-        .append("g")
-
-// d.properties {"area_ha", "Flaeche", "name", "ZTXT", "TXT", "OBJECTID", "OBJID"}
-        .attr("id", function (d) { return "id" + d.properties.OBJECTID; })
-        .attr("class", "wohnviertel")
-        .append("path")
-        .attr("d", path);
-
-    }
+        //Karte in container
+        var svg = d3.select("#map")
+            .append("svg")
+            .attr("id", "mapSvg")
+            .attr("width", width)
+            .attr("height", height)
+            .append("g")
+            .attr("id", "map");
 
 
 
+        //Vector group
+        var vectors = svg.append("g")
+            .attr("class", "polygon");
+
+        //Overlay
+        //    vectors.append("rect")
+        //      .attr("class", "overlay")
+        //      .attr("width", width)
+        //      .attr("height", height);
 
 
- </script>
+
+        //Vector polygons
+        //var vectors0 = vectors.append("g");
+
+
+        //
+        //      CustomEventd3.csv("data.csv", function(csv) {
+        //        csv = csv.filter(function(row) {
+        //                return row['Zustand'] == 'renoviert' || row['Zustand'] == 'nicht renoviert';
+        //            })
+        //            vis.datum(csv).call(chart);
+        //        });
+
+        //
+        //        <!--To do: Use Filter to select CSV Data-->
+        //        <!--http://stackoverflow.com/questions/10615290/select-data-from-a-csv-before-loading-it-with-javascript-d3-library-->
+        //
+        //        tooltip
+
+
+        queue()
+            .defer(d3.json, "json/wohnviertel.json")
+            .defer(d3.csv, "data/3_Zimmer-2016-05.csv", function (data) {
+
+                if (data['Zustand'] == filterSelection) {
+                    rateById.set(data.ID, +data['1991 - 2000']);
+                }
+            })
+            .await(ready);
+
+
+        //Karte zeichnen, wenn geladen
+        function ready(error, bs) {
+            if (error) return console.error(error);
+
+            //Polygon features
+            var object0 = bs;
+            var vector0 = void 0;
+
+            // Projection neu definieren
+            var b, s, t;
+            projection.scale(1).translate([0, 0]).precision(.1);
+            var b = path.bounds(object0);
+            var s = .95 / Math.max((b[1][0] - b[0][0]) / width, (b[1][1] - b[0][1]) / height);
+            var t = [(width - s * (b[1][0] + b[0][0])) / 2, (height - s * (b[1][1] + b[0][1])) / 2];
+            projection.scale(s).translate(t);
+
+            //Vector features
+            path.pointRadius(1.0);
+            vector0 = vectors.selectAll("path").data(object0.features);
+            vector0.enter()
+                .append("g")
+                // d.properties: "area_ha", "Flaeche", "name", "ZTXT", "TXT", "OBJECTID", "OBJID"
+                .attr("id", function (d) {
+                    return "id" + d.properties.OBJECTID;
+                })
+                .attr("class", function (d) {
+                    return quantize(rateById.get(d.properties.OBJECTID))
+                })
+                .append("path").attr("d", path);
+        };
+
+
+
+
+        // ** Update data section (Called from the onclick)
+        function updateData(filter) {
+            queue()
+                .defer(d3.csv, "data/3_Zimmer-2016-05.csv", function (data) {
+                    if (data['Zustand'] == filter) {
+                        rateById.set(data.ID, +data['1991 - 2000']);
+                    }
+                })
+                .await(ready);
+
+            function ready(error, bs) {
+                if (error) return console.error(error);
+                d3.selectAll(".wohnviertel")
+                    .attr("class", function (d) {
+                        return quantize(rateById.get(d.properties.OBJECTID))
+                    });
+            };
+        };
+    </script>
 </body>
+
 </html>
