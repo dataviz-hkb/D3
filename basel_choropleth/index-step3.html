@@ -411,7 +411,34 @@
                 //MouseEvents
                 .on('mouseover', tip.show)
                 .on('mouseout', tip.hide);
+            /*.on("mouseover", function (d) {
+                tooltipData = (subCSV[d.properties.OBJECTID] * 100).toFixed(2);
+                d3.select(this).transition().duration(300).style("opacity", 0.85);
+                div.transition().duration(300)
+                    .style("opacity", 1)
+                div.text(d.properties.name + " : " + tooltipData + " %")
 
+                .style("color", function (d) {
+
+                    if (tooltipData < 0) {
+                        return "rgb(0, 44, 227)";
+                    } else if (tooltipData > 0) {
+                        return "rgb(206, 0, 0)";
+                    } else {
+                        return "black";
+                    }
+                })
+
+                .style("left", (d3.event.pageX) + "px")
+                    .style("top", (d3.event.pageY - 30) + "px");
+            })
+            .on("mouseout", function () {
+                d3.select(this)
+                    .transition().duration(300)
+                    .style("opacity", 1);
+                div.transition().duration(300)
+                    .style("opacity", 0);
+            });*/
 
 
             //Legende
@@ -469,16 +496,25 @@
                     };
                 });
 
-                tip.html(function (d, i) {
-                    return ("<span style='color:white'>" + d.properties.name + ": " + d3.round((subCSV[d.properties.OBJECTID] * 100), 2) + " %</span>");
-                });
-
                 var update = vectors.selectAll("g.wohnviertel");
                 update.attr("class", function (d) {
                         return quantize(rateById.get(d.properties.OBJECTID))
                     })
-                    .classed("updated", !update.classed("updated"));
+                    .classed("updated", !update.classed("updated"))
+                    .on("mouseover", function (d) {
+                        tooltipData = (subCSV[d.properties.OBJECTID] * 100).toFixed(2);
+                        div.text(d.properties.name + " : " + tooltipData + " %")
 
+                        .style("color", function (d) {
+                            if (tooltipData < 0) {
+                                return "rgb(0, 44, 227)";
+                            } else if (tooltipData > 0) {
+                                return "rgb(206, 0, 0)";
+                            } else {
+                                return "black";
+                            }
+                        });
+                    });
             };
 
         }

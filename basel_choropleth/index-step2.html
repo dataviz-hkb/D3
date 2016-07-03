@@ -18,8 +18,6 @@
     <script src="js/map.tip.js"></script>
     <script src="js/map.legend.js"></script>
     <script src="js/c3.min.js"></script>
-    <script src="js/lib/d3tip.js" charset="utf-8"></script>
-
 
 
 
@@ -118,8 +116,7 @@
         }
 
         .polygon:hover {
-            cursor: pointer;
-            cursor: hand;
+            /*  cursor: pointer; cursor: hand;*/
         }
 
         .polygon g:not(.wohnviertel) {
@@ -157,99 +154,70 @@
             overflow: visible;
         }
 
-        .d3-tip {
-            line-height: 1;
-            font-weight: bold;
-            padding: 0.6em 0.8em;
-            background: rgba(0, 0, 0, 0.8);
-            color: #fff;
-            border-radius: 2px;
-            pointer-events: none;
-        }
-        /* Creates a small triangle extender for the tooltip */
-
-        .d3-tip:after {
-            box-sizing: border-box;
-            display: inline;
-            font-size: 10px;
-            width: 100%;
-            line-height: 1;
-            color: rgba(0, 0, 0, 0.8);
-            position: absolute;
-            pointer-events: none;
-        }
-        /* Northward tooltips */
-
-        .d3-tip.n:after {
-            content: "\25BC";
-            margin: -1px 0 0 0;
-            top: 100%;
-            left: 0;
-            text-align: center;
-        }
-        /* Eastward tooltips */
-
-        .d3-tip.e:after {
-            content: "\25C0";
-            margin: -4px 0 0 0;
-            top: 50%;
-            left: -8px;
-        }
-        /* Southward tooltips */
-
-        .d3-tip.s:after {
-            content: "\25B2";
-            margin: 0 0 1px 0;
-            top: -8px;
-            left: 0;
-            text-align: center;
-        }
-        /* Westward tooltips */
-
-        .d3-tip.w:after {
-            content: "\25B6";
-            margin: -4px 0 0 -1px;
-            top: 50%;
-            left: 100%;
-        }
-
-        .q8-9 {
+        .q0-9 {
             fill: #5d0000;
         }
 
-        .q7-9 {
-            fill: rgb(142, 0, 0);
+        .q1-9 {
+            fill: rgb(105, 0, 0);
         }
 
-        .q6-9 {
-            fill: rgb(214, 82, 0);
+        .q2-9 {
+            fill: rgb(206, 0, 0);
         }
 
-        .q5-9 {
-            fill: rgb(244, 173, 102);
+        .q3-9 {
+            fill: rgb(234, 109, 18);
         }
 
         .q4-9 {
             fill: rgb(250, 250, 250);
         }
 
-        .q3-9 {
-            fill: rgb(176, 184, 211);
+        .q5-9 {
+            fill: rgb(147, 157, 190);
         }
 
-        .q2-9 {
-            fill: rgb(105, 125, 188);
+        .q6-9 {
+            fill: rgb(71, 90, 150);
         }
 
-        .q1-9 {
+        .q7-9 {
             fill: rgb(25, 51, 136);
         }
 
-        .q0-9 {
-            fill: rgb(14, 32, 96);
+        .q8-9 {
+            fill: rgb(45, 64, 132);
+        }
+
+        .w0-7 {
+            fill: rgb(0, 61, 255);
+        }
+
+        .w1-7 {
+            fill: rgb(0, 52, 217);
+        }
+
+        .w2-7 {
+            fill: rgb(0, 38, 165);
+        }
+
+        .w3-7 {
+            fill: #f5f5f5;
+        }
+
+        .w4-7 {
+            fill: #c6002e;
+        }
+
+        .w5-7 {
+            fill: rgb(132, 0, 20);
+        }
+
+        .w6-7 {
+            fill: rgb(114, 0, 9);
         }
     </style>
-    <script src="js/lib/modernizr-2.8.3.min.js"></script>
 </head>
 
 <body>
@@ -260,9 +228,9 @@
             <br>Quantisierte, mehrstufige Skala (9-stufig)</p>
         <form action="javascript:void(0);">
             <fieldset class="radio">
-                <input type="radio" id="r" name="Zustand" value="Renoviert" onclick="updateData('renoviert', svg)" checked>
+                <input type="radio" id="r" name="Zustand" value="Renoviert" onclick="updateData('renoviert')" checked>
                 <label for="r">Renoviert</label>
-                <input type="radio" id="ur" name="Zustand" value="Nicht Renoviert" onclick="updateData('nicht renoviert', svg)">
+                <input type="radio" id="ur" name="Zustand" value="Nicht Renoviert" onclick="updateData('nicht renoviert')">
                 <label for="ur">Nicht Renoviert</label>
                 <br>
             </fieldset>
@@ -275,24 +243,31 @@
     <div id="option"></div>
 
     <script>
-        //Basic SVG
+        //Basic settings
         var width = 700;
         var height = 580;
-
-        // Startbedingungen
-        var filterSelection = 'renoviert';
-        var subSelection = '1991 - 2000';
+        var _data = void 0;
 
         var rateById = d3.map();
+        var pushtest = [];
         var labels = ["< 26%", "< 50", "< 50", "< 50", "0", "150+", "350+", "750+", "> 26%"];
 
 
         var color_range = d3.range(9);
         var quantize = d3.scale.quantize()
             .domain([-0.26, 0.26])
-            .range(color_range.map(function (i) {
+            .range(color_range.map(function (d, i) {
                 return "wohnviertel q" + i + "-9";
             }));
+
+        //        var quantize = d3.scale.quantize().range(color_range.map(function (i) {
+        //                return "wohnviertel q" + i + "-9";
+        //            }));
+
+
+
+        var filterSelection = 'renoviert';
+        var subSelection = '1991 - 2000';
 
 
         //Projektion
@@ -303,7 +278,6 @@
         var path = d3.geo.path()
             .projection(projection);
 
-        // Tooltip
         var div = d3.select("body").append("div")
             .attr("class", "tooltip")
             .style("opacity", 0);
@@ -316,16 +290,6 @@
             .attr("height", height)
             .append("g")
             .attr("id", "map");
-
-
-
-        var tip = d3.tip()
-            .attr('class', 'd3-tip')
-            .direction("n")
-            .offset([10, 0]);
-
-        svg.call(tip);
-
 
 
 
@@ -359,62 +323,36 @@
         //
         //        tooltip
 
-
-
-
         queue()
             .defer(d3.json, "data/json/wohnviertel.json")
-            .defer(d3.csv, "data/3_Zimmer-2016-05.csv")
+            .defer(d3.csv, "data/3_Zimmer-2016-05.csv", function (data) {
+
+                if (data['Zustand'] == filterSelection) {
+                    rateById.set(data.ID, +data[subSelection]);
+                };
+                pushtest.push(+data[subSelection]);
+
+
+
+            })
             .await(ready);
 
 
-        //Daten holen, Karte zeichnen, wenn geladen
+        //Karte zeichnen, wenn geladen
         function ready(error, map, data) {
             if (error) return console.error(error);
-            _dataBS = map;
 
-            var subCSV = {};
-            var tooltipData = void(0);
-            data.forEach(function (d) {
-                // Daten gefiltert verarbeiten
-                if (d['Zustand'] == filterSelection) {
-                    subCSV[d.ID] = +d[subSelection];
-                    rateById.set(d.ID, +d[subSelection]);
-                };
-            });
+//var testById = {};
+//
+//
+//                    data.forEach(function(d) {
+//            testById[d.ID] = +data;
+//          });
+//
+            console.log(data);
 
+            //Adding legend for our Choropleth
 
-            tip.html(function (d, i) {
-                return ("<span style='color:white'>" + d.properties.name + ": " + d3.round((subCSV[d.properties.OBJECTID] * 100), 2) + " %</span>");
-            });
-
-            // Projection neu definieren
-            var b, s, t;
-            projection.scale(1).translate([0, 0]).precision(.1);
-            var b = path.bounds(_dataBS);
-            var s = .95 / Math.max((b[1][0] - b[0][0]) / width, (b[1][1] - b[0][1]) / height);
-            var t = [(width - s * (b[1][0] + b[0][0])) / 2, (height - s * (b[1][1] + b[0][1])) / 2];
-            projection.scale(s).translate(t);
-
-            //Vector features
-            path.pointRadius(1.0);
-            vector0 = vectors.selectAll("path").data(_dataBS.features);
-            vector0.enter()
-                .append("g")
-                .attr("id", function (d) {
-                    return "id" + d.properties.OBJECTID;
-                })
-                .attr("class", function (d) {
-                    return quantize(rateById.get(d.properties.OBJECTID))
-                })
-                .append("path").attr("d", path)
-                //MouseEvents
-                .on('mouseover', tip.show)
-                .on('mouseout', tip.hide);
-
-
-
-            //Legende
             var legend = vectors.selectAll("g.legend")
                 .data(color_range)
                 .enter().append("g")
@@ -422,6 +360,12 @@
 
             var ls_w = 20
                 , ls_h = 20;
+
+            //var labelstextnew = d3.scale.linear().domain([d3.min(pushtest),d3.max(pushtest)]).range(color_range);
+            //var labelstextnew = d3.scale.linear().domain(color_range).range([d3.min(pushtest),d3.max(pushtest)]);
+            //var labelstextnew = d3.scale.quantize().domain(color_range).range([-0.26,0.26]);
+            var labelstextnew = d3.scale.quantize().domain(color_range).range([d3.min(pushtest), d3.max(pushtest)]);
+            //d3.values({one: 1, two: 2, three: 3}).map(function(num) { return num * 3; });
 
             legend.append("rect")
                 .attr("x", width - 10 * ls_w)
@@ -440,47 +384,87 @@
                     return height - (i * ls_h) - ls_h - 4;
                 })
                 .text(function (d, i) {
+
+                    //var median = Math.round(color_range.length);
+                    //var medianValue = labelstextnew.invert(median)
                     return labels[i];
+
+
                 });
 
+
+
+
+            //Polygon features
+            var object0 = map;
+            var vector0 = void 0;
+
+            // Projection neu definieren
+            var b, s, t;
+            projection.scale(1).translate([0, 0]).precision(.1);
+            var b = path.bounds(object0);
+            var s = .95 / Math.max((b[1][0] - b[0][0]) / width, (b[1][1] - b[0][1]) / height);
+            var t = [(width - s * (b[1][0] + b[0][0])) / 2, (height - s * (b[1][1] + b[0][1])) / 2];
+            projection.scale(s).translate(t);
+
+            //Vector features
+            path.pointRadius(1.0);
+            vector0 = vectors.selectAll("path").data(object0.features);
+            vector0.enter()
+                .append("g")
+                // d.properties: "area_ha", "Flaeche", "name", "ZTXT", "TXT", "OBJECTID", "OBJID"
+                .attr("id", function (d) {
+                    return "id" + d.properties.OBJECTID;
+                })
+                .attr("class", function (d) {
+                    return quantize(rateById.get(d.properties.OBJECTID))
+                })
+                .append("path").attr("d", path)
+                //Adding mouseevents
+                .on("mouseover", function (d) {
+                    d3.select(this).transition().duration(300).style("opacity", 1);
+                    div.transition().duration(300)
+                        .style("opacity", 1)
+                    div.text(d.properties.name + " : " + testById.get[d.properties.OBJECTID])
+
+
+                        .style("left", (d3.event.pageX) + "px")
+                        .style("top", (d3.event.pageY - 30) + "px");
+                })
+                .on("mouseout", function () {
+                    d3.select(this)
+                        .transition().duration(300)
+                        .style("opacity", 0.8);
+                    div.transition().duration(300)
+                        .style("opacity", 0);
+                });
 
 
         };
 
-        var updateData = function (filter, object) {
 
-            svg = object;
-            var vectors = svg.select("g.polygon");
-
+        var updateData = function (filter) {
+            //pushtest.length = 0;
             queue()
-                //.defer(d3.json, "data/json/wohnviertel.json")
-                .defer(d3.csv, "data/3_Zimmer-2016-05.csv")
+                .defer(d3.json, "data/json/wohnviertel.json")
+                .defer(d3.csv, "data/3_Zimmer-2016-05.csv", function (data) {
+                    if (data['Zustand'] == filter) {
+                        rateById.set(data.ID, +data[subSelection]);
+                    };
+                    //pushtest.push(+data[subSelection]);
+                })
                 .await(ready);
 
-            function ready(error, data) {
-                if (error) return console.error(error);
 
-                var subCSV = {};
-                data.forEach(function (d) {
-
-                    if (d['Zustand'] == filter) {
-                        subCSV[d.ID] = +d[subSelection];
-                        rateById.set(d.ID, +d[subSelection]);
-                    };
-                });
-
-                tip.html(function (d, i) {
-                    return ("<span style='color:white'>" + d.properties.name + ": " + d3.round((subCSV[d.properties.OBJECTID] * 100), 2) + " %</span>");
-                });
-
-                var update = vectors.selectAll("g.wohnviertel");
-                update.attr("class", function (d) {
+            function ready(error, bs) {
+                //quantize.domain([d3.min(pushtest),d3.max(pushtest)]);
+                var object0 = bs;
+                d3.selectAll(".wohnviertel")
+                    .data(object0.features)
+                    .attr("class", function (d) {
                         return quantize(rateById.get(d.properties.OBJECTID))
-                    })
-                    .classed("updated", !update.classed("updated"));
-
+                    });
             };
-
         }
     </script>
 </body>
