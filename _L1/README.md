@@ -66,7 +66,7 @@ Jetzt kann CSS kommen. Drei Möglichkeiten CSS einzubinden und zu verwenden:
 
 1. direkt im Dokument, über `<style type="text/css"> … </style>` im `<head>`
 2. verlinkt auf ein Dokument, über `<link rel="stylesheet" href=" … " type="text/css">` im `<head>`
-3. Inline, als Attribut, über `<p style="color: deeppink;"> </p>` direkt dem Element zugewiesen
+3. Inline, als Attribut, über beispielsweise `<p style="color: deeppink;"> </p>` direkt dem Element zugewiesen
 
 
 
