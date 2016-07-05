@@ -4,16 +4,16 @@ Der CAS Datenvisualisierung ist eine interdisziplinär und medienübergreifend a
 
 
 
-<a href="_L0/README.md"><img src="css/assets/D3_L0.1.png" width="80"></a>&nbsp;
-<a href="_L1/README.md"><img src="css/assets/D3_L1.1.png" width="80"></a>&nbsp;
-<a href="_L2/README.md"><img src="css/assets/D3_L2.1.png" width="80"></a>&nbsp;
-<a href="_L3/README.md"><img src="css/assets/D3_L3.1.png" width="80"></a>&nbsp;
-<a href="_L4/README.md"><img src="css/assets/D3_L4.1.png" width="80"></a>&nbsp;
-<a href="_L5/README.md"><img src="css/assets/D3_L5.1.png" width="80"></a>&nbsp;
-<a href="_L6/README.md"><img src="css/assets/D3_L6.1.png" width="80"></a>&nbsp;
-<a href="_L7/README.md"><img src="css/assets/D3_L7.1.png" width="80"></a>&nbsp;
-<a href="_L8/README.md"><img src="css/assets/D3_L8.1.png" width="80"></a>&nbsp;
-<a href="_L9/README.md"><img src="css/assets/D3_L9.1.png" width="80"></a>
+<a href="_L0/README.md"><img src="css/assets/D3_L0.1@2x.png" width="80"></a>&nbsp;
+<a href="_L1/README.md"><img src="css/assets/D3_L1.1@2x.png" width="80"></a>&nbsp;
+<a href="_L2/README.md"><img src="css/assets/D3_L2.1@2x.png" width="80"></a>&nbsp;
+<a href="_L3/README.md"><img src="css/assets/D3_L3.1@2x.png" width="80"></a>&nbsp;
+<a href="_L4/README.md"><img src="css/assets/D3_L4.1@2x.png" width="80"></a>&nbsp;
+<a href="_L5/README.md"><img src="css/assets/D3_L5.1@2x.png" width="80"></a>&nbsp;
+<a href="_L6/README.md"><img src="css/assets/D3_L6.1@2x.png" width="80"></a>&nbsp;
+<a href="_L7/README.md"><img src="css/assets/D3_L7.1@2x.png" width="80"></a>&nbsp;
+<a href="_L8/README.md"><img src="css/assets/D3_L8.1@2x.png" width="80"></a>&nbsp;
+<a href="_L9/README.md"><img src="css/assets/D3_L9.1@2x.png" width="80"></a>
 
 
 #### Inhalt:
