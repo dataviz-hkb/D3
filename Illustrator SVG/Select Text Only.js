@@ -1,0 +1,1 @@
+﻿//Select Text Only//Justin Putney//http://ajarproductions.com//v1.0.0var doc = app.activeDocument;var sel = doc.selection;if(sel.length == 0){        sel = doc.pageItems;}doc.selection = [];var arr = [];for (var i=0; i < sel.length; i++){	if(sel[i].typename == "TextFrame") {		arr.push(sel[i]);	}}doc.selection = arr;

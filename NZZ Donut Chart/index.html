@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html class="no-js" lang="de">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Datenvisualisierung mit D3</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css?family=Abel|Oswald:300,400,700" rel="stylesheet">
+       <link rel="stylesheet" href="css/main.css">
+    <script src="js/lib/modernizr-2.8.3.min.js"></script>
+    <style type="text/css">
+        .clearfix:after {
+            content: "\0020";
+            display: block;
+            height: 0;
+            clear: both;
+            visibility: hidden;
+            overflow: hidden;
+        }
+        
+        body {
+            margin: 0;
+            padding: 20px;
+            font: 18px/1.4 'Abel', 'Helvetica Neue', Helvetica, sans-serif;
+            font-weight: 300;
+        }
+        
+        #wrapper {
+            width: 960px;
+            margin: 0 auto;
+        }
+        
+        #datawrapper1 {
+            width: 520px;
+            float: left;
+        }
+        
+        #datawrapper2 {
+            width: 440px;
+            float: left;
+        }
+        
+        footer p {
+            font-weight: 400;
+            font-size: 80%;
+        }
+        
+        header h1 {
+            margin-bottom: 0;
+            font-weight: 400;
+        }
+        
+        header p {
+            margin-top: 0;
+             font-size: 120%;
+
+        }
+        
+        #chartText {
+            padding: 4% 0;
+        }
+        
+        #chartText .wrap {
+            padding: 8% 0;
+            text-align: center;
+        }
+        
+        h3.chartheader {
+            text-align: center;
+            font: 54px/1.2 'Oswald', 'Helvetica Neue', Helvetica, sans-serif;
+            font-weight: 300;
+            margin: 0;
+            letter-spacing: 1px;
+        }
+        
+        p.chartnumbers {
+            text-align: center;
+            font: 30px/1 'Abel', 'Helvetica Neue', Helvetica, sans-serif;
+            font-weight: 300;
+            margin: 0;
+        }
+        
+        a,
+        a:visited {
+            color: rgb(34, 34, 34);
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        
+        .arc {fill:#fff;}
+        .arc text {fill:#000;}
+        .arc #ethnic_B text{
+            fill: #fff;
+        }
+
+        
+        .d3-tip {
+            line-height: 1;
+            font-weight: bold;
+            padding: 0.6em 0.8em;
+            background: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            border-radius: 2px;
+            pointer-events: none;
+        }
+        /* Creates a small triangle extender for the tooltip */
+        
+        .d3-tip:after {
+            box-sizing: border-box;
+            display: inline;
+            font-size: 10px;
+            width: 100%;
+            line-height: 1;
+            color: rgba(0, 0, 0, 0.8);
+            position: absolute;
+            pointer-events: none;
+        }
+        /* Northward tooltips */
+        
+        .d3-tip.n:after {
+            content: "\25BC";
+            margin: -1px 0 0 0;
+            top: 100%;
+            left: 0;
+            text-align: center;
+        }
+        /* Eastward tooltips */
+        
+        .d3-tip.e:after {
+            content: "\25C0";
+            margin: -4px 0 0 0;
+            top: 50%;
+            left: -8px;
+        }
+        /* Southward tooltips */
+        
+        .d3-tip.s:after {
+            content: "\25B2";
+            margin: 0 0 1px 0;
+            top: -8px;
+            left: 0;
+            text-align: center;
+        }
+        /* Westward tooltips */
+        
+        .d3-tip.w:after {
+            content: "\25B6";
+            margin: -4px 0 0 -1px;
+            top: 50%;
+            left: 100%;
+        }
+        
+
+        
+    </style>
+
+
+</head>
+
+<body>
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script>
+        window.d3 || document.write('<script src="js/lib/d3.min.js"><\/script>')
+    </script>
+    <script src="js/lib/d3tip.js" charset="utf-8"></script>
+    <div id="wrapper">
+        <header>
+            <h1>Die Ethnien in Bosnien-Herzegowina</h1>
+            <p>Angaben in %</p>
+        </header>
+        <div class="clearfix">
+            <div id="datawrapper1"></div>
+            <div id="datawrapper2"></div>
+        </div>
+        <footer>
+            <p>Quelle: <a href="data/Quellen/Popis2013prvoIzdanje.pdf" target="_blank">CENCUS OF POPULATION, Households and Dwellings in Bosnia and Herzegovina, 2013 Final Results</a></p>
+        </footer>
+    </div>
+
+
+
+    <script>
+
+        var width = 480
+            , height = 480
+            , offset = 40
+            , radius = (Math.min(width, height) / 2) - offset;
+
+        var labels = ["Bosniaken", "Serben", "Kroaten", "Andere"];
+        var color_range = ["#4b6c87", "#f5a02f", "#b5d69d", "#ccc4ba"];
+        
+        var color = d3.scale.ordinal().range(color_range);
+
+        var arc = d3.svg.arc()
+            .outerRadius(radius - 10)
+            .innerRadius(radius - 90);
+
+        var pie = d3.layout.pie()
+            //.sort(null)
+            .value(function (d) {
+                return d.percentage;
+            });
+
+        var svg1 = d3.select("#datawrapper1").append("svg")
+            .attr("width", width + offset)
+            .attr("height", height)
+            .append("g")
+            .attr("transform", "translate(" + (width / 2 + offset/2) + "," + (height / 2 - offset) + ")");
+
+        var svg2 = d3.select("#datawrapper2").append("svg")
+            .attr("width", width-offset)
+            .attr("height", height)
+            .append("g")
+            .attr("transform", "translate(" + (width / 2 - offset/2) + "," + (height / 2 - offset) + ")");
+
+        var tip = d3.tip()
+            .attr('class', 'd3-tip')
+            .direction("n")
+            .offset([40, -10])
+            .html(function (d, i) {
+                return "<span style='color:white'>" + d.data.Ethnic + ": " + d.data.percentage + " %</span>";
+            });
+
+        svg1.call(tip);
+        svg2.call(tip);
+
+        d3.csv("data/BiH-Census1991-total.csv", type, function (error, data) {
+            if (error) throw error;
+            
+            //Legende
+            var legend = svg1.selectAll("g.legend")
+                .data(color_range)
+                .enter().append("g")
+                .attr("class", "legend");
+
+            var w = 25 , h = 25;
+
+            legend.append("rect")
+                .attr("x", 0 - width/2 - offset/2)
+                .attr("y", function (d, i) {
+                    return (offset + ((i * h) - height / 2) + (i * 8));
+                })
+                .attr("width", w)
+                .attr("height", h)
+                .attr("style", function (d, i) {
+                    return "fill:" + d;
+                });
+
+            legend.append("text")
+                .attr("x", 0 - width/2 - offset/2)
+                .attr("dy", "1em")
+                .attr("dx", "2em")
+                .attr("y", function (d, i) {
+                    return (offset + ((i * h) - height / 2) + (i * 8));
+                })
+                .text(function (d, i) {
+                    return labels[i];
+                });
+            
+            
+            
+
+            var foreign = svg1.append("svg:foreignObject")
+                .attr("id", "chartText")
+                .attr("width", radius)
+                .attr("height", radius)
+                .attr("transform", "translate(" + (-radius / 2 + offset) + "," + (-radius / 2) + ")")
+                .append('xhtml:div')
+                .attr("class", "wrap");
+            foreign.append('xhtml:h3')
+                .attr("class", "chartheader")
+                .text("1991");
+
+            foreign.append('xhtml:p')
+                .attr("class", "chartnumbers")
+                .text(function (d, i) {
+                    var sum = d3.sum(data, function (d) {
+                        return d.absolut / 1000000;
+                    });
+                    return d3.round(sum, 2) + " Mio. Personen";
+                });
+
+            var g = svg1.selectAll(".arc")
+                .data(pie(data))
+                .enter().append("g")
+                .attr("transform", "translate(" + offset  + ", 0)")
+                .attr("class", "arc");
+
+            g.append("path")
+                .attr("d", arc)
+                .style("cursor", "pointer")
+                .on('mouseover', tip.show)
+                .on('mouseout', tip.hide)
+                .transition().style("fill", function (d) {
+                    return color(d.data.percentage);
+                });
+
+            g.append("g")
+                .attr("id", function (d) {
+                    return ("ethnic_" + d.data.Ethnic.substr(0, 1));
+                })
+                .append("text")
+                .attr("transform", function (d) {
+                    return "translate(" + arc.centroid(d) + ")";
+                })
+                .attr("dy", ".35em")
+                .attr("dx", "-0.8em")
+                .text(function (d) {
+                    return d.data.percentage;
+                });
+
+            
+
+        });
+
+
+        d3.csv("data/BiH-Census2013-total.csv", type, function (error, data) {
+            if (error) throw error;
+
+            var foreign = svg2.append("svg:foreignObject")
+                .attr("id", "chartText")
+                .attr("width", radius)
+                .attr("height", radius)
+                .attr("transform", "translate(" + -radius / 2 + "," + -radius / 2 + ")")
+                .append('xhtml:div')
+                .attr("class", "wrap");
+            foreign.append('xhtml:h3')
+                .attr("class", "chartheader")
+                .text("2013");
+
+            foreign.append('xhtml:p')
+                .attr("class", "chartnumbers")
+                .text(function (d, i) {
+                    var sum = d3.sum(data, function (d) {
+                        return d.absolut / 1000000;
+                    });
+                    return d3.round(sum, 2) + " Mio. Personen";
+                });
+
+            var g = svg2.selectAll(".arc")
+                .data(pie(data))
+                .enter().append("g")
+                .attr("class", "arc");
+
+            g.append("path")
+                .attr("d", arc)
+                .style("cursor", "pointer")
+                .on('mouseover', tip.show)
+                .on('mouseout', tip.hide)
+                .transition().style("fill", function (d) {
+                    return color(d.data.percentage);
+                });
+
+            g.append("g")
+                .attr("id", function (d) {
+                    return ("ethnic_" + d.data.Ethnic.substr(0, 1));
+                })
+                .append("text")
+                .attr("transform", function (d) {
+                    return "translate(" + arc.centroid(d) + ")";
+                })
+                .attr("dy", ".35em")
+                .attr("dx", "-0.8em")
+                .text(function (d) {
+                    return d.data.percentage;
+                });
+
+        });
+
+
+        function type(d) {
+            d.percentage = +d.percentage;
+            return d;
+        }
+    </script>
+
+
+
+</body>
+
+</html>

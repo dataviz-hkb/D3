@@ -1,0 +1,3 @@
+Windows > C:\Program Files\Adobe\Adobe Illustrator {version}\Presets\Scripts
+
+Mac OS X > Applications/Adobe Illustrator {version}/Presets/Scripts
