@@ -8,7 +8,15 @@
     <link rel="stylesheet" type="text/css" href="css/tip.css" />
     <link rel="stylesheet" type="text/css" href="css/legend.css" />
     <link rel="stylesheet" type="text/css" href="css/c3.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/jquery.roundslider/1.0/roundslider.min.css" />
+
+
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.roundslider/1.0/roundslider.min.js"></script>
+    <script src="js/lib/modernizr-2.8.3.min.js"></script>
+
+
     <script src="http://d3js.org/d3.v3.min.js"></script>
     <script src="http://d3js.org/topojson.v1.min.js"></script>
     <script src="http://d3js.org/queue.v1.min.js"></script>
@@ -89,7 +97,7 @@
 
         input[type=radio]:checked + label:before {
             content: "\2022";
-            color: ##222;
+            color: #000000;
             font-size: 30px;
             text-align: center;
             line-height: 18px;
@@ -320,13 +328,36 @@
         .q0-9 {
             fill: rgb(2, 96, 13);
         }
+
+        .rs-control .rs-range-color {
+            background-color: #222;
+        }
+
+        .rs-control .rs-path-color {
+            background-color: #222;
+        }
+
+        .rs-control .rs-handle {
+            background-color: #838383;
+        }
+
+         .rs-control .rs-handle {
+            margin-left:0!important;
+            margin-right:0!important;
+        }
+
+        .rs-control .rs-bg-color {
+            background-color: #fff;
+        }
     </style>
-    <script src="js/lib/modernizr-2.8.3.min.js"></script>
+
 </head>
 
 <body>
 
     <div id="map">
+        <div id="slider1" class="rslider"></div>
+
         <h1>Basler Mietpreisindex: Mietpreisunterschiede nach Wohnviertel</h1>
         <p>Durchschnittliche Abweichung vom Referenzwohnviertel «Iselin»
             <br>Quantisierte, mehrstufige Skala (9-stufig)</p>
@@ -336,7 +367,6 @@
                 <label for="r">Renoviert</label>
                 <input type="radio" id="ur" name="Zustand" value="Nicht Renoviert" onclick="updateData('nicht renoviert', svg)">
                 <label for="ur">Nicht Renoviert</label>
-                <br>
             </fieldset>
         </form>
 
@@ -353,10 +383,11 @@
 
         // Startbedingungen
         var filterSelection = 'renoviert';
-        var subSelection = '1991 - 2000';
+        var subSelection = '1900 - 1920';
+        var csv = '4_Zimmer-2016-05.csv';
 
         var rateById = d3.map();
-        var labels = ["< 26%", "< 50", "< 50", "< 50", "0", "150+", "350+", "750+", "> 26%"];
+        var labels = ["kleiner als -20,3%", "-14,5% bis -20,2%", "-8,7% bis -14,4%", "-2,9% bis -8,6%", "2.8% bis -2.8%", "2,9% bis 8,6%", "8,7% bis 14,4%", "14,5% bis 28,2%", "grösser als 20,3%"];
 
 
         var color_range = d3.range(9);
@@ -436,7 +467,7 @@
 
         queue()
             .defer(d3.json, "data/json/wohnviertel.json")
-            .defer(d3.csv, "data/3_Zimmer-2016-05.csv")
+            .defer(d3.csv, "data/" + csv)
             .await(ready);
 
 
@@ -492,24 +523,24 @@
                 .enter().append("g")
                 .attr("class", "legend");
 
-            var ls_w = 20
-                , ls_h = 20;
+            var w = 25
+                , h = 25;
 
             legend.append("rect")
-                .attr("x", width - 10 * ls_w)
+                .attr("x", width - 8 * w)
                 .attr("y", function (d, i) {
-                    return height - (i * ls_h) - 2 * ls_h;
+                    return height - (i * h) - 2 * h;
                 })
-                .attr("width", ls_w)
-                .attr("height", ls_h)
+                .attr("width", w)
+                .attr("height", h)
                 .attr("class", function (d, i) {
                     return "wohnviertel q" + i + "-9";
                 });
 
             legend.append("text")
-                .attr("x", width - 8 * ls_w)
+                .attr("x", width - 6 * w)
                 .attr("y", function (d, i) {
-                    return height - (i * ls_h) - ls_h - 4;
+                    return height - (i * h) - h - 8;
                 })
                 .text(function (d, i) {
                     return labels[i];
@@ -526,7 +557,7 @@
 
             queue()
                 //.defer(d3.json, "data/json/wohnviertel.json")
-                .defer(d3.csv, "data/3_Zimmer-2016-05.csv")
+                .defer(d3.csv, "data/" + csv)
                 .await(ready);
 
             function ready(error, data) {
@@ -553,6 +584,79 @@
 
             };
 
+        }
+
+        $("#slider1").roundSlider({
+            change: function (e) {
+
+                var vectors = svg.select("g.polygon");
+
+                queue()
+                    //.defer(d3.json, "data/json/wohnviertel.json")
+                    .defer(d3.csv, "data/" + csv)
+                    .await(ready);
+
+                function ready(error, data) {
+                    if (error) return console.error(error);
+
+                    var subCSV = {};
+                    data.forEach(function (d) {
+
+                        if (d['Zustand'] == filterSelection ) {
+                            subCSV[d.ID] = +d[tooltipBuild(e)];
+                            rateById.set(d.ID, +d[tooltipBuild(e)]);
+                        };
+                    });
+
+
+                    tip.html(function (d, i) {
+                        return ("<span style='color:white'>" + d.properties.name + ": " + d3.round((subCSV[d.properties.OBJECTID] * 100), 2) + " %</span>");
+                    });
+
+                    var update = vectors.selectAll("g.wohnviertel");
+                    update.attr("class", function (d) {
+                            return quantize(rateById.get(d.properties.OBJECTID))
+                        })
+                        .classed("updated", !update.classed("updated"));
+
+                };
+
+            }
+
+
+            , sliderType: "default"
+            , min: 0
+            , max: 8
+            , startAngle: 90
+            , radius: 80
+            , width: 1,
+
+            handleSize: "25,10"
+            , editableTooltip: false
+            , tooltipFormat: "tooltipBuild"
+
+
+        });
+
+
+        function tooltipSize(args) {
+
+            var size = ["1_Zimmer-2016-05.csv", "2_Zimmer-2016-05.csv", "3_Zimmer-2016-05.csv"
+
+                , "4_Zimmer-2016-05.csv", "5_Zimmer-2016-05.csv", "6_Zimmer-2016-05.csv"];
+
+            return size[args.value];
+        }
+
+        function tooltipBuild(args) {
+
+            var build = ["1900 - 1920", "1921 - 1946"
+
+                , "1947 - 1960", "1961 - 1970", "1971 - 1980", "1981 - 1990"
+
+                , "1991 - 2000", "vor 1900", "1900 - 1920"];
+
+            return build[args.value];
         }
     </script>
 </body>
