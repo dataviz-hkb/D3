@@ -113,7 +113,7 @@ Vererbung der Schrift an alle Kinds-Elemente entspricht der Erwartung an den Dok
 <p>&nbsp;</p>
 ###File: [L1.07.html](L1.07.html)###
 ####Strukturierung mit HTML####
-Dieses Beispiel, um zu illustrieren, welcher Aufwand nötig wäre, um visuell das gleiche Ergebnis zu erhalten, ohne Vergabe von Klassen und ID's mit der HTML-Struktur aus Dokument [L1.02.html](L1.02.html)
+Dieses Beispiel, um zu illustrieren, welcher Aufwand nötig wäre, um visuell das gleiche Ergebnis zu erhalten, ohne Vergabe von Klassen und ID's. Vergleiche HTML-Struktur aus Dokument [L1.02.html](L1.02.html) mit [L1.07.html](L1.07.html)
 
 
 
