@@ -1,1 +1,53 @@
-test
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Daten - 3 | CAS Dataviz, Daniel Schoeneck</title>
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+</head>
+<body>
+    <div style="width:200px; margin:200px auto;">
+    <!--        Verzicht auf Attribut viewBox -->
+    <!--        Verzicht auf Attribut namespace (xmlns="http://www.w3.org/2000/svg"), D3 wird das für uns regeln -->
+
+        <svg width="200" height="200" style="stroke-width: 0; background-color: white;">
+
+            <rect  fill="#7600ff"></rect>
+            <rect  fill="#6516c1"></rect>
+            <rect  fill="#51119b"></rect>
+            <rect  fill="#3d1869"></rect>
+            <rect  fill="#7600ff"></rect>
+            <rect  fill="#6516c1"></rect>
+            <rect  fill="#51119b"></rect>
+            <rect  fill="#3d1869"></rect>
+
+        </svg>
+    </div>
+
+
+    <script>
+
+        var datensatz = [ 400, 920, 331, 600, 223, 584, 119, 438 ];
+        datensatz = datensatz.sort(function (a,b) {return d3.ascending(a, b); });
+
+        d3.selectAll( "rect" )
+            .data( datensatz )
+
+            .attr( "height", function(d,i){
+                return d/10 * 2;
+            })
+
+            .attr( "y", function(d,i){
+                return 200 - d/10*2;
+            })
+
+            .attr( "x", function(d,i){
+                return i * 25;
+            })
+
+            .attr( "width", 24);
+
+    </script>
+
+</body>
+</html>
