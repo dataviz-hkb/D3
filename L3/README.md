@@ -6,7 +6,7 @@
 | :---------- | :---------- | :---- | :--------------- |
 | selectAll(selector) | Selektor | Selektor | Mehrfach-Element-Selektion für jeden Eintrag in der Selektion |
 | data() | Auswahl | Array | Hole das Data-Array für die erste Gruppe der Auswahl. |
-| enter() | Auswahl | EnterSelection | Rückgabe einer "sub"-Selektion (Array) als Platzhalter für fehlende Elemente, im Zusammenhang mit data() |
+| enter() | Auswahl | EnterSelection | Rückgabe einer "Sub"-Selektion als Platzhalter-Array für fehlende Elemente, im Zusammenhang mit data() |
 | attr(name,value) | Auswahl | Auswahl | Attribute: Eigenschaft und Wert zuweisen. |
 | sort(comparator) | Auswahl | Auswahl | Sortiert die Elemente in der Selektion |
 
