@@ -62,15 +62,13 @@ Ein standardkonformer Browser veranlasst das, Unterschiede in Textgrösse für h
 <p>&nbsp;</p>
 ###File: [L1.04.html](L1.04.html)###
 ####Strukturierung mit HTML, gestalterischer Eingriff mit CSS####
-
-[ansehen](https://dataviz-hkb.github.io/D3/L1/L1-04.html)
-
 Jetzt kann CSS kommen. Drei Möglichkeiten CSS einzubinden und zu verwenden: 
 
 1. direkt im Dokument, über `<style type="text/css"> … </style>` im `<head>`
 2. verlinkt auf ein Dokument, über `<link rel="stylesheet" href=" … " type="text/css">` im `<head>`
 3. Inline, als Attribut, über beispielsweise `<p style="color: deeppink;"> </p>` direkt dem Element zugewiesen
 
+[Beispiel ansehen](https://dataviz-hkb.github.io/D3/L1/L1-04.html)
 
 
 <p>&nbsp;</p>
@@ -91,6 +89,8 @@ Jetzt kann CSS kommen. Drei Möglichkeiten CSS einzubinden und zu verwenden:
 * Mehrfach-Selektion ist möglich über die Verwendung von Kommata. <br>Beispiel: Die drei Elemente `<body> … </body>` , `<p id="testID"> … </p>` und `<h1> … </h1>` werden mit folgender CSS-Syntax `body, #testID, h1 { … }` selektiert (Zusammenfassung, Trennung über Kommata). So kann redundantes Schreiben von CSS Anweisungen vermieden werden.
 
 * Die Kombination von generischen Selektoren mit Klassen-Selektoren verschärfen die Selektionsbedingungen. <br>Beispiel, gegeben folgende Struktur:  `<h1 class="kursiv"> … </h1>  <p class="kursiv"> … </p>`  hier selektiert `h1.kursiv { … }` ausschliesslich die Überschrift. Der Absatz bleibt unverändert, obwohl er zur gleichen Klasse gehört.
+
+
 
 <p>&nbsp;</p>
 ###File: [L1.06.html](L1.06.html)###
