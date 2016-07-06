@@ -118,8 +118,8 @@ data = data.sort(function (a,b) {return d3.ascending(a, b); });  // Aufsteigend
 
 <p>&nbsp;</p>
 ###File: [L3.05.html](L3.05.html)###
-####SVG elemente####
-Koordinatenursprung für SVG ist Oben und Links. Positionierung entsprechend anpassen. 
+####SVG Elemente####
+Koordinatenursprung für SVG ist __Oben__ und __Links__. Positionierung entsprechend anpassen. 
 ``` javascript
 d3.select("rect")
     .attr( "height", 126)
