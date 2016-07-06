@@ -127,16 +127,15 @@ d3.select("rect")
 ```
 
 <p>&nbsp;</p>
-###File: [L3.01.html](L3.01.html)###
-####Daten holen, Elemente erstellen, Daten verarbeiten####
-Datenarray holen, Keys und Werte, dann mittels enter() eine Subselektion erstellen aus Vergleich zwischen "vorhandenen" und "benötigten" Elementen. "Benötigte" am Schluss anhängen.
-``` javascript
-d3.select("body").selectAll("p") // <--- Alle <p> \\\ falls keine vorhanden weiter…
-        .data(datenset) // <--- Datenarray holen, Keys und Werte
-        .enter() // <--- Subselektion: Vergleich "Vorhandene" mit "Benötigten"
-        .append("p") // <--- "Benötigte" am Schluss anhängen
-        .text(function(d) { return Math.sin(+d); });  // <--- Textausgabe (Sinus von Datenwert)
-```
+###File: [L3.06.html](L3.06.html)###
+###File: [L3.07.html](L3.07.html)###
+###File: [L3.08.html](L3.08.html)###
+###File: [L3.09.html](L3.09.html)###
+###File: [L3.10.html](L3.10.html)###
+###File: [L3.11.html](L3.11.html)###
+
+Datenarray zu simplem SVG Balkendiagramm.
+
 
         
 <p>&nbsp;</p>
