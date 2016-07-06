@@ -68,7 +68,7 @@ Jetzt kann CSS kommen. Drei Möglichkeiten CSS einzubinden und zu verwenden:
 2. verlinkt auf ein Dokument, über `<link rel="stylesheet" href=" … " type="text/css">` im `<head>`
 3. Inline, als Attribut, über beispielsweise `<p style="color: deeppink;"> </p>` direkt dem Element zugewiesen
 
-###Open(https://dataviz-hkb.github.io/D3/L1/L1-04.html)###
+Open(https://dataviz-hkb.github.io/D3/L1/L1-04.html)
 
 
 <p>&nbsp;</p>
