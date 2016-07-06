@@ -1,65 +1,29 @@
 # DATA
 
 
-####Einfaches Beispiel, HTML-Struktur (HTML, SVG):####
-```html
-        <svg width="200" height="200" style="stroke-width: 0;">
-            <rect x="0" y="176" width="24" height="24" fill="#7600ff"></rect>
-            <rect x="25" y="176" width="24" height="24" fill="#6516c1"></rect>
-            <rect x="50" y="176" width="24" height="24" fill="#51119b"></rect>
-            <rect x="75" y="176" width="24" height="24" fill="#3d1869"></rect>
-            <rect x="100" y="176" width="24" height="24" fill="#7600ff"></rect>
-            <rect x="125" y="176" width="24" height="24" fill="#6516c1"></rect>
-            <rect x="150" y="176" width="24" height="24" fill="#51119b"></rect>
-            <rect x="175" y="176" width="24" height="24" fill="#3d1869"></rect>
-        </svg>
-```
+####Beispiele aus 3 | Data sind generell zu verbessern:####
 
-####Javascript:####
-```javascript
-    var datensatz = [ 400, 920, 331, 600, 223, 584, 119, 438 ];
-        datensatz = datensatz.sort(function (a,b) {return d3.descending(a, b); });
-        d3.selectAll( "rect" )
-            .data( datensatz )
-            .attr( "height", function(d,i){
-                return d;
-            })
-            .attr( "y", function(d,i){
-                return 200 - d;
-            });
-            
-```
 
-[Beispiel ansehen](https://dataviz-hkb.github.io/D3/L3/L3.10.html)
 
+###File: [L4.00.html](L4.00.html)###
+####Versuch 1, Verbesserung über SVG Objekt####
+Verwendung von SVG, Erstellung der Elemente <g> und <rect> mit den Methoden data(), enter(), append()
+
+Nichts grundsätzlich neues.
 
 <p>&nbsp;</p>
 
-
-
-
-###File: [L3.00.html](L3.00.html)###
-####Das grundlegende Konzept von D3 mit Data####
-Datenarray holen, traversieren und pro Datenpunkt ein neues Element erzeugen.
+###File: [L4.01.html](L4.01.html)###
+####CSV-Daten verarbeiten####
+Daten einlesen und als Vereinfachung und Anlehnung an Beispiel aus 3 | Data auch hier alles an ein  Array übergeben. Daten direkt zu Zahlen konvertieren über den `+`-Operator.
 ``` javascript
-var datenset = [ 5, 10, 15, 20, 25 ];
-d3.select("body").selectAll("p")
-    .data(datenset)
-    .enter()
-    .append("p")
-    .text("Sprache ist Praxis. Sprache an sich existiert nicht.");
-```
+d3.csv("data/datensatz.csv", function(error, data) {
 
-<p>&nbsp;</p>
-###File: [L3.01.html](L3.01.html)###
-####Daten holen, Elemente erstellen, Daten verarbeiten####
-Datenarray holen, Keys und Werte, dann mittels enter() eine Subselektion erstellen aus Vergleich zwischen "vorhandenen" und "benötigten" Elementen. "Benötigte" am Schluss anhängen.
-``` javascript
-d3.select("body").selectAll("p") // <--- Alle <p> \\\ falls keine vorhanden weiter…
-        .data(datenset) // <--- Datenarray holen, Keys und Werte
-        .enter() // <--- Subselektion: Vergleich "Vorhandene" mit "Benötigten"
-        .append("p") // <--- "Benötigte" am Schluss anhängen
-        .text(function(d) { return Math.sin(+d); });  // <--- Textausgabe (Sinus von Datenwert)
+        data.forEach(function(d) {
+            datensatz.push(parseInt(+d.Rate));
+        });
+        
+}
 ```
 
         
