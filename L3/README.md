@@ -172,7 +172,7 @@ svg.selectAll("rect")
 <p>&nbsp;</p>
 ###File: [L3.13.html](L3.13.html)###
 ####Die `selectAll()`, `data()`, `enter()`, `append()` Sequenz verstehen####
-Um das Konzept in diesem Fall erfolgreich zu halten, d.h. jene benötigten Elemente hinzuzufügen und der gesamten Selektion zugänglich zu machen, muss die Sequenz aufgeteilt werden
+Die  Sequenz muss aufgeteilt werden, um das Konzept auch in diesem Fall erfolgreich zu halten, d.h. um jene benötigten Elemente hinzuzufügen und um diese der gesamten Selektion zugänglich zu machen. Aufteilung in: 
 
 1. in Auswahl aller Elemente(e), Datenarray holen
 2. in enter() = Vergleich zwischen "vorhandenen" und "benötigten" Elementen. "Benötigte" am Schluss anhängen
