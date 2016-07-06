@@ -1,7 +1,7 @@
 # DATA
 
 
-####Beispiele aus 3 | Data sind generell zu verbessern:####
+####Beispiele aus 3 | Data sind generell zu verbessern. Hier der Versuch:####
 
 
 
