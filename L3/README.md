@@ -30,19 +30,19 @@
 ####Javascript:####
 ```javascript
     var datensatz = [ 400, 920, 331, 600, 223, 584, 119, 438 ];
-
-        d3.select("svg").selectAll( "rect" )
+        datensatz = datensatz.sort(function (a,b) {return d3.descending(a, b); });
+        d3.selectAll( "rect" )
             .data( datensatz )
             .attr( "height", function(d,i){
-                return d/10 * 2;
+                return d;
             })
             .attr( "y", function(d,i){
-                return 200 - d/10 *2;
-            })
+                return 200 - d;
+            });
             
 ```
 
-[Vollständiges Beispiel | Quelltext](index.html)
+[Beispiel ansehen](https://dataviz-hkb.github.io/D3/L3/L3.13.html)
 
 
 
