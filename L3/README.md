@@ -53,7 +53,7 @@
 
 ###File: [L3.00.html](L3.00.html)###
 ####Das grundlegende Konzept von D3 mit Data####
-Datenarray holen, traversieren und pro Datenpunkt ein neues Elemnt erzeugen.<br>
+Datenarray holen, traversieren und pro Datenpunkt ein neues Element erzeugen.
 ``` javascript
 var datenset = [ 5, 10, 15, 20, 25 ];
 d3.select("body").selectAll("p")
@@ -66,6 +66,7 @@ d3.select("body").selectAll("p")
 <p>&nbsp;</p>
 ###File: [L3.01.html](L3.01.html)###
 ####Daten holen, Elemente erstellen, Daten verarbeiten####
+Datenarray holen, Keys und Werte, dann mittels enter() eine Subselektion erstellen aus Vergleich zwischen "vorhandenen" und "benötigten" Elementen. "Benötigte" am Schluss anhängen.
 ``` javascript
 d3.select("body").selectAll("p") // <--- Alle <p> \\\ falls keine vorhanden weiter…
         .data(datenset) // <--- Datenarray holen, Keys und Werte
