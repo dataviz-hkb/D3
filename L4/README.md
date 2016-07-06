@@ -1,4 +1,4 @@
-# DATA
+# DATA CSV/TSV
 
 
 ####Beispiele aus 3 | Data sind generell zu verbessern. Hier der Versuch:####
@@ -28,16 +28,15 @@ d3.csv("data/datensatz.csv", function(error, data) {
 
         
 <p>&nbsp;</p>
-###File: [L3.02.html](L3.02.html)###
-####Daten holen, Elemente erstellen, Daten verarbeiten####
-Datenarray holen, Keys und Werte, dann mittels enter() eine Subselektion erstellen aus Vergleich zwischen "vorhandenen" und "benötigten" Elementen. "Benötigte" am Schluss anhängen.
+###File: [L4.02.html](L4.02.html)###
+####Rückgabe von Werten an Objekte####
+Die Rückgabe von Daten, die mit der gegebenen Selektion in Zusammenhang stehen, geht elegant über eine selbstaufrufende Funktion:
 ``` javascript
-d3.select("body").selectAll("p") // <--- Alle <p> \\\ falls keine vorhanden weiter…
-        .data(datenset) // <--- Datenarray holen, Keys und Werte
-        .enter() // <--- Subselektion: Vergleich "Vorhandene" mit "Benötigten"
-        .append("p") // <--- "Benötigte" am Schluss anhängen
-        .text(function(d) { return Math.sin(+d); });  // <--- Textausgabe (Sinus von Datenwert)
+function(d,i) { return +d };
 ```
+wobei d die Daten repräsentiert, die mit der gegebenen Selektion in Zusammenhang stehen
+<br>und i die Position der Daten im Array repräsentiert.
+
 
 <p>&nbsp;</p>
 ###File: [L3.03.html](L3.03.html)###
