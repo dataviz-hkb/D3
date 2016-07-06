@@ -135,7 +135,7 @@ Datenarray zu SVG Balkendiagramm.
         
 <p>&nbsp;</p>
 ###File: [L3.12.html](L3.12.html)###
-####Daten holen, Elemente erstellen, Daten verarbeiten####
+####`selectAll()`, `data()`, `enter()`, `append()` als Schlüsselkonzept####
 Datenarray holen, Keys und Werte, dann mittels enter() eine Subselektion erstellen aus Vergleich zwischen "vorhandenen" und "benötigten" Elementen. "Benötigte" am Schluss anhängen.
 ``` javascript
 d3.select("body").selectAll("p") // <--- Alle <p> \\\ falls keine vorhanden weiter…
@@ -147,7 +147,7 @@ d3.select("body").selectAll("p") // <--- Alle <p> \\\ falls keine vorhanden weit
 
 <p>&nbsp;</p>
 ###File: [L3.13.html](L3.13.html)###
-####Daten holen, Elemente erstellen, Daten verarbeiten####
+####`selectAll()`, `data()`, `enter()`, `append()` Sequenz verstehen####
 Datenarray holen, Keys und Werte, dann mittels enter() eine Subselektion erstellen aus Vergleich zwischen "vorhandenen" und "benötigten" Elementen. "Benötigte" am Schluss anhängen.
 ``` javascript
 d3.select("body").selectAll("p") // <--- Alle <p> \\\ falls keine vorhanden weiter…
