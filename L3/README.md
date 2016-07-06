@@ -92,6 +92,7 @@ d3.select("body").selectAll("p") // <--- Alle <p> \\\ falls keine vorhanden weit
 ###File: [L3.03.html](L3.03.html)###
 ####Das Ganze mit `<div>` als Balkendiagramm####
 Gleiches Prinzip: Datenarray holen, mittels enter() ein Vergleich zwischen "vorhandenen" und "benötigten" Elementen erstellen. "Benötigte" anhängen und deren Höhe als Funktion von Data berechnen.
+[Beispiel ansehen](https://dataviz-hkb.github.io/D3/L3/L3.03.html)
 ``` javascript
 d3.select("#datawrapper").selectAll("div")
         .data(datenset)
