@@ -1,53 +1,46 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="de">
 <head>
     <meta charset="utf-8">
-    <title>Daten - 3 | CAS Dataviz, Daniel Schoeneck</title>
-    <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data - 3 | CAS Dataviz, Daniel Schoeneck</title>
+    <link rel="stylesheet" href="../css/defaults.css" type="text/css">
+    <style>
+        #datawrapper {
+            overflow: visible;
+            width:960px;
+            margin: 200px auto;
+            text-align: center;
+        }
+        .bar {
+            width: 20px;
+            height: 100px;
+            background-color: black;
+            margin-right: 2px;
+            display: inline-block;
+        }
+
+    </style>
 </head>
+
 <body>
-    <div style="width:200px; margin:200px auto;">
-    <!--        Verzicht auf Attribut viewBox -->
-    <!--        Verzicht auf Attribut namespace (xmlns="http://www.w3.org/2000/svg"), D3 wird das für uns regeln -->
+    <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <div id="datawrapper" class="clearfix"><h1>Datenvisualisierung, simpel</h1></div>
 
-        <svg width="200" height="200" style="stroke-width: 0; background-color: white;">
+    <script type="text/javascript">
 
-            <rect  fill="#7600ff"></rect>
-            <rect  fill="#6516c1"></rect>
-            <rect  fill="#51119b"></rect>
-            <rect  fill="#3d1869"></rect>
-            <rect  fill="#7600ff"></rect>
-            <rect  fill="#6516c1"></rect>
-            <rect  fill="#51119b"></rect>
-            <rect  fill="#3d1869"></rect>
+        var datenset = [ 1, 0.4, 124, 0, 122, 6, 63, 24, 2, 3, 24, 0.24, 1, 122, 63, 24, 5 ];
 
-        </svg>
-    </div>
-
-
-    <script>
-
-        var datensatz = [ 400, 920, 331, 600, 223, 584, 119, 438 ];
-        datensatz = datensatz.sort(function (a,b) {return d3.ascending(a, b); });
-
-        d3.selectAll( "rect" )
-            .data( datensatz )
-
-            .attr( "height", function(d,i){
-                return d/10 * 2;
-            })
-
-            .attr( "y", function(d,i){
-                return 200 - d/10*2;
-            })
-
-            .attr( "x", function(d,i){
-                return i * 25;
-            })
-
-            .attr( "width", 24);
+        d3.select("#datawrapper").selectAll("div")
+                                .data(datenset)
+                                .enter()
+                                .append("div")
+                                .attr("class", "bar")
+                                .style("height", function(d) {
+                                        return Math.abs(100*(Math.sin(d) + Math.cos(d))) + "px";
+                                })
+                                .style("background-color", "deeppink");
 
     </script>
-
 </body>
 </html>
