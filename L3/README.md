@@ -30,7 +30,7 @@
             
 ```
 
-[Beispiel ansehen](https://dataviz-hkb.github.io/D3/L3/L3.13.html)
+[Beispiel ansehen](https://dataviz-hkb.github.io/D3/L3/L3.10.html)
 
 
 <p>&nbsp;</p>
@@ -135,14 +135,38 @@ Datenarray zu SVG Balkendiagramm.
         
 <p>&nbsp;</p>
 ###File: [L3.12.html](L3.12.html)###
-####`selectAll()`, `data()`, `enter()`, `append()` als Schlüsselkonzept####
-Datenarray holen, Keys und Werte, dann mittels enter() eine Subselektion erstellen aus Vergleich zwischen "vorhandenen" und "benötigten" Elementen. "Benötigte" am Schluss anhängen.
+####Wie funktioniert `selectAll()`, `data()`, `enter()`, `append()` als Schlüsselkonzept von D3####
+Gegeben: Datenarray mit 16 Feldinhalten (Zahlenwerte). SVG Objekt mit 8 `<rect>`Elementen.
+dann mittels enter() eine Subselektion erstellen aus Vergleich zwischen "vorhandenen" und "benötigten" Elementen. 
+
+[Beispiel ansehen](https://dataviz-hkb.github.io/D3/L3/L3.13.html)
+
 ``` javascript
-d3.select("body").selectAll("p") // <--- Alle <p> \\\ falls keine vorhanden weiter…
-        .data(datenset) // <--- Datenarray holen, Keys und Werte
-        .enter() // <--- Subselektion: Vergleich "Vorhandene" mit "Benötigten"
-        .append("p") // <--- "Benötigte" am Schluss anhängen
-        .text(function(d) { return Math.sin(+d); });  // <--- Textausgabe (Sinus von Datenwert)
+var datensatz = [ 20.4, 124, 43.4, 122, 6, 63, 24, 220, 122, 6, 63, 24, 2, 5, 143, 24 ];
+```
+``` html
+<svg width="400" height="200" style="stroke-width: 0;">
+        <rect x="0" y="176" width="24" height="24" fill="#7600ff"></rect>
+        <rect x="25" y="176" width="24" height="24" fill="#6516c1"></rect>
+        <rect x="50" y="176" width="24" height="24" fill="#51119b"></rect>
+        <rect x="75" y="176" width="24" height="24" fill="#3d1869"></rect>
+        <rect x="100" y="176" width="24" height="24" fill="#7600ff"></rect>
+        <rect x="125" y="176" width="24" height="24" fill="#6516c1"></rect>
+        <rect x="150" y="176" width="24" height="24" fill="#51119b"></rect>
+        <rect x="175" y="176" width="24" height="24" fill="#3d1869"></rect>
+</svg>
+```
+``` javascript
+var svg = d3.select("svg");
+svg.selectAll("rect")
+        .data(datensatz)
+        .enter().append("rect")
+            .attr("class", "bar")
+            .attr("width", 24)
+            .style("fill", "deeppink")
+            .attr("height", function(d,i) { return d })
+            .attr("y", function(d,i) {  return 200 - d })
+            .attr("x", function(d,i) { return i*25 });
 ```
 
 <p>&nbsp;</p>
