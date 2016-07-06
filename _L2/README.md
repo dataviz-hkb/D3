@@ -767,7 +767,6 @@ if (amount > bank_balance) {
 
 **Note:** The simplest way to run this JavaScript program is to type it into the developer console of your nearest browser.
 
-How did you do? It wouldn't hurt to try it again now that you've seen my code. And play around with changing some of the constants to see how the program runs with different values.
 
 ## Review
 
