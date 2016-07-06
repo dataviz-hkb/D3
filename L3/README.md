@@ -135,7 +135,7 @@ Datenarray zu SVG Balkendiagramm.
         
 <p>&nbsp;</p>
 ###File: [L3.12.html](L3.12.html)###
-####Wie funktioniert `selectAll()`, `data()`, `enter()`, `append()` als Schlüsselkonzept von D3####
+####Wie funktioniert das Schlüsselkonzept `selectAll()`, `data()`, `enter()`, `append()` ?####
 Gegeben: Datenarray mit 16 Feldinhalten (Zahlenwerte). SVG Objekt mit 8 `<rect>`Elementen.
 dann mittels enter() eine Subselektion erstellen aus Vergleich zwischen "vorhandenen" und "benötigten" Elementen. 
 
