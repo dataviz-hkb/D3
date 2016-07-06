@@ -8,13 +8,13 @@
 ###File: [L4.00.html](L4.00.html)###
 ####Versuch 1, Verbesserung über SVG Objekt####
 Verwendung von SVG, Erstellung der Elemente <g> und <rect> mit den Methoden data(), enter(), append()
-Nichts grundsätzlich Neues.
+<br>Nichts grundsätzlich Neues.
 
 <p>&nbsp;</p>
 
 ###File: [L4.01.html](L4.01.html)###
 ####CSV-Daten verarbeiten####
-Daten einlesen und als Vereinfachung und Anlehnung an Beispiel aus 3 | Data auch hier alles an ein  Array übergeben. Daten direkt zu Zahlen konvertieren über den `+`-Operator.
+Daten einlesen und als Vereinfachung und Anlehnung an Beispiel aus 3 | Data auch hier alles an ein  Array übergeben. Daten direkt zu Zahlen konvertieren über den `+`-Operator, dann zu ganzzahlig konvertieren.
 ``` javascript
 var datensatz = [];
 d3.csv("data/datensatz.csv", function(error, data) {
