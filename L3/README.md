@@ -15,45 +15,32 @@
 
 ####Einfaches Beispiel, HTML-Struktur (HTML, SVG):####
 ```html
-        <svg width="200" height="200" style="stroke-width: 0; background-color: white;">
-
-            <rect  fill="#7600ff"></rect>
-            <rect  fill="#6516c1"></rect>
-            <rect  fill="#51119b"></rect>
-            <rect  fill="#3d1869"></rect>
-            <rect  fill="#7600ff"></rect>
-            <rect  fill="#6516c1"></rect>
-            <rect  fill="#51119b"></rect>
-            <rect  fill="#3d1869"></rect>
-
+        <svg width="200" height="200" style="stroke-width: 0;">
+            <rect x="0" y="176" width="24" height="24" fill="#7600ff"></rect>
+            <rect x="25" y="176" width="24" height="24" fill="#6516c1"></rect>
+            <rect x="50" y="176" width="24" height="24" fill="#51119b"></rect>
+            <rect x="75" y="176" width="24" height="24" fill="#3d1869"></rect>
+            <rect x="100" y="176" width="24" height="24" fill="#7600ff"></rect>
+            <rect x="125" y="176" width="24" height="24" fill="#6516c1"></rect>
+            <rect x="150" y="176" width="24" height="24" fill="#51119b"></rect>
+            <rect x="175" y="176" width="24" height="24" fill="#3d1869"></rect>
         </svg>
-
 ```
 
 ####Javascript:####
 ```javascript
     var datensatz = [ 400, 920, 331, 600, 223, 584, 119, 438 ];
-        datensatz = datensatz.sort(function (a,b) {return d3.ascending(a, b); });
 
-        d3.selectAll( "rect" )
+        d3.select("svg").selectAll( "rect" )
             .data( datensatz )
-
             .attr( "height", function(d,i){
                 return d/10 * 2;
             })
-
             .attr( "y", function(d,i){
-                return 200 - d/10*2;
+                return 200 - d/10 *2;
             })
-
-            .attr( "x", function(d,i){
-                return i * 25;
-            })
-
-            .attr( "width", 24);
             
 ```
-
 
 [Vollständiges Beispiel | Quelltext](index.html)
 
