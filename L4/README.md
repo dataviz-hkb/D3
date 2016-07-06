@@ -34,8 +34,8 @@ Die Rückgabe von Daten, die mit der gegebenen Selektion in Zusammenhang stehen,
 ``` javascript
 function(d,i) { return +d };
 ```
-wobei d die Daten repräsentiert, die mit der gegebenen Selektion in Zusammenhang stehen
-<br>und i die Position der Daten im Array repräsentiert.
+wobei __d__ die Daten repräsentiert, die mit der gegebenen Selektion in Zusammenhang stehen
+<br>und __i__ die Position der Daten im Array repräsentiert.
 
 
 <p>&nbsp;</p>
