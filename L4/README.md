@@ -35,11 +35,11 @@ Die Rückgabe von Daten, die mit der gegebenen Selektion in Zusammenhang stehen,
 function(d,i) { return +d };
 ```
 wobei __d__ die Daten repräsentiert, die mit der gegebenen Selektion in Zusammenhang stehen
-<br>und __i__ die Position der Daten im Array repräsentiert.
+<br>und __i__ die Position der Daten im Array wiedergibt.
 
 
 <p>&nbsp;</p>
-###File: [L3.03.html](L3.03.html)###
+###File: [L4.03.html](L4.03.html)###
 ####Das Ganze mit `<div>` als Balkendiagramm####
 Gleiches Prinzip: Datenarray holen, mittels enter() ein Vergleich zwischen "vorhandenen" und "benötigten" Elementen erstellen. "Benötigte" anhängen und deren Höhe als Funktion von Data berechnen.
 [Beispiel ansehen](https://dataviz-hkb.github.io/D3/L3/L3.03.html)
@@ -58,11 +58,15 @@ d3.select("#datawrapper").selectAll("div")
 
 <p>&nbsp;</p>
 ###File: [L3.04.html](L3.04.html)###
-####Daten verarbeiten, sortieren####
-Datenarray holen, Keys und Werte, dann mittels enter() eine Subselektion erstellen aus Vergleich zwischen "vorhandenen" und "benötigten" Elementen. "Benötigte" am Schluss anhängen.
+####Weitere Verbesserung: verlorene Daten zurückholen####
+Die im CSV Dokument unterschlagenen Daten (Wertepaare) zurückholen. Das Einlesen der Daten:
 ``` javascript
-data = data.sort(function (a,b) {return d3.descending(a, b); });  // Absteigend
-data = data.sort(function (a,b) {return d3.ascending(a, b); });  // Aufsteigend
+rows.forEach(function(d) {
+    datensatz.push({
+        name: d.ID,
+        value: +d.Rate
+    })
+});
 ```
 
 
