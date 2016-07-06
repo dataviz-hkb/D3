@@ -4,9 +4,10 @@
 
 | Name | von Objekt | Rückgabe | Beschreibung |
 | :---------- | :---------- | :---- | :--------------- |
-| attr(name,value) | Auswahl | Auswahl | Attribute: Eigenschaft und Wert zuweisen. |
-| data() | Auswahl | Array | Hole das Data-Array für die erste Gruppe der Auswahl. |
 | selectAll(selector) | Selektor | Selektor | Mehrfach-Element-Selektion für jeden Eintrag in der Selektion |
+| data() | Auswahl | Array | Hole das Data-Array für die erste Gruppe der Auswahl. |
+| enter() | Auswahl | EnterSelection | Rückgabe einer "sub"-Selektion (Array) als Platzhalter für fehlende Elemente, im Zusammenhang mit data() |
+| attr(name,value) | Auswahl | Auswahl | Attribute: Eigenschaft und Wert zuweisen. |
 | sort(comparator) | Auswahl | Auswahl | Sortiert die Elemente in der Selektion |
 
 
@@ -63,15 +64,20 @@
 <p>&nbsp;</p>
 
 
-###File: [L1.02.html](L1.02.html)###
-####Strukturierung mit HTML####
-Semantische Struktur dort, wo möglich und sinnvoll.<br>
-D.h. Überschrift wird zu Überschrift (`<h1>` bzw. `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>`)<br> 
-Absatz wird zu Absatz (`<p>`) etc. <br> Übersicht in der HTML-Referenz: https://developer.mozilla.org/de/docs/Web/HTML/Element<br>
-`<div>` als generisches Element wird generell dort eingesetzt, wo nicht-semantische Verpackung/Gliederung/Struktur gewünscht ist.
+###File: [L3.00.html](L3.00.html)###
+####Das grundlegende Konzept von D3 mit Data####
+Datenarray holen, traversieren und pro Datenpunkt ein neues Elemnt erzeugen.<br>
+``` javascript
+var datenset = [ 5, 10, 15, 20, 25 ];
+d3.select("body").selectAll("p")
+    .data(datenset)
+    .enter()
+    .append("p")
+    .text("Sprache ist Praxis. Sprache an sich existiert nicht.");
+```
 
 <p>&nbsp;</p>
-###File: [L1.03.html](L1.03.html)###
+###File: [L3.01.html](L1.03.html)###
 ####Variante: Strukturierung mit HTML####
 Die Bildung von Struktur unterliegt einzig und allein der Regel, dass valider (= allgemein gültiger) HTML Code entsteht. Das bedeutet, dass zur Auszeichnung des Dokuments (HTML = Hypertext Markup Language = Hypertext Auszeichnungssprache ) alles erlaubt ist, was gültig ist, man also relativ frei ist, diese selber zu bestimmen.
 Hier eine Variante, die minimal anders aufgebaut ist, sich jedoch semantisch unterscheidet.
