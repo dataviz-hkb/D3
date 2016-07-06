@@ -2,9 +2,10 @@
 <html lang="de">
 <head>
     <meta charset="utf-8">
-    <title>Daten CSV/TSV - 4 | CAS Dataviz, Daniel Schoeneck</title>
+    <title>Data CSV/TSV - 4 | CAS Dataviz, Daniel Schoeneck</title>
     <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 </head>
+
 <body>
     <div style="width:650px; margin:200px auto;">
         <svg width="650" height="420" style="stroke-width: 0; background-color: white;">
@@ -13,42 +14,51 @@
 
 
     <script>
+        // Leeres Datenarray
         var datensatz = [];
-        var svg = d3.select("svg").append("g");
 
-        d3.csv("data/datensatz.csv", function(error, data) {
+        // SVG Objekt holen
+        var svg = d3.select("svg")
+            .append("g");
 
-                data.forEach(function(d) {
-                    datensatz.push(parseInt(+d.Rate)+1);
-                });
+        // Daten einlesen und als Vereinfachung und Anlehnung an Beispiel aus L3 an Array übergeben
+        d3.csv("data/datensatz.csv", function (error, data) {
 
-                datensatz.forEach(function(d){
-
-                    svg.selectAll(".bar")
-                        .data(datensatz)
-                        .enter().append("rect")
-                        .attr("class", "bar")
-                        .attr( "height", function(d,i){
-                            return d;
-                        })
-
-                        .attr( "y", function(d,i){
-                            return 420 - d;
-                        })
-
-                        .attr( "x", function(d,i){
-                            return i * 25;
-                        })
-                        .attr( "width", 24)
-
-                        // Farbwerte der Balken als Funktion von d
-                        .attr("fill", function(d, i) {
-                                var rgbColor = "rgb(" + Math.round(d/411*118) + ", 0, "  + Math.round(d/411*255) + ")";
-                                return rgbColor;
-                        });
-                });
+            data.forEach(function (d) {
+                datensatz.push(parseInt(+d.Rate) + 1);
+                // +1 verhindert Nullwerte in der Grafik
             });
 
+            // die Sequenz selectAll(), .data(), enter(), append()
+            // plus Attribute zuweisen
+            datensatz.forEach(function (d) {
+                svg.selectAll(".bar")
+                    .data(datensatz)
+                    .enter().append("rect")
+                    .attr("class", "bar")
+                    .attr("height", function (d, i) {
+                        return d;
+                    })
+
+                // Rückgabe der Werte für die jeweilige Selektion function(d,i) { return d };
+                .attr("y", function (d, i) {
+                    return 420 - d;
+                })
+
+                // Rückgabe der Werte für die jeweilige Selektion function(d,i) { return i };
+                .attr("x", function (d, i) {
+                        return i * 25;
+                    })
+                    .attr("width", 24)
+
+
+                // Farbwerte der Balken als Funktion von d
+                .attr("fill", function (d, i) {
+                    var rgbColor = "rgb(" + Math.round(d / 411 * 118) + ", 0, " + Math.round(d / 411 * 255) + ")";
+                    return rgbColor;
+                });
+            });
+        });
     </script>
 </body>
 </html>

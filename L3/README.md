@@ -181,6 +181,8 @@ Die  Sequenz muss aufgeteilt werden, um das Konzept auch in diesem Fall erfolgre
 Das Aufteilen der Sequenz in zwei Teile erlaubt es der enter().append() Selektion die bereits bestehende Selektion 
 selectAll("rect") um die 8 fehlenden Elemente zu erweitern. Diese Selektion beinhaltet nun alle 16 benötigten Elemente, die in einem dritten Schritt ihre Attribute erhalten.
             
+[Beispiel ansehen](https://dataviz-hkb.github.io/D3/L3/L3.13.html)
+            
 ``` javascript
 var     svg = d3.select("svg");
 var     update = svg.selectAll("rect").data(datensatz);

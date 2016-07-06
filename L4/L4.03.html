@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
     <meta charset="utf-8">
-    <title>Daten CSV/TSV - 4 | CAS Dataviz, Daniel Schoeneck</title>
+    <title>Data CSV/TSV - 4 | CAS Dataviz, Daniel Schoeneck</title>
     <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
     <style type="text/css">
         #GE, #BS { fill : #000!important; }
@@ -18,6 +18,8 @@
 
         d3.csv("data/datensatz.csv", function(error, rows) {
 
+
+                // Verbesserung: verlorene Daten zurückholen (ID und Rate)
                 rows.forEach(function(d) {
                     datensatz.push({
                         name: d.ID,
