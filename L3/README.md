@@ -174,9 +174,9 @@ svg.selectAll("rect")
 ####Die `selectAll()`, `data()`, `enter()`, `append()` Sequenz verstehen####
 Die  Sequenz muss aufgeteilt werden, um das Konzept auch in diesem Fall erfolgreich zu halten, d.h. um jene benötigten Elemente hinzuzufügen und um diese der gesamten Selektion zugänglich zu machen. Aufteilung in: 
 
-1. in Auswahl aller Elemente(e), Datenarray holen
-2. in enter() = Vergleich zwischen "vorhandenen" und "benötigten" Elementen. "Benötigte" am Schluss anhängen
-3. in Attribute zuschreiben
+1. Auswahl aller Elemente, Datenarray holen
+2. enter() = Vergleich zwischen "vorhandenen" und "benötigten" Elementen. "Benötigte" am Schluss anhängen
+3. Attribute zuschreiben
 
 Das Aufteilen der Sequenz in zwei Teile erlaubt es der enter().append() Selektion die bereits bestehende Selektion 
 selectAll("rect") um die 8 fehlenden Elemente zu erweitern. Diese Selektion beinhaltet nun alle 16 benötigten Elemente, die in einem dritten Schritt ihre Attribute erhalten.
