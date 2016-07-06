@@ -137,9 +137,9 @@ Datenarray zu SVG Balkendiagramm.
 ###File: [L3.12.html](L3.12.html)###
 ####Wie funktioniert das Schlüsselkonzept `selectAll()`, `data()`, `enter()`, `append()` ?####
 Gegeben: Datenarray mit 16 Feldinhalten (Zahlenwerte). SVG Objekt mit 8 `<rect>`Elementen.
-dann mittels enter() eine Subselektion erstellen aus Vergleich zwischen "vorhandenen" und "benötigten" Elementen. 
+Was passiert? 
 
-[Beispiel ansehen](https://dataviz-hkb.github.io/D3/L3/L3.13.html)
+[Beispiel ansehen](https://dataviz-hkb.github.io/D3/L3/L3.12.html)
 
 ``` javascript
 var datensatz = [ 20.4, 124, 43.4, 122, 6, 63, 24, 220, 122, 6, 63, 24, 2, 5, 143, 24 ];
@@ -171,14 +171,29 @@ svg.selectAll("rect")
 
 <p>&nbsp;</p>
 ###File: [L3.13.html](L3.13.html)###
-####`selectAll()`, `data()`, `enter()`, `append()` Sequenz verstehen####
-Datenarray holen, Keys und Werte, dann mittels enter() eine Subselektion erstellen aus Vergleich zwischen "vorhandenen" und "benötigten" Elementen. "Benötigte" am Schluss anhängen.
+####Die `selectAll()`, `data()`, `enter()`, `append()` Sequenz verstehen####
+Um das Konzept bei bestehenden Elementen erfolgreich zu halten, d.h. jene benötigten Elemente hinzuzufügen muss die Sequenz aufgeteilt werden in
+1. Auswahl aller Elemente(e), Datenarray holen
+2. enter() = Vergleich zwischen "vorhandenen" und "benötigten" Elementen. "Benötigte" am Schluss anhängen
+3. Attribute zuschreiben
+Das Aufteilen der Sequenz in zwei Teile erlaubt es der enter().append() Selektion die bereits bestehende Selektion 
+selectAll("rect") um die 8 fehlenden Elemente zu erweitern. Diese Selektion beinhaltet nun alle 16 benötigten Elemente, die in einem dritten Schritt ihre Attribute erhalten.
+            
 ``` javascript
-d3.select("body").selectAll("p") // <--- Alle <p> \\\ falls keine vorhanden weiter…
-        .data(datenset) // <--- Datenarray holen, Keys und Werte
-        .enter() // <--- Subselektion: Vergleich "Vorhandene" mit "Benötigten"
-        .append("p") // <--- "Benötigte" am Schluss anhängen
-        .text(function(d) { return Math.sin(+d); });  // <--- Textausgabe (Sinus von Datenwert)
+var     svg = d3.select("svg");
+var     update = svg.selectAll("rect").data(datensatz);
+
+        update.attr("class", "foo");
+        
+        update.enter().append("rect")
+            .attr("class", "bar")
+            .attr("width", 24)
+            .attr("height", 24)
+            .style("fill", "deeppink");
+            
+        update.attr("height", function(d,i) { return d })
+            .attr("y", function(d,i) {  return 200 - d })
+            .attr("x", function(d,i) { return i*25 });
 ```
 
 
