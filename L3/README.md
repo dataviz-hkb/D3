@@ -64,11 +64,15 @@ d3.select("body").selectAll("p")
 ```
 
 <p>&nbsp;</p>
-###File: [L3.01.html](L1.03.html)###
-####Variante: Strukturierung mit HTML####
-Die Bildung von Struktur unterliegt einzig und allein der Regel, dass valider (= allgemein gültiger) HTML Code entsteht. Das bedeutet, dass zur Auszeichnung des Dokuments (HTML = Hypertext Markup Language = Hypertext Auszeichnungssprache ) alles erlaubt ist, was gültig ist, man also relativ frei ist, diese selber zu bestimmen.
-Hier eine Variante, die minimal anders aufgebaut ist, sich jedoch semantisch unterscheidet.
-Ein standardkonformer Browser veranlasst das, Unterschiede in Textgrösse für h1 zu rendern (siehe Textgrösse im `<h1>` zu [L1.02.html](L1.02.html) im direkten Vergleich)
+###File: [L3.01.html](L3.01.html)###
+####Daten holen, Elemente erstellen, Daten verarbeiten####
+``` javascript
+        d3.select("body").selectAll("p") // <--- Alle <p> \\\ falls keine vorhanden weiter…
+                .data(datenset) // <--- Datenarray holen, Keys und Werte
+                .enter() // <--- Subselektion: Vergleich "Vorhandene" mit "Benötigten"
+                .append("p") // <--- "Benötigte" am Schluss anhängen
+                .text(function(d) { return Math.sin(+d); });  // <--- Textausgabe (Sinus von Datenwert)
+```
 
         
 
