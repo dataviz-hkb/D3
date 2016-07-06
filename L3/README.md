@@ -128,13 +128,13 @@ d3.select("rect")
 
 <p>&nbsp;</p>
 ###Files: [L3.06.html](L3.06.html) [L3.07.html](L3.07.html) [L3.08.html](L3.08.html) [L3.09.html](L3.09.html) [L3.10.html](L3.10.html) [L3.11.html](L3.11.html)###
-####Simpel####
+####Datenvisualisierung simpel####
 Datenarray zu SVG Balkendiagramm.
 
 
         
 <p>&nbsp;</p>
-###File: [L3.01.html](L3.01.html)###
+###File: [L3.12.html](L3.12.html)###
 ####Daten holen, Elemente erstellen, Daten verarbeiten####
 Datenarray holen, Keys und Werte, dann mittels enter() eine Subselektion erstellen aus Vergleich zwischen "vorhandenen" und "benötigten" Elementen. "Benötigte" am Schluss anhängen.
 ``` javascript
@@ -146,7 +146,7 @@ d3.select("body").selectAll("p") // <--- Alle <p> \\\ falls keine vorhanden weit
 ```
 
 <p>&nbsp;</p>
-###File: [L3.01.html](L3.01.html)###
+###File: [L3.13.html](L3.13.html)###
 ####Daten holen, Elemente erstellen, Daten verarbeiten####
 Datenarray holen, Keys und Werte, dann mittels enter() eine Subselektion erstellen aus Vergleich zwischen "vorhandenen" und "benötigten" Elementen. "Benötigte" am Schluss anhängen.
 ``` javascript
@@ -157,42 +157,6 @@ d3.select("body").selectAll("p") // <--- Alle <p> \\\ falls keine vorhanden weit
         .text(function(d) { return Math.sin(+d); });  // <--- Textausgabe (Sinus von Datenwert)
 ```
 
-        
-<p>&nbsp;</p>
-###File: [L3.01.html](L3.01.html)###
-####Daten holen, Elemente erstellen, Daten verarbeiten####
-Datenarray holen, Keys und Werte, dann mittels enter() eine Subselektion erstellen aus Vergleich zwischen "vorhandenen" und "benötigten" Elementen. "Benötigte" am Schluss anhängen.
-``` javascript
-d3.select("body").selectAll("p") // <--- Alle <p> \\\ falls keine vorhanden weiter…
-        .data(datenset) // <--- Datenarray holen, Keys und Werte
-        .enter() // <--- Subselektion: Vergleich "Vorhandene" mit "Benötigten"
-        .append("p") // <--- "Benötigte" am Schluss anhängen
-        .text(function(d) { return Math.sin(+d); });  // <--- Textausgabe (Sinus von Datenwert)
-```
-
-<p>&nbsp;</p>
-###File: [L3.01.html](L3.01.html)###
-####Daten holen, Elemente erstellen, Daten verarbeiten####
-Datenarray holen, Keys und Werte, dann mittels enter() eine Subselektion erstellen aus Vergleich zwischen "vorhandenen" und "benötigten" Elementen. "Benötigte" am Schluss anhängen.
-``` javascript
-d3.select("body").selectAll("p") // <--- Alle <p> \\\ falls keine vorhanden weiter…
-        .data(datenset) // <--- Datenarray holen, Keys und Werte
-        .enter() // <--- Subselektion: Vergleich "Vorhandene" mit "Benötigten"
-        .append("p") // <--- "Benötigte" am Schluss anhängen
-        .text(function(d) { return Math.sin(+d); });  // <--- Textausgabe (Sinus von Datenwert)
-```
-
-<p>&nbsp;</p>
-###File: [L3.01.html](L3.01.html)###
-####Daten holen, Elemente erstellen, Daten verarbeiten####
-Datenarray holen, Keys und Werte, dann mittels enter() eine Subselektion erstellen aus Vergleich zwischen "vorhandenen" und "benötigten" Elementen. "Benötigte" am Schluss anhängen.
-``` javascript
-d3.select("body").selectAll("p") // <--- Alle <p> \\\ falls keine vorhanden weiter…
-        .data(datenset) // <--- Datenarray holen, Keys und Werte
-        .enter() // <--- Subselektion: Vergleich "Vorhandene" mit "Benötigten"
-        .append("p") // <--- "Benötigte" am Schluss anhängen
-        .text(function(d) { return Math.sin(+d); });  // <--- Textausgabe (Sinus von Datenwert)
-```
 
           
 
