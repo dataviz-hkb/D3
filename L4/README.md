@@ -40,24 +40,6 @@ wobei __d__ die Daten repräsentiert, die mit der gegebenen Selektion in Zusamme
 
 <p>&nbsp;</p>
 ###File: [L4.03.html](L4.03.html)###
-####Das Ganze mit `<div>` als Balkendiagramm####
-Gleiches Prinzip: Datenarray holen, mittels enter() ein Vergleich zwischen "vorhandenen" und "benötigten" Elementen erstellen. "Benötigte" anhängen und deren Höhe als Funktion von Data berechnen.
-[Beispiel ansehen](https://dataviz-hkb.github.io/D3/L3/L3.03.html)
-``` javascript
-d3.select("#datawrapper").selectAll("div")
-        .data(datenset)
-        .enter()
-        .append("div")
-        .attr("class", "bar")
-        .style("height", function(d) {
-                return Math.abs(100*(Math.sin(d) + Math.cos(d))) + "px";
-        })
-        .style("background-color", "deeppink");
-```
-
-
-<p>&nbsp;</p>
-###File: [L3.04.html](L3.04.html)###
 ####Weitere Verbesserung: verlorene Daten zurückholen####
 Die im CSV Dokument unterschlagenen Daten (Wertepaare) zurückholen. Das Einlesen der Daten:
 ``` javascript
@@ -71,91 +53,17 @@ rows.forEach(function(d) {
 
 
 <p>&nbsp;</p>
-###File: [L3.05.html](L3.05.html)###
-####SVG Elemente####
-Koordinatenursprung für SVG ist __Oben__ und __Links__. Positionierung entsprechend anpassen. 
-``` javascript
-d3.select("rect")
-    .attr( "height", 126)
-    .attr( "y", 200-126);
-```
+###File: [L4.04.html](L4.04.html)###
+####Skalen, Achsenbeschriftungen dazu####
+Tooltips ermöglichen, Rückgabe Kantonsname und Wert
+
+
 
 <p>&nbsp;</p>
-###Files: [L3.06.html](L3.06.html) [L3.07.html](L3.07.html) [L3.08.html](L3.08.html) [L3.09.html](L3.09.html) [L3.10.html](L3.10.html) [L3.11.html](L3.11.html)###
-####Datenvisualisierung simpel####
-Datenarray zu SVG Balkendiagramm.
+###File: [L4.05.html](L4.05.html)###
+####Das fertige Beispiel Waldranking####
+[Beispiel ansehen](https://dataviz-hkb.github.io/D3/L4/L4.05.html)
 
-
-        
-<p>&nbsp;</p>
-###File: [L3.12.html](L3.12.html)###
-####Wie funktioniert das Schlüsselkonzept `selectAll()`, `data()`, `enter()`, `append()` ?####
-Gegeben: Datenarray mit 16 Feldinhalten (Zahlenwerte). SVG Objekt mit 8 `<rect>`Elementen.
-Was passiert? 
-
-[Beispiel ansehen](https://dataviz-hkb.github.io/D3/L3/L3.12.html)
-
-``` javascript
-var datensatz = [ 20.4, 124, 43.4, 122, 6, 63, 24, 220, 122, 6, 63, 24, 2, 5, 143, 24 ];
-```
-``` html
-<svg width="400" height="200" style="stroke-width: 0;">
-        <rect x="0" y="176" width="24" height="24" fill="#7600ff"></rect>
-        <rect x="25" y="176" width="24" height="24" fill="#6516c1"></rect>
-        <rect x="50" y="176" width="24" height="24" fill="#51119b"></rect>
-        <rect x="75" y="176" width="24" height="24" fill="#3d1869"></rect>
-        <rect x="100" y="176" width="24" height="24" fill="#7600ff"></rect>
-        <rect x="125" y="176" width="24" height="24" fill="#6516c1"></rect>
-        <rect x="150" y="176" width="24" height="24" fill="#51119b"></rect>
-        <rect x="175" y="176" width="24" height="24" fill="#3d1869"></rect>
-</svg>
-```
-``` javascript
-var svg = d3.select("svg");
-svg.selectAll("rect")
-        .data(datensatz)
-        .enter().append("rect")
-            .attr("class", "bar")
-            .attr("width", 24)
-            .style("fill", "deeppink")
-            .attr("height", function(d,i) { return d })
-            .attr("y", function(d,i) {  return 200 - d })
-            .attr("x", function(d,i) { return i*25 });
-```
-
-<p>&nbsp;</p>
-###File: [L3.13.html](L3.13.html)###
-####Die `selectAll()`, `data()`, `enter()`, `append()` Sequenz verstehen####
-Die  Sequenz muss aufgeteilt werden, um das Konzept auch in diesem Fall erfolgreich zu halten, d.h. um jene benötigten Elemente hinzuzufügen und um diese der gesamten Selektion zugänglich zu machen. Aufteilung in: 
-
-1. Auswahl aller Elemente, Datenarray holen
-2. enter() = Vergleich zwischen "vorhandenen" und "benötigten" Elementen. "Benötigte" am Schluss anhängen
-3. Attribute zuschreiben
-
-Das Aufteilen der Sequenz in zwei Teile erlaubt es der enter().append() Selektion die bereits bestehende Selektion 
-selectAll("rect") um die 8 fehlenden Elemente zu erweitern. Diese Selektion beinhaltet nun alle 16 benötigten Elemente, die in einem dritten Schritt ihre Attribute erhalten.
-            
-[Beispiel ansehen](https://dataviz-hkb.github.io/D3/L3/L3.13.html)
-            
-``` javascript
-var     svg = d3.select("svg");
-var     update = svg.selectAll("rect").data(datensatz);
-
-        update.attr("class", "foo");
-        
-        update.enter().append("rect")
-            .attr("class", "bar")
-            .attr("width", 24)
-            .attr("height", 24)
-            .style("fill", "deeppink");
-            
-        update.attr("height", function(d,i) { return d })
-            .attr("y", function(d,i) {  return 200 - d })
-            .attr("x", function(d,i) { return i*25 });
-```
-
-
-          
 
 <p>&nbsp;</p>
 
