@@ -1,13 +1,6 @@
 # DATA CSV/TSV
 
-### Folgende Methoden in D3 geben den Rahmen für diese ersten Beispiele
-
-| Name | von Objekt | Rückgabe | Beschreibung |
-| :---------- | :---------- | :---- | :--------------- |
-| attr(name,value) | Auswahl | Auswahl | Attribute: Eigenschaft und Wert zuweisen. |
-| data() | Auswahl | Array | Hole das Data-Array für die erste Gruppe der Auswahl. |
-| selectAll(selector) | Selektor | Selektor | Mehrfach-Element-Selektion für jeden Eintrag in der Selektion |
-| sort(comparator) | Auswahl | Auswahl | Sortiert die Elemente in der Selektion |
+### CSV/TSV Daten verwenden, einlesen ###
 
 
 <p>&nbsp;</p>
