@@ -1,17 +1,5 @@
 # DATA
 
-### Folgende Methoden in D3 geben den Rahmen für diese ersten Beispiele
-
-| Name | von Objekt | Rückgabe | Beschreibung |
-| :---------- | :---------- | :---- | :--------------- |
-| selectAll(selector) | Selektor | Selektor | Mehrfach-Element-Selektion für jeden Eintrag in der Selektion |
-| data() | Auswahl | Array | Hole das Data-Array für die erste Gruppe der Auswahl. |
-| enter() | Auswahl | EnterSelection | Rückgabe einer "Sub"-Selektion als Platzhalter-Array für fehlende Elemente, im Zusammenhang mit data() |
-| attr(name,value) | Auswahl | Auswahl | Attribute: Eigenschaft und Wert zuweisen. |
-| sort(comparator) | Auswahl | Auswahl | Sortiert die Elemente in der Selektion |
-
-
-<p>&nbsp;</p>
 
 ####Einfaches Beispiel, HTML-Struktur (HTML, SVG):####
 ```html
@@ -45,6 +33,18 @@
 [Beispiel ansehen](https://dataviz-hkb.github.io/D3/L3/L3.13.html)
 
 
+<p>&nbsp;</p>
+
+
+### Folgende Methoden in D3 geben den Rahmen für diese ersten Beispiele
+
+| Name | von Objekt | Rückgabe | Beschreibung |
+| :---------- | :---------- | :---- | :--------------- |
+| selectAll(selector) | Selektor | Selektor | Mehrfach-Element-Selektion für jeden Eintrag in der Selektion |
+| data() | Auswahl | Array | Hole das Data-Array für die erste Gruppe der Auswahl. |
+| enter() | Auswahl | EnterSelection | Rückgabe einer "Sub"-Selektion als Platzhalter-Array für fehlende Elemente, im Zusammenhang mit data() |
+| attr(name,value) | Auswahl | Auswahl | Attribute: Eigenschaft und Wert zuweisen. |
+| sort(comparator) | Auswahl | Auswahl | Sortiert die Elemente in der Selektion |
 
 
 
