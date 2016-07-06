@@ -127,14 +127,9 @@ d3.select("rect")
 ```
 
 <p>&nbsp;</p>
-###File: [L3.06.html](L3.06.html)###
-###File: [L3.07.html](L3.07.html)###
-###File: [L3.08.html](L3.08.html)###
-###File: [L3.09.html](L3.09.html)###
-###File: [L3.10.html](L3.10.html)###
-###File: [L3.11.html](L3.11.html)###
-
-Datenarray zu simplem SVG Balkendiagramm.
+###Files: [L3.06.html](L3.06.html) [L3.07.html](L3.07.html) [L3.08.html](L3.08.html) [L3.09.html](L3.09.html) [L3.10.html](L3.10.html) [L3.11.html](L3.11.html)###
+####Simpel####
+Datenarray zu SVG Balkendiagramm.
 
 
         
