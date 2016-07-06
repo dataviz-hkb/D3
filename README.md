@@ -4,29 +4,29 @@ Der CAS Datenvisualisierung ist eine interdisziplinär und medienübergreifend a
 
 
 
-<a href="_L0/README.md"><img src="css/assets/D3_L0.1@2x.png" width="80"></a>&nbsp;
-<a href="_L1/README.md"><img src="css/assets/D3_L1.1@2x.png" width="80"></a>&nbsp;
-<a href="_L2/README.md"><img src="css/assets/D3_L2.1@2x.png" width="80"></a>&nbsp;
-<a href="_L3/README.md"><img src="css/assets/D3_L3.1@2x.png" width="80"></a>&nbsp;
-<a href="_L4/README.md"><img src="css/assets/D3_L4.1@2x.png" width="80"></a>&nbsp;
-<a href="_L5/README.md"><img src="css/assets/D3_L5.1@2x.png" width="80"></a>&nbsp;
-<a href="_L6/README.md"><img src="css/assets/D3_L6.1@2x.png" width="80"></a>&nbsp;
-<a href="_L7/README.md"><img src="css/assets/D3_L7.1@2x.png" width="80"></a>&nbsp;
-<a href="_L8/README.md"><img src="css/assets/D3_L8.1@2x.png" width="80"></a>&nbsp;
-<a href="_L9/README.md"><img src="css/assets/D3_L9.1@2x.png" width="80"></a>
+<a href="L0/README.md"><img src="css/assets/D3_L0.1@2x.png" width="80"></a>&nbsp;
+<a href="L1/README.md"><img src="css/assets/D3_L1.1@2x.png" width="80"></a>&nbsp;
+<a href="L2/README.md"><img src="css/assets/D3_L2.1@2x.png" width="80"></a>&nbsp;
+<a href="L3/README.md"><img src="css/assets/D3_L3.1@2x.png" width="80"></a>&nbsp;
+<a href="L4/README.md"><img src="css/assets/D3_L4.1@2x.png" width="80"></a>&nbsp;
+<a href="L5/README.md"><img src="css/assets/D3_L5.1@2x.png" width="80"></a>&nbsp;
+<a href="L6/README.md"><img src="css/assets/D3_L6.1@2x.png" width="80"></a>&nbsp;
+<a href="L7/README.md"><img src="css/assets/D3_L7.1@2x.png" width="80"></a>&nbsp;
+<a href="L8/README.md"><img src="css/assets/D3_L8.1@2x.png" width="80"></a>&nbsp;
+<a href="L9/README.md"><img src="css/assets/D3_L9.1@2x.png" width="80"></a>
 
 
 #### Inhalt:
-* <a href="_L0/">D3 Up & Going</a>&nbsp;
-* <a href="_L1/">SVG & HTML/CSS</a>&nbsp;
-* <a href="_L2/">Javascript Basics</a>&nbsp;
-* <a href="_L3/">Data</a>&nbsp;
-* <a href="_L4/">Data CSV/TSV</a>&nbsp;
-* <a href="_L5/">Skalen & Achsen</a>&nbsp;
-* <a href="_L6/">GeoJSON</a>&nbsp;
-* <a href="_L7/">Reihen & Serien</a>&nbsp;
-* <a href="_L8/">Transition</a>&nbsp;
-* <a href="_L9/">Updating Data</a>
+* <a href="L0/">D3 Up & Going</a>&nbsp;
+* <a href="L1/">SVG & HTML/CSS</a>&nbsp;
+* <a href="L2/">Javascript Basics</a>&nbsp;
+* <a href="L3/">Data</a>&nbsp;
+* <a href="L4/">Data CSV/TSV</a>&nbsp;
+* <a href="L5/">Skalen & Achsen</a>&nbsp;
+* <a href="L6/">GeoJSON</a>&nbsp;
+* <a href="L7/">Reihen & Serien</a>&nbsp;
+* <a href="L8/">Transition</a>&nbsp;
+* <a href="L9/">Updating Data</a>
 
 
 
@@ -61,6 +61,6 @@ Sinnvolle Erweiterungen für Brackets:
 ---
 
 
-### Next: <a href="_L0/">Up & Going</a>
+### Next: <a href="L0/">Up & Going</a>
 
 [Übersicht](#chapter)
