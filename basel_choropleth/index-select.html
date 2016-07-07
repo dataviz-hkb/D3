@@ -21,7 +21,7 @@
     <script src="https://d3js.org/topojson.v1.min.js"></script>
     <script src="https://d3js.org/queue.v1.min.js"></script>
     <script src="https://d3js.org/d3.geo.projection.v0.min.js"></script>
-    <script src="http://underscorejs.org/underscore-min.js"></script>
+    <script src="js/underscore-min.js"></script>
     <script src="js/d3.geo.zoom.js"></script>
     <script src="js/map.tip.js"></script>
     <script src="js/map.legend.js"></script>
@@ -221,6 +221,46 @@
             left: 100%;
         }
 
+
+                .q8-9 {
+            fill: #5d0000;
+        }
+
+        .q7-9 {
+            fill: rgb(105, 0, 0);
+        }
+
+        .q6-9 {
+            fill: rgb(206, 0, 0);
+        }
+
+        .q5-9 {
+            fill: rgb(234, 109, 18);
+        }
+
+        .q4-9 {
+            fill: rgb(250, 250, 250);
+        }
+
+        .q3-9 {
+            fill: rgb(147, 157, 190);
+        }
+
+        .q2-9 {
+            fill: rgb(71, 90, 150);
+        }
+
+        .q1-9 {
+            fill: rgb(25, 51, 136);
+        }
+
+        .q0-9 {
+            fill: rgb(45, 64, 132);
+        }
+
+
+
+
         .q8-9 {
             fill: #6c0000;
         }
@@ -329,6 +369,8 @@
             fill: rgb(2, 96, 13);
         }
 
+
+
         .rs-control .rs-range-color {
             background-color: #222;
         }
@@ -341,9 +383,9 @@
             background-color: #838383;
         }
 
-         .rs-control .rs-handle {
-            margin-left:0!important;
-            margin-right:0!important;
+        .rs-control .rs-handle {
+            margin-left: 0!important;
+            margin-right: 0!important;
         }
 
         .rs-control .rs-bg-color {
@@ -356,7 +398,6 @@
 <body>
 
     <div id="map">
-        <div id="slider1" class="rslider"></div>
 
         <h1>Basler Mietpreisindex: Mietpreisunterschiede nach Wohnviertel</h1>
         <p>Durchschnittliche Abweichung vom Referenzwohnviertel «Iselin»
@@ -375,7 +416,7 @@
         <!--Tooltip template-->
     </div>
     <div id="option"></div>
-
+    <div id="slider1" class="rslider"></div>
     <script>
         //Basic SVG
         var width = 700;
@@ -602,7 +643,7 @@
                     var subCSV = {};
                     data.forEach(function (d) {
 
-                        if (d['Zustand'] == filterSelection ) {
+                        if (d['Zustand'] == filterSelection) {
                             subCSV[d.ID] = +d[tooltipBuild(e)];
                             rateById.set(d.ID, +d[tooltipBuild(e)]);
                         };
@@ -624,6 +665,7 @@
             }
 
 
+
             , sliderType: "default"
             , min: 0
             , max: 8
@@ -643,6 +685,7 @@
 
             var size = ["1_Zimmer-2016-05.csv", "2_Zimmer-2016-05.csv", "3_Zimmer-2016-05.csv"
 
+
                 , "4_Zimmer-2016-05.csv", "5_Zimmer-2016-05.csv", "6_Zimmer-2016-05.csv"];
 
             return size[args.value];
@@ -652,7 +695,9 @@
 
             var build = ["1900 - 1920", "1921 - 1946"
 
+
                 , "1947 - 1960", "1961 - 1970", "1971 - 1980", "1981 - 1990"
+
 
                 , "1991 - 2000", "vor 1900", "1900 - 1920"];
 

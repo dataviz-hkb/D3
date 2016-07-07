@@ -7,18 +7,22 @@
     <script src="lib/d3.js" charset="utf-8"></script>
 
     <style type="text/css">
+
         body {
-            margin:0;
-            padding:0;
+            margin: 0;
+            padding: 20px;
+            font: 18px/2 'Helvetica Neue', Helvetica, sans-serif;
+            font-weight: 300;
         }
-        #linear {
+        #wrapper {
             width:900px;
             margin: 0 auto;
             padding: 60px 20px;
         }
+
         .cell {
             width: 60px;
-            height: 60px;
+            height: 80px;
             margin: 5px;
             text-align: center;
             padding: 10px;
@@ -33,8 +37,21 @@
         .cell:after {
             content:"|";
             position: absolute;
-            top:-40px;
+            top:-45px;
             left:35px;
+            font-weight: lighter;
+        }
+
+
+        #range .cell {
+            width: 1px;
+            height: 10px;
+            padding: 0;
+        }
+
+
+        #range .cell:after {
+            left:0;
             font-weight: lighter;
         }
     </style>
@@ -42,19 +59,35 @@
 
 <body>
 
-<div id="linear"><hr></div>
+<div id="wrapper">
+
+    <h3>Wertebereich (Input)</h3>
+    <div id="range"><hr><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div></div>
+    <h3>Skalenbereich (visueller Output)</h3>
+    <div id="domain"><hr><div class="cell">1</div><div class="cell">2</div><div class="cell">3</div><div class="cell">4</div><div class="cell">5</div><div class="cell">6</div><div class="cell">7</div><div class="cell">8</div><div class="cell">9</div><div class="cell">10</div></div>
+    <h3>oder:</h3>
+    <div id="linear"><hr></div>
+</div>
 
 
 <script type="text/javascript">
+
+
+
     var max = 11, data = [];
     for (var i = 1; i < max; ++i) data.push(i);
+
+
 
     var linear = d3.scale.linear()
     // default .domain([0, 1])
     // default .range([0, 1]);
     // 1 <= a*n + b <= 40 | n{1,10} a= 4.333 b= -3.333
-    .domain([0, 10])
-    .range([0, 10]);
+    .domain([1, 10])
+    .range([1, 64]);
+
+
+
 
 
     d3.select("#linear").selectAll("div.cell")

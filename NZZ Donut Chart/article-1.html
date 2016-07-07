@@ -46,16 +46,6 @@
             font-size: 80%;
         }
         
-        header h1 {
-            margin-bottom: 0;
-            font-weight: 400;
-        }
-        
-        header p {
-            margin-top: 0;
-            font-size: 120%;
-        }
-        
         #chartText {
             padding: 4% 0;
         }
@@ -158,6 +148,93 @@
             top: 50%;
             left: 100%;
         }
+        
+        header.article {
+            margin: 0 0 0.5em 0;
+        }
+        
+        header.article h2 {
+            font: 42px/1.2 'Abel', 'Helvetica Neue', Helvetica, sans-serif;
+            margin: 0 0 0.2em 0;
+        }
+        
+        header.article h4 {
+            margin: 0 0 0.5em 0;
+            font: 22px/1.2 'Abel', 'Helvetica Neue', Helvetica, sans-serif;
+            color: #333333;
+        }
+        
+        article {
+            position: relative;
+            font: 18px/1.4 'Abel', 'Helvetica Neue', Helvetica, sans-serif;
+            margin: 0 -2%;
+        }
+        
+        article .col {
+            float: left;
+            width: 46%;
+            margin: 0 2%;
+        }
+        
+        article .col p {
+            text-align: justify;
+            margin: 0 0 0.75em 0;
+        }
+        
+        article .col h3 {
+            font: 20px/1.2 'Abel', 'Helvetica Neue', Helvetica, sans-serif;
+            font-weight: 700;
+            margin: 0 0 0.75em 0;
+        }
+        
+        p.lead {
+            font: 22px/1.3 'Abel', 'Helvetica Neue', Helvetica, sans-serif;
+            color: #333333;
+            min-height: 6.66666em;
+            margin: 0;
+        }
+        
+        p.author {
+            text-transform: uppercase;
+        }
+        
+        #graphbox {
+            margin: 2em 0;
+            border-top: 1px solid #222;
+            border-bottom: 1px solid #222;
+        }
+        
+        #graphbox header h1 {
+            margin-bottom: 0;
+            font: 22px/1.2 'Abel', 'Helvetica Neue', Helvetica, sans-serif;
+        }
+        
+        #graphbox header p {
+            margin-top: 0;
+        }
+        
+        .top p {
+            text-align: justify;
+        }
+        
+        .top p span {
+            display: inline-block;
+            position: relative;
+            top: 1.2em;
+        }
+        
+        .top p:before {
+            content: '';
+            display: block;
+            width: 100%;
+            margin-bottom: -1.2em;
+        }
+        
+        .top p:after {
+            content: '';
+            display: inline-block;
+            width: 100%;
+        }
     </style>
 
 
@@ -170,20 +247,43 @@
     </script>
     <script src="js/lib/d3tip.js" charset="utf-8"></script>
     <div id="wrapper">
-        <header>
-            <h1>Die Ethnien in Bosnien-Herzegowina</h1>
-            <p>Angaben in %</p>
+        <div class="top">
+            <p><span>Dienstag, 5. Juli 2016</span> <span style="text-transform:uppercase">Neue Zürcher Zeitung</span> <span>International &nbsp; 5</span></p>
+        </div>
+        <header class="article">
+            <h2>Volkszählung mit Sprengkraft</h2>
+            <h4>In Bosnien-Herzegowina gibt es erstmals eine muslimische Mehrheit</h4>
         </header>
-        <div class="clearfix">
+        <article class="clearfix">
+            <div class="col">
+                <p class="lead">Der Bosnien-Krieg hat zu einer Bevölkerungsabnahme geführt. Der Anteil der Muslime an der Gesamt&shy;be&shy;völ&shy;kerung ist aber gestiegen. Dies führt zu Ängsten bei den Ser&shy;ben und politisch möglicherweise zum Still&shy;stand.</p>
+                <p class="author">Ivo Minjnssen</p>
+                <p class="article">In Bosnien-Herzegowina heizt eine Volkszählung ethnische Spannungen neu an. Sie wurde letzte Woche publiziert und zeigt, dass das Land zum ersten Mal über eine bosniakische, also muslimische Bevölkerungsmehrheit verfügt. Die Bosniaken machten 2013 50,1 Prozent der Einwohner aus. Sie haben klar zugelegt. Weniger zahlreich im Vergleich mit der letzten Zählung 1991 sind die Serben mit 30,8 und die Kroaten mit 15,4 Prozent. Gesamthaft leben gut 3,5 Millionen Menschen in dem Land – 20 Prozent weniger. Die Gründe für den Bevölkerungsschwund sind die Verluste im Bosnien-Krieg von 1992 bis 1995 durch Vertreibung und Tötung, Emigration sowie die tiefe Geburtenrate von knapp 1,3 Kindern pro Frau. Die Veröffentlichung der Zahlen erfolgte erst nach einem jahrelangen Seilziehen. Die Republika Srpska sträubte sich gegen eine Publikation, da ihre Führer um den serbischen Einfluss auf gesamtstaatlicher Ebene fürchten. Die Vertretung der Volksgruppen in den staatlichen Organen wird nach ihrem Bevölkerungsanteil bestimmt. Zudem leitet sich daraus auch ein Anspruch auf EU-Fördermittel ab. Die Publikation der Resultate erfolgte erst, nachdem die EU gedroht hatte, dem mausarmen Beitrittskandidaten Bosnien-Herzegowina Finanzhilfe zu entziehen, wenn es keine neuen Zahlen vorlege. Die Zählung wurde 2013 erst auf Druck der EU durchgeführt.
+                </p>
+                <h3>Streitpunkt Vertriebene</h3>
+                <p class="article">Der Präsident der Republika Srpska, Milorad Dodik, erklärte, er werde die Volkszählung nicht anerkennen. «Die Entscheidung zur Veröffentlichung wird die Situation im Land verschärfen», so Dodik warnend. Ein weiterer führender Politiker, Dragan Cavic, kündigte an, die Resultate würden nicht angewendet. </p>
+            </div>
+            <div class="col">
+                <p>Man werde den serbischen Vertreter aus der Statistikbehörde abziehen. Konkret dreht sich der Streit darum, dass die Statistikbehörde 200 000 bosnische Staatsbürger mit zählte, die im Ausland leben, aber im Land weiterhin über Besitz verfügen. Die Serben sind dagegen, da es sich massgeblich um Vertriebene handelt. Durch die serbische Kampagne der «ethnischen Säuberung» während des Kriegs wurden Kroaten und Bosniaken aus Gebieten vertrieben, die heute in der Republika Srpska liegen. Die Kroaten ihrerseits vertrieben im Zuge der Rückeroberung der Krajina die ethnischen Serben. Die Segregation widerspiegelt sich in der Volkszählung: 92 Prozent der bosnischen Serben leben in der Republika Srpska, 91,4 Prozent der bosnischen Kroaten und 88,2 Prozent der Bosniaken in der bosnischkroatischen Entität.
+                </p>
+                <h3>Ethnischer Machtkampf</h3>
+                <p class="article">Die Volkszählung vergrössert die politische Unsicherheit in Bosnien. Das Staatsgebilde beruht auf einer brüchigen Machtteilung zwischen Serben, Kroaten und Bosniaken. Im Gebiet der bosniakisch und kroatisch dominierten bosnischen Föderation stellen die Bosniaken acht von sechzehn Ministern. Wenn sie nun in der Mehrheit sind, könnte dies durchaus zu Forderungen nach zusätzlichen Posten führen. Das Dayton-Abkommen von 1995, das den Staatsaufbau regelt, legt keine politischen Konsequenzen demografischer Verschiebungen fest. Es droht ein Machtkampf, der die bereits heute schlecht funktionierenden Institutionen noch weiter lähmen dürfte und damit auch die wirtschaftliche Perspektivenlosigkeit der Bevölkerung zu verlängern droht. Dass sich das Land zusammenrauft, scheint angesichts der ethnischen Polarisierung wenig wahrscheinlich. Wie weit diese fortgeschritten ist, zeigt auch die Volkszählung: Ethnische Identitäten werden immer stärker mit religiösen verbunden. So bezeichneten sich praktisch alle Bosniaken als muslimisch, die Serben als orthodox und die Kroaten als katholisch. Darin manifestiert sich eine Verhärtung der Identitäten – etwas, was es im relativ areligiösen Bosnien vor dem Balkankrieg kaum gab.</p>
+
+            </div>
+
+
+
+        </article>
+        <div id="graphbox" class="clearfix">
+            <header>
+                <h1>Die Ethnien in Bosnien-Herzegowina</h1>
+                <p>Angaben in %</p>
+            </header>
             <div id="datawrapper1"></div>
             <div id="datawrapper2"></div>
         </div>
         <footer>
             <p>Quelle: <a href="data/Quellen/Popis2013prvoIzdanje.pdf" target="_blank">CENCUS OF POPULATION, Households and Dwellings in Bosnia and Herzegovina, 2013 Final Results</a></p>
-            <p>
-                The results also show that Bosnia’s ethnic composition has changed significantly since the signing of the 1995 Dayton agreement that ended the Bosnian war. According to the peace accord, the three ethnicities – Muslims, Croats and Serbs - were equally represented.
-                <br>However, the 2013 census shows that Bosniaks (Bosnian Muslims) now represent 50.11% of the population, Serbs make up 30.78%, while Croats constitute just 15.43%.
-                <br>Almost all Muslims (88.23%) and Croats (91.39%) live in the Muslim-Croat Federation; 92.11% of Serbs live in Republika Srpska.</p>
         </footer>
     </div>
 
