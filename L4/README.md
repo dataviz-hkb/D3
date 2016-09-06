@@ -26,6 +26,7 @@ d3.csv("data/datensatz.csv", function(error, data) {
 }
 ```
 
+[Beispiel ansehen](https://dataviz-hkb.github.io/D3/L4/L4.01.html)
         
 <p>&nbsp;</p>
 ###File: [L4.02.html](L4.02.html)###
@@ -34,6 +35,9 @@ Die Rückgabe von Daten, die mit der gegebenen Selektion in Zusammenhang stehen,
 ``` javascript
 function(d,i) { return +d };
 ```
+
+[Beispiel ansehen](https://dataviz-hkb.github.io/D3/L4/L4.02.html)
+
 wobei __d__ die Daten repräsentiert, die mit der gegebenen Selektion in Zusammenhang stehen
 <br>und __i__ die Position der Daten im Array wiedergibt.
 
@@ -51,12 +55,14 @@ rows.forEach(function(d) {
 });
 ```
 
+[Beispiel ansehen](https://dataviz-hkb.github.io/D3/L4/L4.03.html)
 
 <p>&nbsp;</p>
 ###File: [L4.04.html](L4.04.html)###
 ####Skalen, Achsenbeschriftungen dazu####
 Tooltips ermöglichen, Rückgabe Kantonsname und Wert
 
+[Beispiel ansehen](https://dataviz-hkb.github.io/D3/L4/L4.04.html)
 
 
 <p>&nbsp;</p>
