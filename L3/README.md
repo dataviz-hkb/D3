@@ -18,7 +18,7 @@
 ####Javascript:####
 ```javascript
     var datensatz = [ 400, 920, 331, 600, 223, 584, 119, 438 ];
-        datensatz = datensatz.sort(function (a,b) {return d3.descending(a, b); });
+        //datensatz = datensatz.sort(function (a,b) {return d3.descending(a, b); });
         d3.selectAll( "rect" )
             .data( datensatz )
             .attr( "height", function(d,i){
