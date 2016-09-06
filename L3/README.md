@@ -18,7 +18,7 @@
 ####Javascript:####
 ```javascript
     var datensatz = [ 400, 920, 331, 600, 223, 584, 119, 438 ];
-        datensatz = datensatz.sort(function (a,b) {return d3.descending(a, b); });
+        //datensatz = datensatz.sort(function (a,b) {return d3.descending(a, b); });
         d3.selectAll( "rect" )
             .data( datensatz )
             .attr( "height", function(d,i){
@@ -63,6 +63,8 @@ d3.select("body").selectAll("p")
     .text("Sprache ist Praxis. Sprache an sich existiert nicht.");
 ```
 
+[Beispiel ansehen](https://dataviz-hkb.github.io/D3/L3/L3.00.html)
+
 <p>&nbsp;</p>
 ###File: [L3.01.html](L3.01.html)###
 ####Daten holen, Elemente erstellen, Daten verarbeiten####
@@ -75,6 +77,7 @@ d3.select("body").selectAll("p") // <--- Alle <p> \\\ falls keine vorhanden weit
         .text(function(d) { return Math.sin(+d); });  // <--- Textausgabe (Sinus von Datenwert)
 ```
 
+[Beispiel ansehen](https://dataviz-hkb.github.io/D3/L3/L3.01.html)
         
 <p>&nbsp;</p>
 ###File: [L3.02.html](L3.02.html)###
@@ -88,11 +91,12 @@ d3.select("body").selectAll("p") // <--- Alle <p> \\\ falls keine vorhanden weit
         .text(function(d) { return Math.sin(+d); });  // <--- Textausgabe (Sinus von Datenwert)
 ```
 
+[Beispiel ansehen](https://dataviz-hkb.github.io/D3/L3/L3.02.html)
+
 <p>&nbsp;</p>
 ###File: [L3.03.html](L3.03.html)###
 ####Das Ganze mit `<div>` als Balkendiagramm####
 Gleiches Prinzip: Datenarray holen, mittels enter() ein Vergleich zwischen "vorhandenen" und "benötigten" Elementen erstellen. "Benötigte" anhängen und deren Höhe als Funktion von Data berechnen.
-[Beispiel ansehen](https://dataviz-hkb.github.io/D3/L3/L3.03.html)
 ``` javascript
 d3.select("#datawrapper").selectAll("div")
         .data(datenset)
@@ -105,6 +109,7 @@ d3.select("#datawrapper").selectAll("div")
         .style("background-color", "deeppink");
 ```
 
+[Beispiel ansehen](https://dataviz-hkb.github.io/D3/L3/L3.03.html)
 
 <p>&nbsp;</p>
 ###File: [L3.04.html](L3.04.html)###
@@ -115,6 +120,7 @@ data = data.sort(function (a,b) {return d3.descending(a, b); });  // Absteigend
 data = data.sort(function (a,b) {return d3.ascending(a, b); });  // Aufsteigend
 ```
 
+[Beispiel ansehen](https://dataviz-hkb.github.io/D3/L3/L3.04.html)
 
 <p>&nbsp;</p>
 ###File: [L3.05.html](L3.05.html)###
@@ -125,6 +131,8 @@ d3.select("rect")
     .attr( "height", 126)
     .attr( "y", 200-126);
 ```
+
+[Beispiel ansehen](https://dataviz-hkb.github.io/D3/L3/L3.05.html)
 
 <p>&nbsp;</p>
 ###Files: [L3.06.html](L3.06.html) [L3.07.html](L3.07.html) [L3.08.html](L3.08.html) [L3.09.html](L3.09.html) [L3.10.html](L3.10.html) [L3.11.html](L3.11.html)###
