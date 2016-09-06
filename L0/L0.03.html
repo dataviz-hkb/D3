@@ -8,12 +8,9 @@
 
     <style>
         body {
-            background: #690dc4;
+            background: white;
         }
-        #kreise {
-            width: 500px;
-            height:500px;
-        }
+
     </style>
 
 
@@ -26,25 +23,33 @@
 
     <script type="text/javascript">
 
-        var originX = 250;
-        var originY = 250;
-        var KreisRadius = 200;
-
         //SVG Element erstellen
         var beispielSVG = d3.select('svg')
-            .attr("viewBox", "0 0 500 500")
+            .attr("viewBox", "0 0 100 100")
             .attr("id","kreise")
             .attr("xmlns", "http://www.w3.org/2000/svg");
 
 
-        var kreis = beispielSVG.append("circle")
+        var kreis = beispielSVG.append("g")
             .attr({
-                cx: originX,
-                cy: originY,
-                r: KreisRadius,
-                stroke : "white",
-                fill : "rgba(0, 0, 0, 0.66)",
-                "stroke-width" : 15
+                stroke : "green",
+                fill : "rgba(255, 255, 255, 1)",
+                "stroke-width" : 5
+            });
+
+        kreis.append("circle")
+            .attr({
+                cx: 25,
+                cy: 25,
+                r: 15
+            })
+            .style ({ });
+
+        kreis.append("circle")
+            .attr({
+                cx: 75,
+                cy: 25,
+                r: 15
             })
             .style ({ });
 
