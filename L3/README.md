@@ -63,6 +63,8 @@ d3.select("body").selectAll("p")
     .text("Sprache ist Praxis. Sprache an sich existiert nicht.");
 ```
 
+[Beispiel ansehen](https://dataviz-hkb.github.io/D3/L3/L3.00.html)
+
 <p>&nbsp;</p>
 ###File: [L3.01.html](L3.01.html)###
 ####Daten holen, Elemente erstellen, Daten verarbeiten####
