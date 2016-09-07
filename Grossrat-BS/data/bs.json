@@ -1,0 +1,62 @@
+[
+    {
+        "id": "sp",
+        "legend": "Sozialdemokratische Partei",
+        "name": "Sozialdemokratische Partei",
+        "seats": 33
+    },
+    {
+        "id": "gb",
+        "legend": "Grünes Bündnis",
+        "name": "Grünes Bündnis",
+        "seats": 13
+    },
+    {
+        "id": "glp",
+        "legend": "Grünliberale Partei",
+        "name": "Grünliberale Partei",
+        "seats": 5
+    },
+    {
+        "id": "cvpevp",
+        "legend": "Christlichdemokratische Volkspartei/Evangelische Volkspartei",
+        "name": "Christlichdemokratische Volkspartei/Evangelische Volkspartei",
+        "seats": 9
+    },
+    {
+        "id": "ldp",
+        "legend": "Liberal-demokratische Partei",
+        "name": "Liberal-demokratische Partei",
+        "seats": 10
+    },
+    {
+        "id": "fdp",
+        "legend": "Freisinnig-Demokratische Partei",
+        "name": "Freisinnig-Demokratische Partei",
+        "seats": 13
+    },
+    {
+        "id": "svp",
+        "legend": "Schweizerische Volkspartei",
+        "name": "Schweizerische Volkspartei",
+        "seats": 14
+    },
+    {
+        "id": "no-party",
+        "legend": "Fraktionslose",
+        "name": "Martin Gschwind",
+        "seats": 1
+    },
+    {
+        "id": "no-party",
+        "legend": "Fraktionslose",
+        "name": "Michel Rusterholtz",
+        "seats": 1
+    },
+    {
+        "id": "no-party",
+        "legend": "Fraktionslose",
+        "name": "Eric Weber",
+        "seats": 1
+    }
+]

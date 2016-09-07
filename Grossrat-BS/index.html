@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html class="no-js" lang="de">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Datenvisualisierung mit D3</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/lib/modernizr-2.8.3.min.js"></script>
+
+
+
+        <style media="screen">
+            /* basics */
+            html, body {
+                width: 100%;
+                height: 100%;
+                padding: 0px;
+                margin: 0px;
+                background: white;
+            }
+
+            h1, h2, h3 { text-align: center;}
+
+            #wrapper {
+                width: 600px;
+                margin: 100px auto;
+            }
+            svg .seat {
+                cursor: pointer;
+                transition: all 800ms;
+            }
+
+            /* bs parliament colors */
+            svg .seat.fdp { fill: #006cff; }
+            svg .seat.cvpevp { fill: #ffba00; }
+            svg .seat.gb { fill: #39d400; }
+            svg .seat.sp { fill: #ff1d00; }
+            svg .seat.svp { fill: #f5ff00; }
+            svg .seat.ldp { fill: #0061a8; }
+            svg .seat.glp { fill: #ceff00; }
+
+
+            /* common */
+            svg .seat.vacant { fill: #FFFFFF }
+            svg .seat.no-party { fill: #fff; stroke: #666;}
+
+            circle { shape-rendering: auto; }
+
+
+        </style>
+    </head>
+    <body>
+
+    <script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
+    <script>window.d3 || document.write('<script src="js/lib/d3.min.js"><\/script>')</script>
+    <script src="js/lib/d3-parliament.min.js" charset="utf-8"></script>
+
+        <div id="wrapper">
+        <h3>Basler Grosser Rat, Fraktionen und Parteien, 2012–2016</h3><svg></svg></div>
+        <script type="text/javascript">
+            var parliament = d3.parliament().width(600).height(600).innerRadiusCoef(0.333);
+            parliament.enter.fromCenter(false).smallToBig(true);
+            parliament.exit.toCenter(true).bigToSmall(true);
+            parliament.on("click", function(e) { console.log(e); });
+            //parliament.on("click", function(e) { console.log(e.party.name); });
+
+            var setData = function(d) {
+                d3.select("svg").datum(d).call(parliament);
+            };
+
+            d3.json("data/bs.json", setData);
+        </script>
+    </body>
+</html>
