@@ -39,7 +39,7 @@
             svg .seat.cvpevp { fill: #ffba00; }
             svg .seat.gb { fill: #39d400; }
             svg .seat.sp { fill: #ff1d00; }
-            svg .seat.svp { fill: #f5ff00; }
+            svg .seat.svp { fill: #0d900d; }
             svg .seat.ldp { fill: #0061a8; }
             svg .seat.glp { fill: #ceff00; }
 
@@ -65,8 +65,8 @@
             var parliament = d3.parliament().width(600).height(600).innerRadiusCoef(0.333);
             parliament.enter.fromCenter(false).smallToBig(true);
             parliament.exit.toCenter(true).bigToSmall(true);
-            parliament.on("click", function(e) { console.log(e); });
-            //parliament.on("click", function(e) { console.log(e.party.name); });
+            //parliament.on("click", function(e) { console.log(e); });
+            parliament.on("click", function(e) { console.log(e.party.name); });
 
             var setData = function(d) {
                 d3.select("svg").datum(d).call(parliament);
