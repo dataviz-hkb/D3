@@ -11,9 +11,9 @@
             overflow: visible;
         }
         .bar {
-            width: 10px;
+            width: 20px;
             height: 100px;
-            background-color: black;
+            background: black url(../css/assets/back.png);
             margin-right: 2px;
             display: inline-block;
         }
@@ -21,8 +21,7 @@
     </style>
 
 
-    <!-- 	<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script> -->
-	<script src="lib/d3.js" charset="utf-8"></script>
+     	<script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
 </head>
 
 <body>
@@ -34,21 +33,20 @@
 
         //var datenset = [ 25, 7, 5, 26, 11, 8, 25, 14, 23, 19, 14, 11, 22, 29, 11, 13, 12, 17, 18, 10, 24, 18, 25, 9, 3 ];
         var datenset = [];
-        for (var i = 0; i < 100; i++) {
+        for (var i = 0; i < 50; i++) {
             var newNumber = Math.random() * 30;
             datenset.push(newNumber);
         }
 
 
-        d3.select("#datawrapper").selectAll("div")
-                                .data(datenset)
-                                .enter()
-                                .append("div")
-                                .attr("class", "bar")
-                                .style("height", function(d) {
-                                    var barHeight = d * 5;
-                                    return barHeight + "px";
-                                });
+        d3.select("#datawrapper").selectAll("div").data(datenset)
+                                    .enter()
+                                        .append("div")
+                                        .attr("class", "bar")
+                                        .style("height", function(d) {
+                                            var barHeight = d * 15;
+                                            return barHeight + "px";
+                                        });
 
     </script>
 </body>
