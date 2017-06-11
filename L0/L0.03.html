@@ -14,44 +14,36 @@
     </style>
 
 
-    <!-- 	<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script> -->
-	<script src="lib/d3.js" charset="utf-8"></script>
+     	<script src="https://d3js.org/d3.v4.min.js"></script>
 </head>
 
 <body>
     <svg></svg>
 
     <script type="text/javascript">
-
         //SVG Element erstellen
         var beispielSVG = d3.select('svg')
             .attr("viewBox", "0 0 100 100")
             .attr("id","kreise")
             .attr("xmlns", "http://www.w3.org/2000/svg");
-
-
         var kreis = beispielSVG.append("g")
-            .attr({
-                stroke : "green",
-                fill : "rgba(255, 255, 255, 1)",
-                "stroke-width" : 5
-            });
+            .attr("stroke", "green")
+            .attr("fill", "rgba(255, 255, 255, 1)")
+            .attr("stroke-width", "5");
+
 
         kreis.append("circle")
-            .attr({
-                cx: 25,
-                cy: 25,
-                r: 15
-            })
-            .style ({fill : "#24d44d" });
+            .attr("cx", "25")
+            .attr("cy", "25")
+            .attr("r", "15")
+            .style("fill", "rgba(0, 255, 0, 1)");
 
         kreis.append("circle")
-            .attr({
-                cx: 75,
-                cy: 25,
-                r: 15
-            })
-            .style ({fill : "#5015a0" });
+            .attr("cx", "75")
+            .attr("cy", "25")
+            .attr("r", "15")
+            .style("fill", "rgba(0, 0, 255, 1)");
+
 
     </script>
 </body>
