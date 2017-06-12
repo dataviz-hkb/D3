@@ -3,11 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>D3 - 10 | CAS Dataviz, Daniel Schoeneck</title>
+    <title>D3 - 12 | CAS Dataviz, Daniel Schoeneck</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
     <link rel="stylesheet" href="../css/defaults.css" type="text/css">
     <style>
-
 
         body {
             margin:0;
@@ -20,7 +19,6 @@
         #datawrapper {
             overflow: hidden;
             position: relative;
-
         }
 
 
@@ -34,7 +32,9 @@
             background: rgba(255, 0, 0, 0.63)
         }
 
-
+        #series-1, #series-2, #series-3 {
+/*            display:none;*/
+        }
 
 
     </style>
@@ -42,25 +42,270 @@
 </head>
 
 <body>
-    <div id="datawrapper"><h1>Datenpunkte mit JSON Objekt</h1></div>
+    <div id="datawrapper"><h1>Und nochmals Datenpunkte mit JSON Objekt</h1></div>
 
     <script type="text/javascript">
 
         var w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
         var h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
 
+        var data = {
+
+  "0": [{
+            "x": 385.4370266389312,
+            "y": 598.8948968585966
+          },
+          {
+            "x": 685.3907537353621,
+            "y": 662.2477507357905
+          },
+          {
+            "x": 582.8134163080315,
+            "y": 301.8360868305535
+          },
+          {
+            "x": 1353.3651918884823,
+            "y": 49.859012871564914
+          },
+          {
+            "x": 406.13708692000284,
+            "y": 104.201514646772
+          },
+          {
+            "x": 883.5773928063934,
+            "y": 331.1590141965676
+          }],
+   "1":[  {
+            "x": 877.7843899798844,
+            "y": 675.8599713694989
+          },
+          {
+            "x": 515.1983758824804,
+            "y": 769.2646413813118
+          },
+          {
+            "x": 650.7821059392778,
+            "y": 617.2528867603481
+          },
+          {
+            "x": 958.1554861065623,
+            "y": 625.2831534037932
+          },
+          {
+            "x": 1057.4775252612508,
+            "y": 722.1183256831108
+          },
+          {
+            "x": 660.5692424486475,
+            "y": 451.48769056694863
+          },
+          {
+            "x": 1286.3973430353064,
+            "y": 428.7855562789036
+          },
+          {
+            "x": 1332.134444320922,
+            "y": 354.9150949973696
+          },
+          {
+            "x": 969.1436136963799,
+            "y": 576.5199060740183
+          },
+          {
+            "x": 401.342858690421,
+            "y": 17.024402415131732
+          },
+          {
+            "x": 879.6943608120241,
+            "y": 679.2018915433343
+          },
+          {
+            "x": 1302.7297861701318,
+            "y": 399.1365286761607
+          }],
+   "2":[  {
+            "x": 1060.4284553567866,
+            "y": 263.516342889885
+          },
+          {
+            "x": 687.9784442207238,
+            "y": 631.999336979945
+          },
+          {
+            "x": 46.32512925707222,
+            "y": 540.5769419996982
+          },
+          {
+            "x": 100.65699822374225,
+            "y": 433.5379401748336
+          },
+          {
+            "x": 419.7636647878157,
+            "y": 32.09742970954722
+          },
+          {
+            "x": 929.9617125427326,
+            "y": 389.25744238845726
+          },
+          {
+            "x": 602.7888549145531,
+            "y": 295.7504273213498
+          },
+          {
+            "x": 556.9898163358631,
+            "y": 166.95193739238456
+          },
+          {
+            "x": 259.4401216144614,
+            "y": 189.71972803724967
+          },
+          {
+            "x": 1123.086621731497,
+            "y": 492.6545923796238
+          },
+          {
+            "x": 118.80569333420767,
+            "y": 352.1634868126688
+          },
+          {
+            "x": 1049.0867001514905,
+            "y": 281.80293121865907
+          },
+          {
+            "x": 508.786918590342,
+            "y": 494.04586145636915
+          }],
+   "3":[{
+            "x": 533.8043323213197,
+            "y": 437.2410233969183
+          },
+          {
+            "x": 193.8923899846462,
+            "y": 586.4462012127799
+          },
+          {
+            "x": 571.0499726813251,
+            "y": 760.8782352888908
+          },
+          {
+            "x": 1074.5401122072597,
+            "y": 318.4678776585798
+          },
+          {
+            "x": 1370.698437758786,
+            "y": 781.0426585117386
+          },
+          {
+            "x": 760.0727519676267,
+            "y": 423.32398601263344
+          },
+          {
+            "x": 1050.1885096040005,
+            "y": 284.60120114904726
+          },
+          {
+            "x": 827.5372357663747,
+            "y": 570.737914548412
+          },
+          {
+            "x": 44.42294754036286,
+            "y": 336.53772862270404
+          },
+          {
+            "x": 441.17714549880554,
+            "y": 160.9104623348508
+          },
+          {
+            "x": 1152.1317356345469,
+            "y": 722.6056188732928
+          },
+          {
+            "x": 1283.935666750879,
+            "y": 160.8668034142809
+          },
+          {
+            "x": 610.1201705119211,
+            "y": 231.78774132551354
+          },
+          {
+            "x": 725.3489035234593,
+            "y": 728.5997822667189
+          },
+          {
+            "x": 120.23639018883216,
+            "y": 394.3503267787389
+          },
+          {
+            "x": 581.8925489403285,
+            "y": 787.6576790282852
+          },
+          {
+            "x": 637.2877033356173,
+            "y": 500.5913561552131
+          },
+          {
+            "x": 1119.1011930721038,
+            "y": 327.79273716216983
+          },
+          {
+            "x": 528.6452303708135,
+            "y": 764.9458870117397
+          },
+          {
+            "x": 1221.8575714905119,
+            "y": 303.38493797412366
+          },
+          {
+            "x": 896.4003630107162,
+            "y": 469.5286850604438
+          },
+          {
+            "x": 1364.6255121105896,
+            "y": 615.9294981366779
+          },
+          {
+            "x": 735.0357362152671,
+            "y": 180.2342326023435
+          },
+          {
+            "x": 269.12090227396726,
+            "y": 601.8926436792467
+          },
+          {
+            "x": 554.772470028355,
+            "y": 586.9625957932906
+          }
+        ]};
 
 
         var color = d3.scaleOrdinal(d3.schemeCategory20);
-        var x = d3.scaleLinear().range([0, w]);
-        var y = d3.scaleLinear().range([h, 0]);
+
+        var width = w,
+            height = h;
+
+        // JSON > Array, uns interessieren die Werte des 'inneren' Arrays
+        // console.log(arrData);
+        var arrData = d3.values(data);
+
+
+        // Achsenabschnitte bestimmen
+        var x = d3.scaleLinear().range([0, width]);
+        var y = d3.scaleLinear().range([height, 0]);
+
+
+        // grösste Werte holen: x
+        x.domain([0, d3.max( arrData, function(d) { return d3.max( d, function(v) { return v.x } ) } ) ]);
+
+        // grösste Werte holen: y
+        y.domain([0, d3.max( arrData, function(d) { return d3.max( d, function(v) { return v.y } ) } )]);
 
 
 
-        // Mit D3 Bildpunkt als SG rendern
+
+
         var d3svg = d3.select("#datawrapper").append("svg")
-                .attr("width", w)
-                .attr("height", h)
+                .attr("width", width)
+                .attr("height", height)
                 .attr("id","dots")
                 .attr("xmlns", "http://www.w3.org/2000/svg")
                 .append("g");
@@ -68,50 +313,27 @@
 
 
 
-        d3.json("dapie.json", function(error, data) {
-
-            if (error) throw error;
-
-
-
-            x.domain([0, d3.max(data, function(d) { return d.x; })]);
-            y.domain([0, d3.max(data, function(d) { return d.y; })]);
+        var series = d3svg.selectAll( "g" )
+            .data( d3.map(arrData).entries() )
+            .enter()
+            .append("g")
+            .attr( "id", function(d) { return "series-" + d.key } );
 
 
 
-        d3svg.selectAll( "g" ).data(data).enter()
-
-
+        series.selectAll( "circle" )
+            .data( function(d) { return d.value } )
+            .enter()
             .append("circle")
-            .attr( "cx", function(d) { return d.x } )
-            .attr( "r", "3" )
-            .attr( "cy", function(d) { return d.y } )
+            .attr( "cx", function(d) { return x(d.x) } )
+            .attr( "r", "30" )
+            .attr( "cy", function(d) { return y(d.y) } )
 
             .style("fill", function(d,i){return color(i);})
             .style("opacity", 0)
             .transition()
             .duration(1600)
-            .style("opacity", 1);
-
-
-
-
-
-
-        });
-
-
-
-
-
-
-
-
-
-
-
-
-
+            .style("opacity", 0.8);
 
 
 
