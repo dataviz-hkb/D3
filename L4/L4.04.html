@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8">
     <title>Data CSV/TSV - 4 | CAS Dataviz, Daniel Schoeneck</title>
-    <script src="lib/d3.js" charset="utf-8"></script>
-    <script src="lib/d3tip.js" charset="utf-8"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="lib/d3-tip.js" charset="utf-8"></script>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
     <link href="../css/defaults.css" rel="stylesheet">
     <style type="text/css">
@@ -116,17 +116,19 @@
 
 
         // Lineare Skala in der Höhe der SVG Grafik
-        var y = d3.scale.linear().range([height, 0]);
-        var yAxis = d3.svg.axis()
+        var y = d3.scaleLinear().range([height, 0]);
+        var yAxis = d3.axisLeft()
             .scale(y)
-            .orient("left")
             .ticks(10);
 
+
+
+
         // Ordinal Skala (Kantonsnamen) in der Breite der SVG Grafik,
-        var x = d3.scale.ordinal().rangeRoundBands([0, width], .05);
-        var xAxis = d3.svg.axis()
-            .scale(x)
-            .orient("bottom");
+
+        var x = d3.scaleBand().rangeRound([0, width]).padding(0.05);
+        var xAxis = d3.axisBottom()
+            .scale(x);
 
 
 
@@ -195,7 +197,7 @@
                 .attr("x", function (d) {
                     return x(d.name);
                 })
-                .attr("width", x.rangeBand())
+                .attr("width", x.bandwidth())
 
             .attr("fill", function (d, i) {
                     var rgbColor = "rgb(" + Math.round(d.value / maxData * 118) + ", 0, " + Math.round(d.value / maxData * 255) + ")";
