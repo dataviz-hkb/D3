@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>Data - 3 | CAS Dataviz, Daniel Schoeneck</title>
-    <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
     <link rel="stylesheet" href="../css/defaults.css" type="text/css">
 </head>
 <body>
@@ -31,25 +31,32 @@
         var datensatz = [ 20.4, 124, 43.4, 122, 6, 63, 24, 220, 122, 6, 63, 24, 2, 5, 143, 24 ];
         var svg = d3.select("svg");
 
-        var update = svg.selectAll("rect")
+        var barchart = svg.selectAll("rect")
                         .data(datensatz)
                         .attr("class", "foo");
 
-            update.enter().append("rect")
-                    .attr("class", "bar")
-                    .attr("width", 24)
-                    .attr("height", 24)
-                    .style("fill", "deeppink");
+            // selection.enter()
+            // Die "enter selection" repräsentiert eine Teilselektion, i.e.
+            // die fehlenden Elemente (fehlend aufgrund der einlaufenden
+            // Daten) welche jetzt im Dokument anzulegen sind.
+            // Konkret werden nachfolgend die 8 fehlenden Elemente erzeugt.
 
-            // Das Aufteilen der Sequenz in zwei Teile erlaubt es der
-            // enter().append() Selektion die bereits bestehende Selektion
-            // selectAll("rect") um die 8 fehlenden Elemente zu erweitern.
-            // Diese Selektion beinhaltet nun alle 16 benötigten Elemente,
-            // die in einem dritten Schritt ihre Attribute erhalten.
+            barchart.enter()
+                    .append("rect")
+                        .attr("class", "bar")
+                        .attr("width", 24)
+                        .attr("height", 24)
+                        .style("fill", "deeppink")
 
-            update.attr("height", function(d,i) { return d })
-                    .attr("y", function(d,i) {  return 200 - d })
-                    .attr("x", function(d,i) { return i*25 });
+
+            // selection.merge(objekt)
+            // Die "merge selection" gibt eine neue Objektauswahl zurück,
+            // indem die Auswahl (bestehend) mit der Auswahl (neu)
+            // zusammengefügt wird.
+                    .merge(barchart)
+                        .attr("height", function(d,i) { return d })
+                        .attr("y", function(d,i) {  return 200 - d })
+                        .attr("x", function(d,i) { return i*25 });
 
     </script>
 </body>
