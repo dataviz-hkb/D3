@@ -3,8 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>D3 | L4 Quantitative Scales</title>
-<!--    <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>-->
-    <script src="lib/d3.js" charset="utf-8"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
 
     <style type="text/css">
 
@@ -79,7 +78,7 @@
 
 
 
-    var linear = d3.scale.linear()
+    var linear = d3.scaleLinear()
     // default .domain([0, 1])
     // default .range([0, 1]);
     // 1 <= a*n + b <= 40 | n{1,10} a= 4.333 b= -3.333
@@ -96,7 +95,8 @@
         .append("div")
         .classed("cell", true)
         .text(function (d) {
-            return d3.round(linear(d), 2);
+            return linear(d);
+            //return d;
         });
 
 
