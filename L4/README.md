@@ -83,6 +83,6 @@ Tooltips ermöglichen, Rückgabe Kantonsname und Wert
 ---
 
 
-###Next: [Skalen](../L5/)
+### Next: [Skalen](../L5/)
 
 [Übersicht](../README.md#chapter)
