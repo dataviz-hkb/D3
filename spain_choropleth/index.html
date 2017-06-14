@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="de">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Spain Choropleth</title>
+    <link rel="stylesheet" type="text/css" href="css/tip.css" />
+    <link rel="stylesheet" type="text/css" href="css/legend.css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+    <script src="https://d3js.org/queue.v1.min.js"></script>
+    <script src="https://d3js.org/d3.geo.projection.v0.min.js"></script>
+    <script src="js/lib/d3tip.jsx" charset="utf-8"></script>
+
+    <style type="text/css">
+        body {
+            font-family: sans-serif;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+            margin: 0;
+            padding: 40px;
+            font-family: 'Roboto', 'Helvetica Neue', Helvetica, sans-serif;
+        }
+
+        .polygon {
+            fill: #0f4d96;
+            stroke: #000;
+            stroke-width: 0.2;
+            stroke-opacity: 1;
+        }
+
+        .polygon:hover {
+            cursor: pointer;
+            cursor: hand;
+        }
+
+        .polygon g:not(.municipalities_es) {
+            fill: rgb(211, 204, 30);
+            /*falllback color*/
+        }
+
+        /* only necessary if you want to animate after loading new csv data */
+        /* otherwise delete */
+        .municipalities_es {
+            -webkit-transition: all 0.5s ease-in-out;
+            -moz-transition: all 0.5s ease-in-out;
+            transition: all 0.5s ease-in-out;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="map">
+        <h1>Spain Index: Lorem Ipsum per municipalities</h1>
+        <p>Lorem Ipsum Dolor<br>Quantisierte, mehrstufige Skala (9-stufig)</p>
+    </div>
+
+
+    <script>
+        //Basic SVG
+        var width = 800;
+        var height = 580;
+
+        // which column to choose in CSV ?
+        var subSelection = '1991 - 2000';
+
+        var rateById = d3.map();
+        var labels = ["smaller than -20,3%", "-14,5% to -20,2%", "-8,7% to -14,4%", "-2,9% to -8,6%", "2.8% to -2.8%", "2,9% to 8,6%", "8,7% to 14,4%", "14,5% to 28,2%", "bigger than 20,3%"];
+
+        var color_range = d3.range(9);
+        var quantize = d3.scale.quantize()
+            .domain([-0.26, 0.26])
+            .range(color_range.map(function (i) {
+                return "municipalities_es q" + i + "-9";
+            }));
+
+
+        //Projektion
+        var projection = d3.geo.mollweide()
+            .scale(1)
+            .translate([0, 0]);
+        // Pfad
+        var path = d3.geo.path()
+            .projection(projection);
+
+        // Tooltip
+        var div = d3.select("body").append("div")
+            .attr("class", "tooltip")
+            .style("opacity", 0);
+
+        //Karte in container
+        var svg = d3.select("#map")
+            .append("svg")
+            .attr("id", "mapSvg")
+            .attr("width", width)
+            .attr("height", height)
+            .append("g")
+            .attr("id", "map");
+
+
+        var tip = d3.tip()
+            .attr('class', 'd3-tip')
+            .direction("n")
+            .offset([10, 0]);
+
+        svg.call(tip);
+
+        //Vector group
+        var vectors = svg.append("g")
+            .attr("class", "polygon");
+
+        queue()
+            .defer(d3.json, "data/json/municipalities.geojson")
+            .defer(d3.csv, "data/test_csv-2016-05.csv")
+            .await(ready);
+
+        //get Data, draw map, when ready
+        function ready(error, map, data) {
+            if (error) return console.error(error);
+            _dataES = map;
+
+            var subCSV = {};
+            var tooltipData = void(0);
+            data.forEach(function (d) {
+                    subCSV[d.ID] = +d[subSelection];
+                    rateById.set(d.ID, +d[subSelection]);
+            });
+
+            tip.html(function (d, i) {
+                // attention: refers to geojson!
+                return ("<span style='color:white'>" + d.properties.name_4 + ": " + d3.round((subCSV[d.properties.id_4] * 100), 2) + " %</span>");
+            });
+
+            // this has to be redefined for Spain, in order to fit svg
+            // see the following as a trial
+            var b, s, t;
+            projection.scale(1).translate([0, 0]).precision(.1);
+            var b = path.bounds(_dataES);
+            var s = .95 / Math.max((b[1][0] - b[0][0]) / width, (b[1][1] - b[0][1]) / height);
+            var t = [(width - s * (b[1][0] + b[0][0])) / 2.12, (height - s * (b[1][1] + b[0][1])) / 2];
+            projection.scale(s).translate(t);
+
+            //Vector features
+            path.pointRadius(1.0);
+            vector0 = vectors.selectAll("path").data(_dataES.features);
+            vector0.enter()
+                .append("g")
+                .attr("id", function (d) {
+                    return "id-" + d.properties.id_4; // attention: refers to geojson!
+                })
+                .attr("class", function (d) {
+                    return quantize(rateById.get(d.properties.id_4)) // attention: refers to geojson!
+                })
+                .append("path").attr("d", path)
+                //MouseEvents
+                .on('mouseover', tip.show)
+                .on('mouseout', tip.hide);
+
+
+            //legend
+            var legend = vectors.selectAll("g.legend")
+                .data(color_range)
+                .enter().append("g")
+                .attr("class", "legend");
+
+            var ls_w = 20
+                , ls_h = 20;
+
+            legend.append("rect")
+                .attr("x", width - 10 * ls_w)
+                .attr("y", function (d, i) {
+                    return height - (i * ls_h) - 2 * ls_h;
+                })
+                .attr("width", ls_w)
+                .attr("height", ls_h)
+                .attr("class", function (d, i) {
+                    return "municipalities_es q" + i + "-9";
+                });
+
+            legend.append("text")
+                .attr("x", width - 8 * ls_w)
+                .attr("y", function (d, i) {
+                    return height - (i * ls_h) - ls_h - 4;
+                })
+                .text(function (d, i) {
+                    return labels[i];
+                });
+        };
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+/*Legend styling*/
+
+.legendouter {
+    stroke: #000;
+    stroke-width: 0.8;
+    stroke-opacity: 1;
+    fill: #fff;
+}
+
+.legend rect,
+.legend ellipse {
+    stroke: #000;
+    stroke-width: 0.4;
+    stroke-opacity: 1;
+}
+
+.legend text {
+    fill: #000;
+    font-size: smaller;
+}
+
+.legend text.left {
+    text-anchor: start;
+}
+
+.legend text.right {
+    text-anchor: end;
+}
+
+.q8-9 {
+    fill: #5d0000;
+}
+
+.q7-9 {
+    fill: rgb(142, 0, 0);
+}
+
+.q6-9 {
+    fill: rgb(214, 82, 0);
+}
+
+.q5-9 {
+    fill: rgb(248, 165, 67);
+}
+
+.q4-9 {
+    fill: rgb(250, 250, 250);
+}
+
+.q3-9 {
+    fill: rgb(176, 211, 187);
+}
+
+.q2-9 {
+    fill: rgb(105, 188, 127);
+}
+
+.q1-9 {
+    fill: rgb(25, 136, 51);
+}
+
+.q0-9 {
+    fill: rgb(2, 96, 13);
+}
