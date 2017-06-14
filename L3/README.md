@@ -1,7 +1,7 @@
 # DATA
 
 
-####Einfaches Beispiel, HTML-Struktur (HTML, SVG):####
+#### Einfaches Beispiel, HTML-Struktur (HTML, SVG):####
 ```html
         <svg width="200" height="200" style="stroke-width: 0;">
             <rect x="0" y="176" width="24" height="24" fill="#7600ff"></rect>
@@ -15,7 +15,7 @@
         </svg>
 ```
 
-####Javascript:####
+#### Javascript:####
 ```javascript
     var datensatz = [ 400, 920, 331, 600, 223, 584, 119, 438 ];
         //datensatz = datensatz.sort(function (a,b) {return d3.descending(a, b); });
@@ -51,8 +51,8 @@
 <p>&nbsp;</p>
 
 
-###File: [L3.00.html](L3.00.html)###
-####Das grundlegende Konzept von D3 mit Data####
+### File: [L3.00.html](L3.00.html)###
+#### Das grundlegende Konzept von D3 mit Data####
 Datenarray holen, traversieren und pro Datenpunkt ein neues Element erzeugen.
 ``` javascript
 var datenset = [ 5, 10, 15, 20, 25 ];
@@ -66,8 +66,8 @@ d3.select("body").selectAll("p")
 [Beispiel ansehen](https://dataviz-hkb.github.io/D3/L3/L3.00.html)
 
 <p>&nbsp;</p>
-###File: [L3.01.html](L3.01.html)###
-####Daten holen, Elemente erstellen, Daten verarbeiten####
+### File: [L3.01.html](L3.01.html)###
+#### Daten holen, Elemente erstellen, Daten verarbeiten####
 Datenarray holen, Keys und Werte, dann mittels enter() eine Subselektion erstellen aus Vergleich zwischen "vorhandenen" und "benötigten" Elementen. "Benötigte" am Schluss anhängen.
 ``` javascript
 d3.select("body").selectAll("p") // <--- Alle <p> \\\ falls keine vorhanden weiter…
@@ -80,8 +80,8 @@ d3.select("body").selectAll("p") // <--- Alle <p> \\\ falls keine vorhanden weit
 [Beispiel ansehen](https://dataviz-hkb.github.io/D3/L3/L3.01.html)
         
 <p>&nbsp;</p>
-###File: [L3.02.html](L3.02.html)###
-####Daten holen, Elemente erstellen, Daten verarbeiten####
+### File: [L3.02.html](L3.02.html)###
+#### Daten holen, Elemente erstellen, Daten verarbeiten####
 Datenarray holen, Keys und Werte, dann mittels enter() eine Subselektion erstellen aus Vergleich zwischen "vorhandenen" und "benötigten" Elementen. "Benötigte" am Schluss anhängen.
 ``` javascript
 d3.select("body").selectAll("p") // <--- Alle <p> \\\ falls keine vorhanden weiter…
@@ -94,8 +94,8 @@ d3.select("body").selectAll("p") // <--- Alle <p> \\\ falls keine vorhanden weit
 [Beispiel ansehen](https://dataviz-hkb.github.io/D3/L3/L3.02.html)
 
 <p>&nbsp;</p>
-###File: [L3.03.html](L3.03.html)###
-####Das Ganze mit `<div>` als Balkendiagramm####
+### File: [L3.03.html](L3.03.html)###
+#### Das Ganze mit `<div>` als Balkendiagramm####
 Gleiches Prinzip: Datenarray holen, mittels enter() ein Vergleich zwischen "vorhandenen" und "benötigten" Elementen erstellen. "Benötigte" anhängen und deren Höhe als Funktion von Data berechnen.
 ``` javascript
 d3.select("#datawrapper").selectAll("div")
@@ -112,8 +112,8 @@ d3.select("#datawrapper").selectAll("div")
 [Beispiel ansehen](https://dataviz-hkb.github.io/D3/L3/L3.03.html)
 
 <p>&nbsp;</p>
-###File: [L3.04.html](L3.04.html)###
-####Daten verarbeiten, sortieren####
+###F ile: [L3.04.html](L3.04.html)###
+#### Daten verarbeiten, sortieren####
 Datenarray holen, Keys und Werte, dann mittels enter() eine Subselektion erstellen aus Vergleich zwischen "vorhandenen" und "benötigten" Elementen. "Benötigte" am Schluss anhängen.
 ``` javascript
 data = data.sort(function (a,b) {return d3.descending(a, b); });  // Absteigend
@@ -123,8 +123,8 @@ data = data.sort(function (a,b) {return d3.ascending(a, b); });  // Aufsteigend
 [Beispiel ansehen](https://dataviz-hkb.github.io/D3/L3/L3.04.html)
 
 <p>&nbsp;</p>
-###File: [L3.05.html](L3.05.html)###
-####SVG Elemente####
+### File: [L3.05.html](L3.05.html)###
+#### SVG Elemente####
 Koordinatenursprung für SVG ist __Oben__ und __Links__. Positionierung entsprechend anpassen. 
 ``` javascript
 d3.select("rect")
@@ -135,15 +135,15 @@ d3.select("rect")
 [Beispiel ansehen](https://dataviz-hkb.github.io/D3/L3/L3.05.html)
 
 <p>&nbsp;</p>
-###Files: [L3.06.html](L3.06.html) [L3.07.html](L3.07.html) [L3.08.html](L3.08.html) [L3.09.html](L3.09.html) [L3.10.html](L3.10.html) [L3.11.html](L3.11.html)###
-####Datenvisualisierung simpel####
+### Files: [L3.06.html](L3.06.html) [L3.07.html](L3.07.html) [L3.08.html](L3.08.html) [L3.09.html](L3.09.html) [L3.10.html](L3.10.html) [L3.11.html](L3.11.html)###
+#### Datenvisualisierung simpel####
 Datenarray zu SVG Balkendiagramm.
 
 
         
 <p>&nbsp;</p>
-###File: [L3.12.html](L3.12.html)###
-####Wie funktioniert das Schlüsselkonzept `selectAll()`, `data()`, `enter()`, `append()` ?####
+### File: [L3.12.html](L3.12.html)###
+#### Wie funktioniert das Schlüsselkonzept `selectAll()`, `data()`, `enter()`, `append()` ?####
 Gegeben: Datenarray mit 16 Feldinhalten (Zahlenwerte). SVG Objekt mit 8 `<rect>`Elementen.
 Was passiert? 
 
@@ -178,8 +178,8 @@ svg.selectAll("rect")
 ```
 
 <p>&nbsp;</p>
-###File: [L3.13.html](L3.13.html)###
-####Die `selectAll()`, `data()`, `enter()`, `append()` Sequenz verstehen####
+### File: [L3.13.html](L3.13.html)###
+#### Die `selectAll()`, `data()`, `enter()`, `append()` Sequenz verstehen####
 Die  Sequenz muss aufgeteilt werden, um das Konzept auch in diesem Fall erfolgreich zu halten, d.h. um jene benötigten Elemente hinzuzufügen und um diese der gesamten Selektion zugänglich zu machen. Aufteilung in: 
 
 1. Auswahl aller Elemente, Datenarray holen
@@ -219,6 +219,6 @@ var     update = svg.selectAll("rect").data(datensatz);
 ---
 
 
-###Next: [Data CSV/TSV](../L4/)
+### Next: [Data CSV/TSV](../L4/)
 
 [Übersicht](../README.md#chapter)
