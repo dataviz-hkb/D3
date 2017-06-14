@@ -44,9 +44,9 @@ Unstrukturierter Content, Dokument mit minimalem Markup, Text
 ### File: [L1.02.html](L1.02.html)
 #### Strukturierung mit HTML
 Semantische Struktur dort, wo möglich und sinnvoll.<br>
+D.h. Überschrift wird zu Überschrift ( `<h1>` bzw. `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` )
 
 
-<p>&nbsp;</p>
 ### File: [L1.03.html](L1.03.html)
 #### Variante: Strukturierung mit HTML
 Die Bildung von Struktur unterliegt einzig und allein der Regel, dass valider (= allgemein gültiger) HTML Code entsteht. Das bedeutet, dass zur Auszeichnung des Dokuments (HTML = Hypertext Markup Language = Hypertext Auszeichnungssprache ) alles erlaubt ist, was gültig ist, man also relativ frei ist, diese selber zu bestimmen.
