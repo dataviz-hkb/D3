@@ -4,8 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>D3 | L4 Ordinal Scales</title>
-    <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-    <script src="js/lib/d3.min.js" charset="utf-8"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
 
     <style type="text/css">
         body {
@@ -30,9 +29,9 @@
 
         }
 
-        #datawrapper {
+        #datawrapper, main {
             width: 960px;
-            margin: 0 auto;
+            margin: 1em auto;
         }
     </style>
 </head>
@@ -50,24 +49,31 @@
             <h3>Farbschema mit 240 unterschiedlichen Farben:</h3>
             <p></p>
         </div>
+
     </div>
+
+
+
+    <main>
+        <p>Das lässt sich beliebig fortsetzen…</p>
+    </main>
 
     <script type="text/javascript">
         var width = 960 , height = 60;
 
-        var fillcolors = d3.scale.category20c(); // ["#1f77b4", "#aec7e8", "#ff7f0e", "#ffbb78", "#2ca02c", "#98df8a", "#d62728", "#ff9896", "#9467bd", "#c5b0d5", "#8c564b", "#c49c94", "#e377c2", "#f7b6d2", "#7f7f7f", "#c7c7c7", "#bcbd22", "#dbdb8d", "#17becf", "#9edae5"]
+        // var fillcolors = d3.scaleOrdinal(d3.schemeCategory10)
+       var fillcolors = d3.scaleOrdinal(d3.schemeCategory20) // ["#1f77b4", "#aec7e8", "#ff7f0e", "#ffbb78", "#2ca02c", "#98df8a", "#d62728", "#ff9896", "#9467bd", "#c5b0d5", "#8c564b", "#c49c94", "#e377c2", "#f7b6d2", "#7f7f7f", "#c7c7c7", "#bcbd22", "#dbdb8d", "#17becf", "#9edae5"]
         var colors_google = ["#3366cc", "#dc3912", "#ff9900", "#109618", "#990099", "#0099c6", "#dd4477", "#66aa00", "#b82e2e", "#316395", "#994499", "#22aa99", "#aaaa11", "#6633cc", "#e67300", "#8b0707", "#651067", "#329262", "#5574a6", "#3b3eac"];
         var colors_240 = ["#015eff", "#0cc402", "#fc0a18", "#aea7a5", "#ff15ae", "#d99f07", "#11a5fe", "#037e43", "#ba4455", "#d10aff", "#9354a6", "#7b6d2b", "#08bbbb", "#95b42d", "#b54e04", "#ee74ff", "#2d7593", "#e19772", "#fa7fbe", "#fe035b", "#aea0db", "#905e76", "#92b27a", "#03c262", "#878aff", "#4a7662", "#ff6757", "#fe8504", "#9340e1", "#2a8602", "#07b6e5", "#d21170", "#526ab3", "#ff08e2", "#bb2ea7", "#e4919f", "#09bf91", "#90624c", "#bba94a", "#a26c05", "#5c7605", "#df89e7", "#b0487c", "#ee9345", "#70b458", "#b19b71", "#6b6d74", "#ec5206", "#85a7c7", "#ff678c", "#b55b3e", "#8054cc", "#7eb0a0", "#c480b3", "#d9102d", "#5a783f", "#fe66d2", "#bc13c8", "#62bd33", "#b8ab03", "#8f31ff", "#fd8581", "#049279", "#74739c", "#0e6ad6", "#747151", "#01878d", "#0380bf", "#bf81fd", "#8ba1fb", "#887a02", "#c09bb5", "#a97741", "#d04096", "#c19083", "#a583da", "#8ca149", "#b16368", "#c23e37", "#fd7b40", "#d12153", "#b24cd2", "#56a66f", "#5dafbd", "#78aceb", "#2375fe", "#d49f54", "#ea41d3", "#885e92", "#8468fd", "#cf4eff", "#c93716", "#c563af", "#d66886", "#664dfd", "#468530", "#6d60be", "#fa8a64", "#059843", "#ff55a1", "#638b8e", "#bd6d2e", "#ff0f7a", "#3f93ff", "#ff5167", "#8f9a7f", "#d68201", "#8b9054", "#fe4935", "#9d7e85", "#01a52b", "#59b99b", "#ba5cc4", "#4bbe73", "#679925", "#b99023", "#408158", "#fa56fe", "#d6603b", "#839004", "#d1786a", "#cb4170", "#897abb", "#8e8ca1", "#4197c2", "#a88e49", "#157fd5", "#ba6bff", "#d20498", "#da6d10", "#7fb905", "#bd728d", "#fc0cfe", "#f51590", "#e35c60", "#7e685e", "#5c65dc", "#6886c3", "#8faeb5", "#11b3f9", "#ca95db", "#ab1de7", "#6c9a54", "#ea8bb4", "#a17da5", "#687ddc", "#ff0f37", "#6e9b77", "#d71c02", "#93784e", "#9d8b7b", "#fc08c6", "#e974e4", "#44a298", "#9f528d", "#9f69cf", "#f27cd2", "#0ec339", "#6f7a2d", "#aa72b7", "#0393ad", "#43709f", "#ac4e69", "#707d71", "#db5d95", "#55bb4f", "#aeac62", "#a8af3e", "#de9b38", "#b77b5d", "#fc4277", "#fe8299", "#b0409b", "#876910", "#d50fe5", "#f547ae", "#a9a4c9", "#976565", "#049f67", "#e58acd", "#cea06d", "#60778f", "#7a677e", "#d62f44", "#a3584a", "#d3686f", "#fe4103", "#539d01", "#0f7b6e", "#667e5a", "#ff444e", "#938f37", "#8f74f4", "#a5981a", "#c18a96", "#9c5d38", "#ac02ff", "#b86804", "#da581a", "#d150cf", "#da6a58", "#bf94fe", "#0fb9d3", "#4b5de9", "#5b90a8", "#c86a9a", "#7a5faa", "#d44de5", "#d658bd", "#d27951", "#2dad06", "#8cb64a", "#c40db3", "#9a601e", "#fb731d", "#e2948b", "#479d53", "#a8ac7e", "#df773a", "#447b02", "#a2577e", "#4b83fd", "#f23dbe", "#f364b7", "#d88c4f", "#6c713d", "#6d8bb4", "#479b36", "#ad8132", "#5e97e7", "#c59ac9", "#974cbb", "#b64a44", "#f88d2e", "#9452dd", "#e04339", "#de4e6a", "#367680", "#a748ff", "#f5603a"];
 
         var data1 = d3.range(20);
-        var x1 = d3.scale.ordinal().rangeRoundBands([0, width]);
+        var x1 = d3.scaleBand().range([0, width]);
         x1.domain(data1);
 
         var data2 = d3.range(colors_240.length);
-        var x2 = d3.scale.ordinal().rangeRoundBands([0, width]);
+        var x2 = d3.scaleBand().range([0, width]);
         x2.domain(data2);
 
-        console.log(x2.rangeBand());
 
         var svg1 = d3.select("#datawrapper div:first-child p").append("svg").attr("width", width).attr("height", height);
         var svg2 = d3.select("#datawrapper div:last-child p").append("svg").attr("width", width).attr("height", height);
@@ -80,7 +86,7 @@
                 return x1(d)
             })
             .attr("y", 0)
-            .attr("width", x1.rangeBand())
+            .attr("width", width/data1.length)
             .attr("height", 60);
 
 
@@ -94,7 +100,7 @@
                 return x2(d)
             })
             .attr("y", 0)
-            .attr("width", x2.rangeBand())
+            .attr("width", width/data2.length)
             .attr("height", 60);
     </script>
 
