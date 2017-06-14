@@ -50,6 +50,7 @@
 
 
 
+
 ### File: [L3.00.html](L3.00.html)
 #### Das grundlegende Konzept von D3 mit Data
 Datenarray holen, traversieren und pro Datenpunkt ein neues Element erzeugen.
@@ -65,6 +66,8 @@ d3.select("body").selectAll("p")
 [Beispiel ansehen](https://dataviz-hkb.github.io/D3/L3/L3.00.html)
 
 
+
+
 ### File: [L3.01.html](L3.01.html)
 #### Daten holen, Elemente erstellen, Daten verarbeiten
 Datenarray holen, Keys und Werte, dann mittels enter() eine Subselektion erstellen aus Vergleich zwischen "vorhandenen" und "benötigten" Elementen. "Benötigte" am Schluss anhängen.
@@ -78,7 +81,9 @@ Datenarray holen, Keys und Werte, dann mittels enter() eine Subselektion erstell
 
 
 [Beispiel ansehen](https://dataviz-hkb.github.io/D3/L3/L3.01.html)
-        
+
+
+
 
 ### File: [L3.02.html](L3.02.html)
 #### Daten holen, Elemente erstellen, Daten verarbeiten
@@ -92,6 +97,7 @@ d3.select("body").selectAll("p") // <--- Alle <p> \\\ falls keine vorhanden weit
 ```
 
 [Beispiel ansehen](https://dataviz-hkb.github.io/D3/L3/L3.02.html)
+
 
 
 
@@ -113,7 +119,9 @@ d3.select("#datawrapper").selectAll("div")
 [Beispiel ansehen](https://dataviz-hkb.github.io/D3/L3/L3.03.html)
 
 
-###F ile: [L3.04.html](L3.04.html)
+
+
+### File: [L3.04.html](L3.04.html)
 #### Daten verarbeiten, sortieren
 Datenarray holen, Keys und Werte, dann mittels enter() eine Subselektion erstellen aus Vergleich zwischen "vorhandenen" und "benötigten" Elementen. "Benötigte" am Schluss anhängen.
 ``` javascript
@@ -122,6 +130,7 @@ data = data.sort(function (a,b) {return d3.ascending(a, b); });  // Aufsteigend
 ```
 
 [Beispiel ansehen](https://dataviz-hkb.github.io/D3/L3/L3.04.html)
+
 
 
 
@@ -135,6 +144,7 @@ d3.select("rect")
 ```
 
 [Beispiel ansehen](https://dataviz-hkb.github.io/D3/L3/L3.05.html)
+
 
 
 
@@ -180,6 +190,7 @@ svg.selectAll("rect")
             .attr("y", function(d,i) {  return 200 - d })
             .attr("x", function(d,i) { return i*25 });
 ```
+
 
 
 
