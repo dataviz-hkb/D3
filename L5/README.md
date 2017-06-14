@@ -10,9 +10,10 @@
 | sort(comparator) | Auswahl | Auswahl | Sortiert die Elemente in der Selektion |
 
 
-<p>&nbsp;</p>
 
-####Einfaches Beispiel, HTML-Struktur (HTML, SVG):####
+
+
+#### Einfaches Beispiel, HTML-Struktur (HTML, SVG):
 ```html
         <svg width="200" height="200" style="stroke-width: 0; background-color: white;">
 
@@ -29,7 +30,7 @@
 
 ```
 
-####Javascript:####
+#### Javascript:
 ```javascript
     var datensatz = [ 400, 920, 331, 600, 223, 584, 119, 438 ];
         datensatz = datensatz.sort(function (a,b) {return d3.ascending(a, b); });
@@ -60,11 +61,12 @@
 
 
 
-<p>&nbsp;</p>
+
+
 
 ---
 
 
-###Next: [Data CSV/TSV](../_L4/)
+### Next: [GeoJSON und Karten](../L6/)
 
 [Übersicht](../README.md#chapter)
