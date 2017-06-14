@@ -56,7 +56,6 @@ Die Bildung von Struktur unterliegt einzig und allein der Regel, dass valider (=
 Hier eine Variante, die minimal anders aufgebaut ist, sich jedoch semantisch unterscheidet.
 Ein standardkonformer Browser veranlasst das, Unterschiede in Textgrösse für h1 zu rendern (siehe Textgrösse im `<h1>` zu [L1.02.html](L1.02.html) im direkten Vergleich)
 
-        
 
 
 ### File: [L1.04.html](L1.04.html)
@@ -70,7 +69,6 @@ Jetzt kann CSS kommen. Drei Möglichkeiten CSS einzubinden und zu verwenden:
 [Beispiel ansehen](https://dataviz-hkb.github.io/D3/L1/L1-04.html)
 
 
-<p>&nbsp;</p>
 ### File: [L1.05.html](L1.05.html)
 #### DOM-Traversierung und Selektion
 <a href="dom_tree.png"><img src="dom_tree.png" width="180"></a>&nbsp;&nbsp;&nbsp;Präzise und effizient zu selektieren zu können ist eine Grundvoraussetzung für den gestalterischen Eingriff. Das Bild veranschaulicht, was zu tun ist. Gegeben: ein __HTML-strukturiertes Dokument__ mit Inhalt. <br>Damit __CSS__ einem Element bzw. dem Inhalt eines Elements Gestaltungsattribute zuschreiben kann, muss der DOM über alle Verwandtschaftsgrade traversiert werden. Um das zu vereinfachen bieten sich die Attribute `class` und `id` an. <br>Klassen- und ID-Bezeichner in HTML erlauben CSS die direkte Selektion über folgendes Muster:
@@ -91,7 +89,6 @@ Jetzt kann CSS kommen. Drei Möglichkeiten CSS einzubinden und zu verwenden:
 
 
 
-<p>&nbsp;</p>
 ### File: [L1.06.html](L1.06.html)
 #### Kaskadierung, Vererbung
 Das Beispiel zeigt die Vererbung von Eigenschaft und Wert an Kinds-Elemente.
@@ -109,7 +106,6 @@ Vererbung der Schrift an alle Kinds-Elemente entspricht der Erwartung an den Dok
 
 
 
-<p>&nbsp;</p>
 ### File: [L1.07.html](L1.07.html)
 #### Strukturierung mit HTML
 Dieses Beispiel, um zu illustrieren, welcher Aufwand nötig wäre, um visuell das gleiche Ergebnis zu erhalten, ohne Vergabe von Klassen und ID's. Vergleiche HTML-Struktur aus Dokument [L1.02.html](L1.02.html) mit [L1.07.html](L1.07.html)
@@ -117,8 +113,6 @@ Dieses Beispiel, um zu illustrieren, welcher Aufwand nötig wäre, um visuell da
 
 
 
-
-<p>&nbsp;</p>
 
 ---
 
