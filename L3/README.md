@@ -215,7 +215,6 @@ var     update = svg.selectAll("rect").data(datensatz);
 
 
 
-
 ---
 
 
