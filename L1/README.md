@@ -40,11 +40,12 @@ Kommentar zum Material
 ### File: [L1.01.html](L1.01.html)
 Unstrukturierter Content, Dokument mit minimalem Markup, Text
 
-<p>&nbsp;</p>
+
 ### File: [L1.02.html](L1.02.html)
 #### Strukturierung mit HTML
-Semantische Struktur dort, wo möglich und sinnvoll.<br>
-D.h. Überschrift wird zu Überschrift ( `<h1>` bzw. `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` )
+Semantische Struktur dort, wo möglich und sinnvoll. D.h. Überschrift wird zu Überschrift, Absatz wird zu Absatz etc.
+Übersicht in der HTML-Referenz: https://developer.mozilla.org/de/docs/Web/HTML/Element
+`<div>` als generisches Element wird generell dort eingesetzt, wo nicht-semantische Verpackung/Gliederung/Struktur gewünscht ist.
 
 
 ### File: [L1.03.html](L1.03.html)
@@ -56,8 +57,6 @@ Ein standardkonformer Browser veranlasst das, Unterschiede in Textgrösse für h
         
 
 
-
-<p>&nbsp;</p>
 ### File: [L1.04.html](L1.04.html)
 #### Strukturierung mit HTML, gestalterischer Eingriff mit CSS
 Jetzt kann CSS kommen. Drei Möglichkeiten CSS einzubinden und zu verwenden: 
@@ -81,7 +80,7 @@ Jetzt kann CSS kommen. Drei Möglichkeiten CSS einzubinden und zu verwenden:
 
 * __ohne__ | Selektiert generische Elemente (auch SVG) <br>Beispiel: `span { … }`selektiert `<span> … </span>` 
 
-#####N ota bene:
+##### Nota bene:
 * Ein Element kann zu __zwei (drei, vier, …) Klassen__ gehören, jedoch nur eine ID haben. __Eine ID__ kann auch nur __einmal__ pro Dokument vorkommen. 
 
 * Mehrfach-Selektion ist möglich über die Verwendung von Kommata. <br>Beispiel: Die drei Elemente `<body> … </body>` , `<p id="testID"> … </p>` und `<h1> … </h1>` werden mit folgender CSS-Syntax `body, #testID, h1 { … }` selektiert (Zusammenfassung, Trennung über Kommata). So kann redundantes Schreiben von CSS Anweisungen vermieden werden.
