@@ -67,6 +67,6 @@
 ---
 
 
-### Next: [GeoJSON und Karten](../_L6/)
+### Next: [GeoJSON und Karten](../L6/)
 
 [Übersicht](../README.md#chapter)
