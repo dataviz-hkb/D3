@@ -48,7 +48,6 @@
 
 
 
-<p>&nbsp;</p>
 
 
 ### File: [L3.00.html](L3.00.html)
@@ -65,15 +64,22 @@ d3.select("body").selectAll("p")
 
 [Beispiel ansehen](https://dataviz-hkb.github.io/D3/L3/L3.00.html)
 
-<p>&nbsp;</p>
+
 ### File: [L3.01.html](L3.01.html)
 #### Daten holen, Elemente erstellen, Daten verarbeiten
 Datenarray holen, Keys und Werte, dann mittels enter() eine Subselektion erstellen aus Vergleich zwischen "vorhandenen" und "benötigten" Elementen. "Benötigte" am Schluss anhängen.
+``` javascript
+    d3.select("body").selectAll("p") // <--- Alle <p> \\\ falls keine vorhanden weiter…
+        .data(datenset) // <--- Datenarray holen, Keys und Werte
+        .enter() // <--- Subselektion: Vergleich "Vorhandene" mit "Benötigten"
+        .append("p") // <--- "Benötigte" am Schluss anhängen
+        .text(function(d) { return Math.sin(+d); });  // <--- Textausgabe (Sinus von Datenwert)
+```
 
 
 [Beispiel ansehen](https://dataviz-hkb.github.io/D3/L3/L3.01.html)
         
-<p>&nbsp;</p>
+
 ### File: [L3.02.html](L3.02.html)
 #### Daten holen, Elemente erstellen, Daten verarbeiten
 Datenarray holen, Keys und Werte, dann mittels enter() eine Subselektion erstellen aus Vergleich zwischen "vorhandenen" und "benötigten" Elementen. "Benötigte" am Schluss anhängen.
@@ -87,7 +93,8 @@ d3.select("body").selectAll("p") // <--- Alle <p> \\\ falls keine vorhanden weit
 
 [Beispiel ansehen](https://dataviz-hkb.github.io/D3/L3/L3.02.html)
 
-<p>&nbsp;</p>
+
+
 ### File: [L3.03.html](L3.03.html)
 #### Das Ganze mit `<div>` als Balkendiagramm
 Gleiches Prinzip: Datenarray holen, mittels enter() ein Vergleich zwischen "vorhandenen" und "benötigten" Elementen erstellen. "Benötigte" anhängen und deren Höhe als Funktion von Data berechnen.
@@ -105,7 +112,7 @@ d3.select("#datawrapper").selectAll("div")
 
 [Beispiel ansehen](https://dataviz-hkb.github.io/D3/L3/L3.03.html)
 
-<p>&nbsp;</p>
+
 ###F ile: [L3.04.html](L3.04.html)
 #### Daten verarbeiten, sortieren
 Datenarray holen, Keys und Werte, dann mittels enter() eine Subselektion erstellen aus Vergleich zwischen "vorhandenen" und "benötigten" Elementen. "Benötigte" am Schluss anhängen.
@@ -116,7 +123,8 @@ data = data.sort(function (a,b) {return d3.ascending(a, b); });  // Aufsteigend
 
 [Beispiel ansehen](https://dataviz-hkb.github.io/D3/L3/L3.04.html)
 
-<p>&nbsp;</p>
+
+
 ### File: [L3.05.html](L3.05.html)
 #### SVG Elemente
 Koordinatenursprung für SVG ist __Oben__ und __Links__. Positionierung entsprechend anpassen. 
@@ -128,14 +136,16 @@ d3.select("rect")
 
 [Beispiel ansehen](https://dataviz-hkb.github.io/D3/L3/L3.05.html)
 
-<p>&nbsp;</p>
+
+
 ### Files: [L3.06.html](L3.06.html) [L3.07.html](L3.07.html) [L3.08.html](L3.08.html) [L3.09.html](L3.09.html) [L3.10.html](L3.10.html) [L3.11.html](L3.11.html)
 #### Datenvisualisierung simpel
 Datenarray zu SVG Balkendiagramm.
 
 
         
-<p>&nbsp;</p>
+
+
 ### File: [L3.12.html](L3.12.html)
 #### Wie funktioniert das Schlüsselkonzept `selectAll()`, `data()`, `enter()`, `append()` ?
 Gegeben: Datenarray mit 16 Feldinhalten (Zahlenwerte). SVG Objekt mit 8 `<rect>`Elementen.
@@ -171,7 +181,8 @@ svg.selectAll("rect")
             .attr("x", function(d,i) { return i*25 });
 ```
 
-<p>&nbsp;</p>
+
+
 ### File: [L3.13.html](L3.13.html)
 #### Die `selectAll()`, `data()`, `enter()`, `append()` Sequenz verstehen
 Die  Sequenz muss aufgeteilt werden, um das Konzept auch in diesem Fall erfolgreich zu halten, d.h. um jene benötigten Elemente hinzuzufügen und um diese der gesamten Selektion zugänglich zu machen. Aufteilung in: 
@@ -205,7 +216,6 @@ var     update = svg.selectAll("rect").data(datensatz);
 
           
 
-<p>&nbsp;</p>
 
 
 
