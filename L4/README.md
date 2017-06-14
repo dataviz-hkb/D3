@@ -1,7 +1,7 @@
 # DATA CSV/TSV
 
 
-#### Beispiele aus 3 | Data sind alle generell zu verbessern. Hier der Versuch:
+Beispiele aus 3 | Data sind alle generell zu verbessern. Hier der Versuch:
 
 
 
@@ -15,7 +15,7 @@ Verwendung von SVG, Erstellung der Elemente <g> und <rect> mit den Methoden data
 
 
 ### File: [L4.01.html](L4.01.html)
-#### SV-Daten verarbeiten
+#### CSV-Daten verarbeiten
 Daten einlesen und als Vereinfachung und Anlehnung an Beispiel aus 3 | Data auch hier alles an ein  Array übergeben. Daten direkt zu Zahlen konvertieren über den `+`-Operator, dann zu ganzzahlig konvertieren.
 ``` javascript
 var datensatz = [];
