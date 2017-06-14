@@ -32,30 +32,6 @@
         }
 
 
-/* ColorBrewer 9-class Sequential BuGn */
-.q0-9 { fill:#f7fcfd; }
-.q1-9 { fill:#e5f5f9; }
-.q2-9 { fill:#ccece6; }
-.q3-9 { fill:#99d8c9; }
-.q4-9 { fill:#66c2a4; }
-.q5-9 { fill:#41ae76; }
-.q6-9 { fill:#238b45; }
-.q7-9 { fill:#006d2c; }
-.q8-9 { fill:#00441b; }
-
-
-
-
-.q0-9 { fill:#ffffe5; }
-.q0-9 { fill:#f0fcaf; }
-.q1-9 { fill:#e4eb87; }
-.q2-9 { fill:#c6e285; }
-.q3-9 { fill:#addd8e; }
-.q4-9 { fill:#78c679; }
-.q5-9 { fill:#41ab5d; }
-.q6-9 { fill:#238443; }
-.q7-9 { fill:#006837; }
-.q8-9 { fill:#004529; }
 
 
 /* Greys */
@@ -70,6 +46,9 @@
 .q7-9 { fill:rgb(60, 60, 60); }
 .q8-9 { fill:rgb(26, 26, 26); }
 
+
+
+
 .text-q8-9, .text-q7-9  { fill:white; }
 
 
@@ -81,7 +60,7 @@
 <body>
     <div id="datawrapper"><h1>Waldranking Schweiz</h1><p>Quantisierte, mehrstufige Skala (10-stufig) zur Darstellung der Waldfläche in [ha] pro Einwohner über die Kantone. <br>Verwendung von Geo-JSON Daten für die Darstellung von Kantons- und Landesgrenzen.</p></div>
 
-<script src="//d3js.org/d3.v3.min.js"></script>
+<script src="//d3js.org/d3.v4.min.js"></script>
 <script src="//d3js.org/queue.v1.min.js"></script>
 <script src="//d3js.org/topojson.v1.min.js"></script>
 <script>
@@ -91,57 +70,56 @@ var width = 960,
 
 var rateById = d3.map();
 
-var quantize = d3.scale.quantize()
+var quantize = d3.scaleQuantize()
     .domain([0, 0.977])
     .range(d3.range(9).map(function(i) { return "q" + i + "-9"; }));
 
-var projection = d3.geo.albers()
+var projection = d3.geoAlbers()
     .rotate([0, 0])
     .center([8.3, 46.8])
     .scale(16000)
     .translate([width / 2, height / 2])
     .precision(.1);
 
-var path = d3.geo.path()
+var path = d3.geoPath()
     .projection(projection);
 
 var svg = d3.select("#datawrapper").append("svg")
     .attr("width", width)
     .attr("height", height);
 
-queue()
-
+    queue()
     .defer(d3.json, "data/ch-swiss.json")
     .defer(d3.csv, "data/waldranking_ID.csv", function(d) { rateById.set(d.id, +d.Rate) ;})
     .await(ready);
 
 
 function ready(error, swiss) {
-  if (error) throw error;
+    if (error) throw error;
 
-  svg.append("g")
-      //.attr("class", "counties")
-      .attr("class", "canton")
-    .selectAll("path")
-      .data(topojson.feature(swiss, swiss.objects.cantons).features)
-    .enter().append("path")
-      .attr("class", function(d) { return quantize(rateById.get(d.id))})
-      //.attr("class", "q1-9")
-      .attr("id", function(d) { return (d.id)})
-      .attr("d", path);
+    svg.append("g")
+        //.attr("class", "counties")
+        .attr("class", "canton")
+        .selectAll("path")
+        .data(topojson.feature(swiss, swiss.objects.cantons).features)
+        .enter().append("path")
+        .attr("class", function(d) { return quantize(rateById.get(d.id))})
+        //.attr("class", "q1-9")
+        .attr("id", function(d) { return (d.id)})
+        .attr("d", path);
 
-  svg.append("path")
-      .datum(topojson.mesh(swiss, swiss.objects.cantons, function(a, b) { return a !== b; }))
-      .attr("class", "canton-boundary")
-      .attr("d", path);
+    svg.append("path")
+        .datum(topojson.mesh(swiss, swiss.objects.cantons, function(a, b) { return a !== b; }))
+        .attr("class", "canton-boundary")
+        .attr("d", path);
 
     svg.selectAll("text")
-      .data(topojson.feature(swiss, swiss.objects.cantons).features)
-    .enter().append("text")
-      .attr("transform", function(d) { return "translate(" + path.centroid(d) + ")"; })
-      .attr("dy", ".35em")
-    .attr("class", function(d) { return ("text-" + quantize(rateById.get(d.id)))})
-      .text(function(d) { return d.properties.name; });
+        .data(topojson.feature(swiss, swiss.objects.cantons).features)
+        .enter().append("text")
+        .attr("transform", function(d) { return "translate(" + path.centroid(d) + ")"; })
+        .attr("dy", ".35em")
+        .attr("class", function(d) { return ("text-" + quantize(rateById.get(d.id)))})
+        .text(function(d) { return d.properties.name; });
 
 }
 

@@ -48,14 +48,14 @@
 </head>
 
 <body>
-<script src="https://d3js.org/d3.v3.min.js"></script>
+<script src="https://d3js.org/d3.v4.min.js"></script>
 <script src="https://d3js.org/topojson.v1.min.js"></script>
 <script>
 
 var width = 960,
     height = 500;
 
-var path = d3.geo.path()
+var path = d3.geoPath()
   .projection(null);
 
 var svg = d3.select("body").append("svg")
