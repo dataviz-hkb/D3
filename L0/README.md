@@ -5,7 +5,7 @@ D3.js ist 100% Webstandards bezogen. Grundkenntnisse **HTML/CSS** sind deshalb v
 D3 ist eine Javascript Library, d.h. Programmierumgebung vollständig JS (ES5 - Stand Juni 2016).
 
 
-#####Einrichten einer Arbeitsumgebung zum Beispiel mit [Brackets](http://brackets.io) besteht aus folgenden Schritten:#####
+##### Einrichten einer Arbeitsumgebung zum Beispiel mit [Brackets](http://brackets.io) besteht aus folgenden Schritten:
 
 * Erstellen eines Verzeichnisses *'D3'* oder ähnlich
 * Verzeichnis mit Brackets öffnen: `Datei` `>` `Ordner öffnen…`
@@ -18,7 +18,7 @@ D3 ist eine Javascript Library, d.h. Programmierumgebung vollständig JS (ES5 - 
 
 
 
-###HTML5 Standard minimal Konfiguration mit Einbindung d3.js:###
+### HTML5 Standard minimal Konfiguration mit Einbindung d3.js:
 ```html
 <!DOCTYPE html>
 <html lang="de">
@@ -41,6 +41,6 @@ D3 ist eine Javascript Library, d.h. Programmierumgebung vollständig JS (ES5 - 
 ---
 
 
-###Next: [SVG & HTML/CSS:](../L1/)
+### Next: [SVG & HTML/CSS:](../L1/)
 
 [Übersicht](../README.md#chapter)
