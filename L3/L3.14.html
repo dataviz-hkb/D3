@@ -24,19 +24,25 @@
     <script type="text/javascript">
 
         var datensatz = [ 20.4, 124, 43.4, 122, 6, 63, 24, 220, 122, 6, 63, 24, 2, 5, 143, 24 ];
-        var svg = d3.select("svg");
+        var svg = d3.select("svg").selectAll("rect").data(datensatz);
 
-        svg.selectAll("rect")
-                .data(datensatz)
+        svg.attr("class", "foo")
+            .attr("width", 24)
+            .attr("height", function(d,i) { return d })
+            .attr("y", function(d,i) {  return 200 - d })
+            .attr("x", function(d,i) { return i*25 })
 
-                .enter() // Rückgabe der enter() Selektion
-                    .append("rect")
-                        .attr("class", "bar")
-                        .attr("width", 24)
-                        .style("fill", "deeppink")
-                        .attr("height", function(d,i) { return d })
-                        .attr("y", function(d,i) {  return 200 - d })
-                        .attr("x", function(d,i) { return i*25 });
+            .exit().remove();
+
+        svg.enter()
+            .append("rect")
+            // .merge(svg)
+            .attr("class", "bar")
+            .attr("width", 24)
+            .style("fill", "deeppink")
+            .attr("height", function(d,i) { return d })
+            .attr("y", function(d,i) {  return 200 - d })
+            .attr("x", function(d,i) { return i*25 });
 
     </script>
 </body>

@@ -22,12 +22,7 @@
     </div>
 
     <script type="text/javascript">
-        /*  When a key function is not explicitly specified as an argument to the .data() method,
-            it takes the default value of the index function.
-            That is, the default key of an element in a data array is its index in the data array.
-            For instance, since a key function has not been explicitly specified,
-            keys of elements 20.4, 124, 43.4, 122, 6, 63, 24, 220 are 0, 1, 2, 3, 4, 5, 6, 7 respectively.
-        */
+
         var datensatz = [ 20.4, 124, 43.4, 122, 6, 63, 24, 220, 122, 6, 63, 24, 2, 5, 143, 24 ];
         var svg = d3.select("svg");
 
@@ -57,6 +52,15 @@
                         .attr("height", function(d,i) { return d })
                         .attr("y", function(d,i) {  return 200 - d })
                         .attr("x", function(d,i) { return i*25 });
+
+
+            //  Zugriffsfunktion function(d,i) {  return d; return i; })
+            /*  When a key function is not explicitly specified as an argument to the .data() method,
+                it takes the default value of the index function.
+                That is, the default key of an element in a data array is its index in the data array.
+                For instance, since a key function has not been explicitly specified,
+                keys of elements 20.4, 124, 43.4, 122, 6, 63, 24, 220 are 0, 1, 2, 3, 4, 5, 6, 7 respectively.
+            */
 
     </script>
 </body>

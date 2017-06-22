@@ -27,8 +27,8 @@
                         .data(datenset)
                         .enter()
                         .append("p")
-                        .text(function(d) { return Math.sin(d); })
-                        .style("color", function(d) {
+                        .text(function(d,i) { return Math.sin(d); })
+                        .style("color", function(d,i) {
                             if (Math.sin(d) < 0) {
                                 return "red";
                             } else {
