@@ -43,7 +43,7 @@
                                     .enter()
                                         .append("div")
                                         .attr("class", "bar")
-                                        .style("height", function(d) {
+                                        .style("height", function(d,i) {
                                             var barHeight = d * 15;
                                             return barHeight + "px";
                                         });

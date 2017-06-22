@@ -50,17 +50,17 @@
         var h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
 
 
-        var color = d3.scaleOrdinal(d3.schemeCategory20);
+        var farbskala = d3.scaleOrdinal(d3.schemeCategory20);
 
-        var x = d3.scaleLinear().range([0, w]);
-        var y = d3.scaleLinear().range([h, 0]);
+        var skalaX = d3.scaleLinear().range([0, w]);
+        var skalaY = d3.scaleLinear().range([h, 0]);
 
         d3.json("datapoints.json", function(error, dataJSON) {
 
             if (error) throw error;
 
-            x.domain([0, d3.max( dataJSON, function(d) { return d.x } )]);
-            y.domain([0, d3.max( dataJSON, function(d) { return d.y } )]);
+            skalaX.domain([0, d3.max( dataJSON, function(d,i) { return d.x } )]);
+            skalaY.domain([0, d3.max( dataJSON, function(d,i) { return d.y } )]);
 
             var d3svg = d3.select("#datawrapper")
                             .append("svg")
@@ -76,11 +76,11 @@
                 d3svg.selectAll("circle").data(dataJSON)
                                 .enter()
                                 .append("circle")
-                                .attr( "cx", function(d) { return x(d.x) } )
+                                .attr( "cx", function(d,i) { return skalaX(d.x) } )
                                 .attr( "r", "6" )
-                                .attr( "cy", function(d) { return y(d.y) } )
+                                .attr( "cy", function(d,i) { return skalaY(d.y) } )
 
-                                .style("fill", function(d,i){return color(i);})
+                                .style("fill", function(d,i){return farbskala(i);})
                                 .style("opacity", 0)
                                 .transition()
                                 .duration(1600)
