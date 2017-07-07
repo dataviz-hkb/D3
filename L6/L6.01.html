@@ -14,70 +14,71 @@
             font-family: 'Roboto', 'Helvetica Neue', Helvetica, sans-serif;
         }
 
-        .chart rect {
-          fill: deeppink;
-        }
-
-        .chart text {
-          fill: black;
-          font: 10px sans-serif;
-          text-anchor: start;
-        }
-
         #datawrapper {
             width: 960px;
             margin: 0 auto;
         }
         .country {
-  fill: #222;
-}
+          fill: none;
+            stroke: black;
+          stroke-width: 1;
+        }
 
-.canton-boundaries {
-  fill: none;
-  stroke: #fff;
-  stroke-width: 1;
-}
+        .lakes {
+            fill: blue;
+            stroke: black;
+          stroke-width: .3;
+        }
 
-.municipality-boundaries {
-  fill: none;
-  stroke: #fff;
-  stroke-width: .3;
-}
+
 
     </style>
 </head>
 
 <body>
 <script src="https://d3js.org/d3.v4.min.js"></script>
-<script src="https://d3js.org/topojson.v1.min.js"></script>
+<script src="https://d3js.org/topojson.v3.min.js"></script>
 <script>
 
 var width = 960,
     height = 500;
 
-var path = d3.geoPath()
-  .projection(null);
+
 
 var svg = d3.select("body").append("svg")
     .attr("width", width)
     .attr("height", height);
 
-d3.json("data/ch.json", function(error, ch) {
-  svg.append("path")
-    .datum(topojson.feature(ch, ch.objects.country))
-    .attr("class", "country")
-    .attr("d", path);
+d3.json("data/ch2.json", function(error, ch) {
 
-  svg.append("path")
-    .datum(topojson.mesh(ch, ch.objects.municipalities, function(a, b) { return a !== b; }))
-    .attr("class", "municipality-boundaries")
-    .attr("d", path);
 
-  svg.append("path")
-    .datum(topojson.mesh(ch, ch.objects.cantons, function(a, b) { return a !== b; }))
-    .attr("class", "canton-boundaries")
-    .attr("d", path);
+        svg.append("g").append("path")
+
+        // datum(): keine .enter() bzw. exit() Berechnungen
+        // topojson.feature - TopoJSON to GeoJSON
+        .datum(topojson.feature(ch, ch.objects.country))
+        .attr("class", "country")
+        .attr("d", d3.geoPath());
+
+
+        svg.append("g").append("path")
+
+
+
+
+        //.datum(topojson.feature(ch, ch.objects.cantons).features[1])
+
+
+        .datum(topojson.feature(ch, ch.objects.lakes))
+        .attr("class", "lakes")
+        .attr("d", d3.geoPath());
+
+
 });
+
+
+
+
 
 </script>
 </body>

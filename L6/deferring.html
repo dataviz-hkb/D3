@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>D3 | L5 Karten</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
+<body>
+
+<script src="//d3js.org/d3.v4.min.js"></script>
+
+<script>
+
+
+
+    var finished = function(error, data) {
+      console.log(data);
+    }
+
+
+
+
+
+
+    // das Funktioniert nicht
+    /* var foo = function(i) {
+      console.log("Request " + i);
+      return i;
+    } */
+
+    // Das schon
+    var foo = function(i, callback) {
+      console.log(i);
+      callback(null, i);  // erstes Argument ist Fehler, zweites ist Resultat (Daten)
+    }
+
+    // Der Wert null repräsentiert das absichtliche Fehlen eines Wertes.
+
+    // By convention in node.js and d3.queue(),
+    // the first argument to a callback is usually used to indicate an error.
+    // If it's something other than null, the operation was unsuccessful for some reason
+    // Any other arguments after the first are used as return values from the operation (success messages, retrieval, etc.)
+
+
+    d3.queue()
+      .defer(foo, 1)
+      .defer(foo, 2)
+      .defer(foo, 3)
+      .defer(foo, 4)
+      .awaitAll(finished);
+
+
+</script>
+</body>
+</html>

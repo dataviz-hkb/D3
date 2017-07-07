@@ -13,117 +13,73 @@
             padding:40px;
             font-family: 'Roboto', 'Helvetica Neue', Helvetica, sans-serif;
         }
+
+        .chart rect {
+          fill: deeppink;
+        }
+
+        .chart text {
+          fill: black;
+          font: 10px sans-serif;
+          text-anchor: start;
+        }
+
         #datawrapper {
             width: 960px;
             margin: 0 auto;
         }
-        .canton {
-          fill: #666; /* Fallback */
-          stroke: white;
+        .country {
+          fill: #222;
+            stroke: red;
+          stroke-width: 6;
         }
-        .canton-boundary {
+
+        .canton-boundaries {
           fill: none;
           stroke: #fff;
-          stroke-linejoin: round;
-        }
-        text {
-          font-size: 10px;
-          text-anchor: middle;
+          stroke-width: 1;
         }
 
-
-
-
-/* Greys */
-.q0-9 { fill:rgb(255, 255, 255); }
-.q0-9 { fill:rgb(224, 224, 224); }
-.q1-9 { fill:rgb(212, 212, 212); }
-.q2-9 { fill:rgb(181, 181, 181); }
-.q3-9 { fill:rgb(159, 159, 159); }
-.q4-9 { fill:rgb(129, 129, 129); }
-.q5-9 { fill:rgb(117, 117, 117); }
-.q6-9 { fill:rgb(84, 84, 84); }
-.q7-9 { fill:rgb(60, 60, 60); }
-.q8-9 { fill:rgb(26, 26, 26); }
-
-
-
-
-.text-q8-9, .text-q7-9  { fill:white; }
-
-
-
+        .municipality-boundaries {
+          fill: none;
+          stroke: #fff;
+          stroke-width: .3;
+        }
 
     </style>
 </head>
 
 <body>
-    <div id="datawrapper"><h1>Waldranking Schweiz</h1><p>Quantisierte, mehrstufige Skala (10-stufig) zur Darstellung der Waldfläche in [ha] pro Einwohner über die Kantone. <br>Verwendung von Geo-JSON Daten für die Darstellung von Kantons- und Landesgrenzen.</p></div>
-
-<script src="//d3js.org/d3.v4.min.js"></script>
-<script src="//d3js.org/queue.v1.min.js"></script>
-<script src="//d3js.org/topojson.v1.min.js"></script>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="https://d3js.org/topojson.v1.min.js"></script>
 <script>
 
-var width = 960,
-    height = 600;
+    var width = 960,
+    height = 500;
 
-var rateById = d3.map();
+    var path = d3.geoPath()
+                    .projection(null);
 
-var quantize = d3.scaleQuantize()
-    .domain([0, 0.977])
-    .range(d3.range(9).map(function(i) { return "q" + i + "-9"; }));
+    var svg = d3.select("body").append("svg")
+                .attr("width", width)
+                .attr("height", height);
 
-var projection = d3.geoAlbers()
-    .rotate([0, 0])
-    .center([8.3, 46.8])
-    .scale(16000)
-    .translate([width / 2, height / 2])
-    .precision(.1);
+    d3.json("data/ch.json", function(error, ch) {
+        svg.append("g").append("path")
+                .datum(topojson.feature(ch, ch.objects.country))
+                .attr("class", "country")
+                .attr("d", path);
 
-var path = d3.geoPath()
-    .projection(projection);
+        svg.append("g").append("path")
+                .datum(topojson.mesh(ch, ch.objects.municipalities, function(a, b) { return a !== b; }))
+                .attr("class", "municipality-boundaries")
+                .attr("d", path);
 
-var svg = d3.select("#datawrapper").append("svg")
-    .attr("width", width)
-    .attr("height", height);
-
-    queue()
-    .defer(d3.json, "data/ch-swiss.json")
-    .defer(d3.csv, "data/waldranking_ID.csv", function(d) { rateById.set(d.id, +d.Rate) ;})
-    .await(ready);
-
-
-function ready(error, swiss) {
-    if (error) throw error;
-
-    svg.append("g")
-        //.attr("class", "counties")
-        .attr("class", "canton")
-        .selectAll("path")
-        .data(topojson.feature(swiss, swiss.objects.cantons).features)
-        .enter().append("path")
-        .attr("class", function(d) { return quantize(rateById.get(d.id))})
-        //.attr("class", "q1-9")
-        .attr("id", function(d) { return (d.id)})
-        .attr("d", path);
-
-    svg.append("path")
-        .datum(topojson.mesh(swiss, swiss.objects.cantons, function(a, b) { return a !== b; }))
-        .attr("class", "canton-boundary")
-        .attr("d", path);
-
-    svg.selectAll("text")
-        .data(topojson.feature(swiss, swiss.objects.cantons).features)
-        .enter().append("text")
-        .attr("transform", function(d) { return "translate(" + path.centroid(d) + ")"; })
-        .attr("dy", ".35em")
-        .attr("class", function(d) { return ("text-" + quantize(rateById.get(d.id)))})
-        .text(function(d) { return d.properties.name; });
-
-}
-
-d3.select(self.frameElement).style("height", height + "px").style("background", "white");
+        svg.append("g").append("path")
+                .datum(topojson.mesh(ch, ch.objects.cantons, function(a, b) { return a !== b; }))
+                .attr("class", "canton-boundaries")
+                .attr("d", path);
+    });
 
 </script>
 </body>

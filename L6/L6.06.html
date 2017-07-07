@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>D3 | L5 Karten</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
+
+    <style type="text/css">
+        body{
+            margin:0;
+            padding:40px;
+            font-family: 'Roboto', 'Helvetica Neue', Helvetica, sans-serif;
+        }
+        #datawrapper {
+            width: 960px;
+            margin: 0 auto;
+        }
+        .canton {
+          fill: #666; /* Fallback */
+          stroke: white;
+        }
+        .canton-boundary {
+          fill: none;
+          stroke: #fff;
+          stroke-linejoin: round;
+        }
+        text {
+            font-size: 12px;
+            text-anchor: middle;
+            font-weight: 700;
+            mix-blend-mode: hard-light;
+            letter-spacing: 0.04em
+        }
+
+
+
+
+        /* Greys */
+        .q0-9 { fill:rgba(209, 209, 209, 0.64); }
+        .q1-9 { fill:rgba(186, 186, 186, 0.51); }
+        .q2-9 { fill:rgba(70, 70, 70, 0.38); }
+        .q3-9 { fill:rgba(26, 26, 26, 0.45); }
+        .q4-9 { fill:rgba(51, 51, 51, 0.45); }
+        .q5-9 { fill:rgba(103, 103, 103, 0.45); }
+        .q6-9 { fill:rgba(85, 85, 85, 0.6); }
+        .q7-9 { fill:rgba(67, 67, 67, 0.8); }
+        .q8-9 { fill:rgba(33, 33, 33, 0.9); }
+        .q9-9 { fill:rgba(22, 22, 22, 0.9); }
+
+
+
+
+        .text-q5-9,
+        .text-q6-9,
+        .text-q8-9,
+        .text-q8-9,
+        .text-q9-9 { fill:white; }
+
+
+
+
+    </style>
+</head>
+
+<body>
+    <div id="datawrapper"><h1>Waldranking Schweiz</h1><p>Quantisierte, mehrstufige Skala (10-stufig) zur Darstellung der Waldfläche in [ha] pro Einwohner über die Kantone. <br>Verwendung von Geo-JSON Daten für die Darstellung von Kantons- und Landesgrenzen.</p></div>
+
+<script src="//d3js.org/d3.v4.min.js"></script>
+<script src="//d3js.org/topojson.v3.min.js"></script>
+<script>
+
+var width = 960,
+    height = 600;
+
+
+var projection = d3.geoAlbers()
+    .rotate([0, 0])
+    .center([8.3, 46.8])
+    .scale(16000)
+    .translate([width / 2, height / 2])
+    .precision(.1);
+
+var path = d3.geoPath()
+    .projection(projection);
+
+
+
+var rateById = d3.map();
+
+var quantize = d3.scaleQuantize()
+    .domain([0, 1])
+    .range(d3.range(10).map(function(i) { return "q" + i + "-9"; }));
+
+
+var svg = d3.select("#datawrapper").append("svg")
+    .attr("width", width)
+    .attr("style", "background-color: rgba(26, 65, 37, 0.51)")
+    .attr("height", height);
+
+    d3.queue()
+    .defer(d3.json, "data/ch-swiss.json")
+    .defer(d3.csv, "data/waldranking_ID.csv", function(d) {
+
+
+        rateById.set(d.id, +d.Rate);
+
+
+    })
+    .await(ready);
+
+
+function ready(error, swiss) {
+    if (error) throw error;
+
+    svg.append("g")
+        .attr("class", "canton")
+        .selectAll("path")
+            .data(topojson.feature(swiss, swiss.objects.cantons).features)
+            .enter().append("path")
+            .attr("class", function(d) {
+
+                return quantize(rateById.get(d.id))
+            })
+
+        .attr("d", path);
+
+
+}
+
+
+</script>
+</body>
+</html>
