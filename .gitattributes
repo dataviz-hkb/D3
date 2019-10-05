@@ -3,10 +3,8 @@
 *.js          text diff=javascript
 
 
-# These files are text and should be normalized (Convert crlf => lf)
-*.css           text diff=css
-*.htm           text diff=html
-*.html          text diff=html
+*.css           linguist-vendored
+*.html          linguist-vendored
 
 
 ###############################################################################
