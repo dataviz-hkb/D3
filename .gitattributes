@@ -1,8 +1,7 @@
-
 # Javascript sources
 *.js          text diff=javascript
 
-
+# Ingored sources
 *.css           linguist-vendored
 *.html          linguist-vendored
 
